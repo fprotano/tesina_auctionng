@@ -4,6 +4,7 @@ import { FakeComponent } from './components/fake/fake.component';
 import { FakeInsertComponent } from './components/fake-insert/fake-insert.component';
 import { FakeLoginComponent } from './components/fake-login/fake-login.component';
 import { FakeLogoutComponent } from './components/fake-logout/fake-logout.component';
+import { UserLoginComponent } from './components/user-login/user-login.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   ,{path:"fake-insert",component:FakeInsertComponent}
    ,{path:"fake-login",component:FakeLoginComponent}
    ,{path:"fake-logout",component:FakeLogoutComponent}
+   ,{path: "user-login", component: UserLoginComponent}
 
 ];
 
