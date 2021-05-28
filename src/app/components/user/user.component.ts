@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class UserComponent implements OnInit {
 
-  user: User;
+  user: User = new User();
   email: string;
   password: string;
   name: string;

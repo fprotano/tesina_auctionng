@@ -17,11 +17,11 @@ export class UserService extends ApiService {
      this.doGet('user/find', onCallbackFailure, onCallbackSuccess);
    }
    login(model: User, onCallbackSuccess: any, onCallbackFailure: any) {
-     this.doPost('api/user/login', model, onCallbackFailure, onCallbackSuccess);
+     this.doPost('user/login', model, onCallbackFailure, onCallbackSuccess);
    }
 
   register(model: User, callbackOnSuccess: any, callbackOnFailure: any) {
-    this.doPost('api/user/register', model,
+    this.doPost('user/register', model,
     (data: any) => {
       callbackOnSuccess(data);
     }, callbackOnFailure);
