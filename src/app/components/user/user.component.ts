@@ -44,7 +44,7 @@ export class UserComponent implements OnInit {
     this.userService.register(this.user, this.callbackLoginOnSuccess.bind(this), this.callbackOnRegisterFailure.bind(this));
   }
 
-  callbackLoginOnSuccess(data: any): void{
+  callbackLoginOnSuccess(data: any): void {
 
     // this.user = data;
     // this.userService.setLoggedUser(this.loggedModel); // quando si logga, setto lo user nel loca storage
@@ -53,13 +53,13 @@ export class UserComponent implements OnInit {
     // // this.router.navigate(['']);
   }
 
-  callbackLoginOnFailure(data: any): any{
+  callbackLoginOnFailure(data: any): any {
     console.log(data);
   }
 
   // callbackRegisterOnSuccess(data: any): void{}
 
-  callbackOnRegisterFailure(data: any): any{
+  callbackOnRegisterFailure(data: any): any {
     console.log(data);
   }
 

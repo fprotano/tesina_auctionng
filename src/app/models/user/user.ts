@@ -7,7 +7,7 @@ name: string;
 surname: string;
 createdAt: Date;
 updateAt: Date;
-enabled: number;
+// enabled: number;
 nextOtpCodeAfterDate: Date;
 otpCode: string;
 otpCodeExpiresAt: Date;

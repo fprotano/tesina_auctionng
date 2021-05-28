@@ -4,7 +4,8 @@
       
 		<input *ngIf="user.email !== undefined" type="button" class="btn btn-primary" (click)="logOut()" value="Logout"/><br/>
 		
-		<form class="nav navbar-nav" *ngIf="!user && user.email === undefined">
+		<!-- <form class="nav navbar-nav" *ngIf="!user && user.email === undefined"> -->
+		<form class="nav navbar-nav">
 			<h1>Registrazione</h1>
 			<label>Nome</label><br/>
 			<input type="text" class="form-control" name="name" [(ngModel)]="user.name"/><br/>
@@ -23,7 +24,20 @@
 			<button class="btn btn-info" (click) = "changeLoading()">Login</button>
 		</form>
 	
-	<form *ngIf="user && user.name === undefined">
+	<!-- <form *ngIf="user && user.name === undefined">
+		<h1>Login</h1>
+		<label>Email</label><br/>
+		<input type="email" class="form-control" name="email" [(ngModel)]="user.email"/><br/>
+
+		<label>Password</label><br/>
+		<input type="password" class="form-control" name="password" [(ngModel)]="user.password"/><br/>
+		<hr/>
+		<input type="button" class="btn btn-primary" (click)="login()" value="Login"/><br/>
+		<br>
+		<button class="btn btn-info" (click) = "changeLoading()">Registrati</button>
+	</form> -->
+
+	<form >
 		<h1>Login</h1>
 		<label>Email</label><br/>
 		<input type="email" class="form-control" name="email" [(ngModel)]="user.email"/><br/>
