@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
+
 import { HttpClient } from '@angular/common/http';
-import { User } from '../models/user';
+
+import { ApiService } from '../api/api.service';
+import { User } from 'src/app/models/user/user';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +20,10 @@ export class UserService extends ApiService {
      this.doPost('user/login', model, onCallbackFailure, onCallbackSuccess);
    }
 
-  register(model: User, callbackOnSuccess: any, callbackOnFailure: any){
-    this.doPost("api/user/register" , model,
-    (data:any) => {
+  register(model: User, callbackOnSuccess: any, callbackOnFailure: any) {
+    this.doPost('api/user/register', model,
+    (data: any) => {
       callbackOnSuccess(data);
-    },callbackOnFailure)
-    
+    }, callbackOnFailure);
   }
 }
