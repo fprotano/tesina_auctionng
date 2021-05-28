@@ -18,7 +18,7 @@ export class ApiService {
     console.log(restURL);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', accept: 'application/json' });
 
-    return this.http.post(restURL,data, { responseType: 'json', headers }).subscribe((data: any) => {
+    return this.http.post(restURL, JSON.stringify(data), { responseType: 'json', headers }).subscribe((data: any) => {
       const response = data;
 
       console.log(response);
