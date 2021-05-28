@@ -16,6 +16,7 @@ export class UserComponent implements OnInit {
   password: string;
   name: string;
   surname: string;
+  id: string;
 
   isLogged = false;
   loading = true;
@@ -65,6 +66,10 @@ export class UserComponent implements OnInit {
 
   changeLoading(): any {
 
+  }
+
+  findAuctionsByUser(): any {
+    this.userService.findAuctionsByUser(this.id, this.callbackLoginOnSuccess.bind(this), this.callbackOnRegisterFailure.bind(this));
   }
 
 }

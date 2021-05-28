@@ -26,4 +26,8 @@ export class UserService extends ApiService {
       callbackOnSuccess(data);
     }, callbackOnFailure);
   }
+
+  findAuctionsByUser(id: string, onCallbackSuccess: any, onCallbackFailure: any) {
+     this.doPost('auction/findAuctionsByUser', id, onCallbackFailure, onCallbackSuccess);
+  }
 }

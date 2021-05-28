@@ -49,3 +49,10 @@
 		<br>
 		<button class="btn btn-info" (click) = "changeLoading()">Registrati</button>
 	</form>
+
+	<form >
+	<label>Cerca per id</label><br/>
+		<input type="text" class="form-control" name="userId" /><br/>
+		<hr/>
+		<input type="button" class="btn btn-primary" (click)="findAuctionsByUser()" value="Cerca"/><br/>
+	</form>
