@@ -14,7 +14,7 @@ export class UserService extends ApiService {
    find(onCallbackSuccess: any, onCallbackFailure: any) {
      this.doGet('user/find', onCallbackFailure, onCallbackSuccess);
    }
-   insert(model: User, onCallbackSuccess: any, onCallbackFailure: any) {
-     this.doPost('user/insert', model, onCallbackFailure, onCallbackSuccess);
+   login(model: User, onCallbackSuccess: any, onCallbackFailure: any) {
+     this.doPost('user/login', model, onCallbackFailure, onCallbackSuccess);
    }
 }
