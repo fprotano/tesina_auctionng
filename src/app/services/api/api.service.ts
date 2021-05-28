@@ -14,12 +14,12 @@ export class ApiService {
 
 
   protected doPost(url: string, data: any, callbackOnSuccess: any, callbackOnFailure: any) {
-    var restURL = environment.baseRestURI + url;
+    const restURL = environment.baseRestURI + url;
     console.log(restURL);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'accept': 'application/json' });
 
     return this.http.post(restURL, JSON.stringify(data), { responseType: 'json', headers }).subscribe((data: any) => {
-      var response = data;
+      const response = data;
 
       console.log(response);
       if (response.success) {
