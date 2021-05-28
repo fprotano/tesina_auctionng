@@ -10,7 +10,8 @@ import { FakeLoginComponent } from './components/fake-login/fake-login.component
 import { FakeLogoutComponent } from './components/fake-logout/fake-logout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './components/user/user.component';
-import { UserLoginComponent } from './components/user-login/user-login.component';
+
+
 import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
@@ -21,9 +22,8 @@ import { HomeComponent } from './components/home/home.component';
     NavComponent,
     FakeLoginComponent,
     FakeLogoutComponent,
-    UserComponent,
-    UserLoginComponent,
     HomeComponent,
+    UserComponent
 
   ],
   imports: [

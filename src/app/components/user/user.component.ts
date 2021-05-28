@@ -5,11 +5,11 @@ import { UserService } from 'src/app/services/user/user.service';
 
 
 @Component({
-  selector: 'app-user-login',
+  selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserLoginComponent implements OnInit {
+export class UserComponent implements OnInit {
 
   user: User;
   email: string;
