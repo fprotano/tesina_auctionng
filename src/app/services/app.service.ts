@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AppService {
 
-  public onLoginStatusChanged : EventEmitter<boolean> = new EventEmitter();
+  public onLoginStatusChanged: EventEmitter<boolean> = new EventEmitter();
 
   // constructor(private http: HttpClient) { }
   // login(username:string,password:string){
