@@ -8,19 +8,16 @@ import { AppService } from 'src/app/services/app.service';
 })
 export class NavComponent implements OnInit {
 
-  logged:boolean = false;
-  constructor(private appService : AppService) {
+  logged = false;
+  constructor(private appService: AppService) {
 
 
      this.appService.onLoginStatusChanged.subscribe((logged: boolean) => {
-         
        //todo
-         
-       this.logged=logged;
+       this.logged = logged;
 
-         
      });
-     
+
 
 
    }
