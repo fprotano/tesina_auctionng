@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/services/app.service';
 import { User } from 'src/app/models/user';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -10,21 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
+
   user: User;
   email: string;
   password: string;
-  message: any
-  constructor(private appService: AppService, private router: Router) { }
+
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
     this.appService.onLoginStatusChanged.emit(true);
   }
-  doLogin() {
-    let user = this.appService.login(this.email, this.password);
-    user.subscribe(data => {
-      this.message = data;
-      this.router.navigate(["/home"])
-    });
+  doLogin(){
+    if(this.email== this.email && this.password == this.password ){
+      alert("ok")
+    }else{
+      ("errore")
+    }
   }
 
 }

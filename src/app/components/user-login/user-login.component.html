@@ -1,15 +1,9 @@
 <form novalidate>
-	<div class="container">
-		<div class="input">
-			<label>Email</label>
-			<input type="text" name="email" [(ngModel)]="email">
-		</div>
-		<div class="input">
-			<label>Password</label>
-			<input type="password" name="password" [(ngModel)]="password">
-		</div>
-		<div class="input">
-			<input type="submit" value="Login" (click)="doLogin()">
-		</div>
+	<div class="form-group">
+		<input type="text" class="form-control" name="email" [(ngModel)]="email">
 	</div>
+
+	<input type="password" class="form-control" name="password" [(ngModel)]="password">
+
+	<input type="submit" value="Login" (click)="doLogin()">
 </form>
