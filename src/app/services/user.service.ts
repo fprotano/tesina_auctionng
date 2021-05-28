@@ -17,4 +17,12 @@ export class UserService extends ApiService {
    login(model: User, onCallbackSuccess: any, onCallbackFailure: any) {
      this.doPost('user/login', model, onCallbackFailure, onCallbackSuccess);
    }
+
+  register(model: User, callbackOnSuccess: any, callbackOnFailure: any){
+    this.doPost("api/user/register" , model,
+    (data:any) => {
+      callbackOnSuccess(data);
+    },callbackOnFailure)
+    
+  }
 }
