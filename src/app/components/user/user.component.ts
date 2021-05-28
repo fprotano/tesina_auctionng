@@ -1,29 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/models/user';
+import { AppService } from 'src/app/services/app.service';
+import { User } from 'src/app/models/user/user';
+import { UserService } from 'src/app/services/user/user.service';
+
 
 @Component({
-  selector: 'app-user',
+  selector: 'app-user-login',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit {
-  model: User = null;
-  err: string = null;
-  errCode: string = null;
+export class UserLoginComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  user: User;
+  email: string;
+  password: string;
+  name: string;
+  surname: string;
 
-  onLoadSuccess(data: any){
-    this.model = data;
-  }
-  onLoadFailure(err: string, errCode: string){
-    this.err = err;
-    this.errCode = errCode;
-  }
+  isLogged = false;
+  loading = true;
+  constructor(private userService: UserService, private appService: AppService) { }
 
   ngOnInit() {
-    this.userService.find(this.onLoadSuccess.bind(this), this.onLoadFailure.bind(this));
+    // this.appService.onLoginStatusChanged.emit(true);
+  }
+
+  login() {
+    this.appService.onLoginStatusChanged.emit(true);
+  }
+  logOut() {
+
+  }
+  register() {
+
+
+  }
+  changeLoading() {
   }
 
 }
