@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class UserComponent implements OnInit {
 
   user: User = new User();
-  email: string;
+  email: '';
   password: string;
   name: string;
   surname: string;

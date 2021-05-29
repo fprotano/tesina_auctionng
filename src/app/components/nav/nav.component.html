@@ -11,9 +11,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a routerLink="/fake">Esempio Fake</a></li>
-
-            <li><a routerLink="/fake-insert">Esempio Fake Form</a></li>
+          
             <li><a routerLink="/user">Login user</a></li>
             
              <li *ngIf="logged" 
@@ -21,10 +19,10 @@
              <a href="#">Logout</a>
             </li>
             
-            <li *ngIf="!logged" 
+            <!-- <li *ngIf="!logged" 
              >
              <a routerLink="/fake-login">Login</a>
-            </li>
+            </li> -->
             
           </ul>
         </div><!--/.nav-collapse -->

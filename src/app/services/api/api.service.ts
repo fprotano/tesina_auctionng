@@ -12,7 +12,6 @@ export class ApiService {
 
   }
 
-
   protected doPost(url: string, data: any, callbackOnSuccess: any, callbackOnFailure: any) {
     const restURL = environment.baseRestURI + url;
     console.log(restURL);
@@ -55,10 +54,8 @@ export class ApiService {
       } else {
         callbackOnFailure(response.err, response.err_code);
       }
-
-
-
-
     });
   }
+
+
 }

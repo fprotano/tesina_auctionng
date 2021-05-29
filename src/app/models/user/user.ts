@@ -13,4 +13,5 @@ otpCode: string;
 otpCodeExpiresAt: Date;
 question: string;
 answer: string;
+confirmPassword: string;
 }

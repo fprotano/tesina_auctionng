@@ -7,13 +7,17 @@ import { NavComponent } from './components/nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './components/user/user.component';
 import { HomeComponent } from './components/home/home.component';
+import { ConfirmEqualValidatorDirective } from './components/user/confirm-equal-validator.directive';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    ConfirmEqualValidatorDirective,
+
 
   ],
   imports: [

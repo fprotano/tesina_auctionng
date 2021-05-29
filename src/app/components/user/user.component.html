@@ -1,30 +1,88 @@
 <div *ngIf="user.email !== undefined">
-			<a>Benvenuto</a>
+	<a>Benvenuto</a>
+</div>
+
+<input *ngIf="user.email !== undefined" type="button" class="btn btn-primary" (click)="logOut()" value="Logout" /><br />
+
+<!-- <form class="nav navbar-nav" *ngIf="!user && user.email === undefined"> -->
+<div class="container">
+	<h1>Registrazione</h1>
+	<form #userForm="ngForm">
+		<div class="form-group">
+			<label class="control-label"> Nome</label>
+			<input type="text" class="form-control" required maxlength="30" minlength="2" ngModel name="name"
+				#name="ngModel">
+			<small>
+				<div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+					<div *ngIf="name.errors.required">
+						Nome obbligatorio
+					</div>
+					<div *ngIf="name.errors.minlength">
+						Il nome deve essere compreso tra 2 e 30 caratteri
+					</div>
+				</div>
+			</small>
 		</div>
-      
-		<input *ngIf="user.email !== undefined" type="button" class="btn btn-primary" (click)="logOut()" value="Logout"/><br/>
-		
-		<!-- <form class="nav navbar-nav" *ngIf="!user && user.email === undefined"> -->
-		<form class="nav navbar-nav">
-			<h1>Registrazione</h1>
-			<label>Nome</label><br/>
-			<input type="text" class="form-control" name="name" [(ngModel)]="user.name"/><br/>
 
-			<label>Cognome</label><br/>
-			<input type="text" class="form-control" name="surname" [(ngModel)]="user.surname"/><br/>
+		<div class="form-group">
+			<label class="control-label">Cognome</label>
+			<input type="text" class="form-control" required maxlength="30" minlength="2" ngModel name="surname"
+				#surname="ngModel">
+			<small>
+				<div *ngIf="surname.invalid && (surname.dirty || surname.touched)" class="text-danger">
+					<div *ngIf="surname.errors.required">
+						Cognome obbligatorio
+					</div>
+					<div *ngIf="surname.errors.minlength">
+						Il cognome deve essere compreso tra 2 e 30 caratteri
+					</div>
+				</div>
+			</small>
+		</div>
+		<div class="form-group">
+			<label class="control-label">Email</label>
+			<input type="email" class="form-control" required [email]="user.email!==''" name="email" #email="ngModel"
+				[(ngModel)]="user.email">
+			<small class="text-danger"><span class="help.block" *ngIf="email.errors?.required && email.touched">Email
+					obbligatoria</span></small>
+			<small class="text-danger"><span class="help.block" *ngIf="email.errors?.email && email.touched">Email
+					non valida</span></small>
+		</div>
+		<div class="form-group">
+			<label class="control-label">Password</label>
+			<input type="password" class="form-control" required minlength="8" ngModel name="password"
+				#password="ngModel"><input type="button" value="Mostra password"
+				onclick="this.form.password.type='text'" />
+			<small>
+				<div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+					<div *ngIf="password.errors.required">
+						Password obbligatoria
+					</div>
+					<div *ngIf="password.errors.minlength">
+						La password deve contenere almeno 8 caratteri
+					</div>
+				</div>
+			</small>
+		</div>
+		<div class="form-group">
+			<label class="control-label">Conferma password</label>
+			<input type="password" appConfirmEqualValidator="password" name="confirmPassword" class="form-control"
+				required [(ngModel)]="user.confirmPassword" #confirmPassword="ngModel">
 
-			<label>Email</label><br/>
-			<input type="email" class="form-control" name="email" [(ngModel)]="user.email"/><br/>
+			<small class="text-danger"><span class="help.block"
+					*ngIf="confirmPassword.touched && confirmPassword.errors?.required">Conferma la password
+				</span></small>
+			<p><small class="text-danger"><span class="help.block"
+						*ngIf="confirmPassword.touched && confirmPassword.errors?.notEqual && !confirmPassword.errors?.required">Le
+						password non corrispondono</span></small></p>
+		</div>
+		<input type="button" class="btn btn-primary" [disabled]="userForm.invalid" (click)="register()"
+			value="Registrati" /><br />
 
-			<label>Password</label><br/>
-			<input type="password" class="form-control" name="password" [(ngModel)]="user.password"/><br/>
-			<hr/>
-			<input type="button" class="btn btn-primary" (click)="register()" value="Registrati"/><br/>
-
-			<button class="btn btn-info" (click) = "changeLoading()">Login</button>
-		</form>
-	
-	<!-- <form *ngIf="user && user.name === undefined">
+		<button class="btn btn-info" (click)="changeLoading()">Login</button>
+	</form>
+</div>
+<!-- <form *ngIf="user && user.name === undefined">
 		<h1>Login</h1>
 		<label>Email</label><br/>
 		<input type="email" class="form-control" name="email" [(ngModel)]="user.email"/><br/>
@@ -37,22 +95,22 @@
 		<button class="btn btn-info" (click) = "changeLoading()">Registrati</button>
 	</form> -->
 
-	<form >
-		<h1>Login</h1>
-		<label>Email</label><br/>
-		<input type="email" class="form-control" name="email" [(ngModel)]="user.email"/><br/>
+<form>
+	<h1>Login</h1>
+	<label>Email</label><br />
+	<input type="email" class="form-control" name="email" [(ngModel)]="user.email" /><br />
 
-		<label>Password</label><br/>
-		<input type="password" class="form-control" name="password" [(ngModel)]="user.password"/><br/>
-		<hr/>
-		<input type="button" class="btn btn-primary" (click)="login()" value="Login"/><br/>
-		<br>
-		<button class="btn btn-info" (click) = "changeLoading()">Registrati</button>
-	</form>
+	<label>Password</label><br />
+	<input type="password" class="form-control" name="password" [(ngModel)]="user.password" /><br />
+	<hr />
+	<input type="button" class="btn btn-primary" (click)="login()" value="Login" /><br />
+	<br>
+	<button class="btn btn-info" (click)="changeLoading()">Registrati</button>
+</form>
 
-	<form >
-	<label>Cerca per id</label><br/>
-		<input type="text" class="form-control" name="userId" /><br/>
-		<hr/>
-		<input type="button" class="btn btn-primary" (click)="findAuctionsByUser()" value="Cerca"/><br/>
-	</form>
+<form>
+	<label>Cerca per id</label><br />
+	<input type="text" class="form-control" name="userId" /><br />
+	<hr />
+	<input type="button" class="btn btn-primary" (click)="findAuctionsByUser()" value="Cerca" /><br />
+</form>
