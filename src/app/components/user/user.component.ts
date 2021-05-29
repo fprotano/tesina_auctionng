@@ -41,6 +41,8 @@ export class UserComponent implements OnInit {
 
   register(): void {
 
+    console.log(this.user.name);
+
     // notare in caso di successo chiamo il callback del login, cosi da loggare l'utente una volta registrato
     this.userService.register(this.user, this.callbackLoginOnSuccess.bind(this), this.callbackOnRegisterFailure.bind(this));
   }

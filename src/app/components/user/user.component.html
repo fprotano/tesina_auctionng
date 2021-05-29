@@ -10,7 +10,7 @@
 	<form #userForm="ngForm">
 		<div class="form-group">
 			<label class="control-label"> Nome</label>
-			<input type="text" class="form-control" required maxlength="30" minlength="2" ngModel name="name"
+			<input type="text" class="form-control" required maxlength="30" minlength="2" [(ngModel)]="user.name" name="name"
 				#name="ngModel">
 			<small>
 				<div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
@@ -26,7 +26,7 @@
 
 		<div class="form-group">
 			<label class="control-label">Cognome</label>
-			<input type="text" class="form-control" required maxlength="30" minlength="2" ngModel name="surname"
+			<input type="text" class="form-control" required maxlength="30" minlength="2" [(ngModel)]="user.surname" name="surname"
 				#surname="ngModel">
 			<small>
 				<div *ngIf="surname.invalid && (surname.dirty || surname.touched)" class="text-danger">
@@ -50,7 +50,7 @@
 		</div>
 		<div class="form-group">
 			<label class="control-label">Password</label>
-			<input type="password" class="form-control" required minlength="8" ngModel name="password"
+			<input type="password" class="form-control" required minlength="8" [(ngModel)]="user.password" name="password"
 				#password="ngModel"><input type="button" value="Mostra password"
 				onclick="this.form.password.type='text'" />
 			<small>
