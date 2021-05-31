@@ -53,9 +53,11 @@ export class UserComponent implements OnInit {
 
   callbackLoginOnSuccess(data: any): void {
 
-    this.user = data;
-    console.log('nel login success, user > ' + JSON.stringify(this.user));
-    this.userService.setLoggedUser(this.user);
+    if  (data !== null) {
+      this.user = data;
+      console.log('nel login success, user > ' + JSON.stringify(this.user));
+      this.userService.setLoggedUser(this.user);
+    }
   }
 
   callbackLoginOnFailure(data: any): any {
