@@ -26,7 +26,10 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
 
-    this.user = this.userService.getLoggedUser();
+    if (this.user.createdAt !== null || this.user.createdAt !== undefined) {
+      this.user = this.userService.getLoggedUser();
+    }
+
 
   }
 
