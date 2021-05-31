@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class UserComponent implements OnInit {
 
   user: User = new User();
+  loggedUser: User;
   // email: '';
   // password: string;
   // name: string;
@@ -27,7 +28,9 @@ export class UserComponent implements OnInit {
   ngOnInit() {
 
     if (this.user.createdAt !== null || this.user.createdAt !== undefined) {
-      this.user = this.userService.getLoggedUser();
+      this.loggedUser = this.userService.getLoggedUser();
+
+      console.log('nell init, user > ' + JSON.stringify(this.user));
     }
   }
 
@@ -39,8 +42,8 @@ export class UserComponent implements OnInit {
   logOut(): void {
 
     // svuoto lo user e lo setto nel localstorage
-    this.user = new User();
-    this.userService.setLoggedUser(this.user);
+    this.loggedUser = null;
+    this.userService.setLoggedUser(this.loggedUser);
     console.log('nel log out, user > ' + JSON.stringify(this.user))
   }
 
@@ -55,9 +58,9 @@ export class UserComponent implements OnInit {
   callbackLoginOnSuccess(data: any): void {
 
     if  (data !== null) {
-      this.user = data;
-      console.log('nel login success, user > ' + JSON.stringify(this.user));
-      this.userService.setLoggedUser(this.user);
+      this.loggedUser = data;
+      console.log('nel login success, user > ' + JSON.stringify(this.loggedUser));
+      this.userService.setLoggedUser(this.loggedUser);
     }
   }
 

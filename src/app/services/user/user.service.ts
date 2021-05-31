@@ -33,12 +33,12 @@ export class UserService extends ApiService {
 
   public setLoggedUser(user: User): void {
     if (user !== undefined) {
-      window.localStorage.setItem('user', JSON.stringify((user)));
+      window.localStorage.setItem('loggedUser', JSON.stringify((user)));
     }
   }
 
   public getLoggedUser(): User {
-    const model = JSON.parse(window.localStorage.getItem('user'));
+    const model = JSON.parse(window.localStorage.getItem('loggedUser'));
     return model;
   }
 }
