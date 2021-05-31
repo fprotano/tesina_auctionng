@@ -6,8 +6,7 @@
 			<th>closed_auction_at</th>
 		</thead>
 		<tbody>
-			<tr *ngFor="let auction of dbAuction">
-				<!-- <td><a [routerLink]="['/prenotazione/libro', libro.ISBN]">{{libro.ISBN}}</a></td> -->
+			<tr *ngFor="let asta of dbAuction">
 				<td>{{auction.createdAt}}</td>
 				<td>{{auction.userItemId}}</td>
 				<td>{{auction.startPrice}}</td>
@@ -16,3 +15,5 @@
 		</tbody>
 	</table>
 	<hr/>
+
+	{{dbAuction}}

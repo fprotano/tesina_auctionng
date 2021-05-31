@@ -12,9 +12,9 @@ export class AuctionService extends ApiService {
 
   constructor(http: HttpClient) {
     super(http);
-   }
+  }
 
-   public setDb(data: any): void {
+  public setDb(data: any): void {
 
     this.auctionList = data;
   }
@@ -24,7 +24,7 @@ export class AuctionService extends ApiService {
     return this.auctionList;
   }
 
-   findAllAuctions(callbackOnSuccess: any, callbackOnFailure: any): void {
+  findAllAuctions(callbackOnSuccess: any, callbackOnFailure: any): void {
 
     this.doGet('auction/findAllAuctions', callbackOnSuccess, callbackOnFailure);
   }

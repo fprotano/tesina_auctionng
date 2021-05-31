@@ -21,10 +21,12 @@ export class AuctionComponent implements OnInit {
 
   callbackOnSuccess(data: any): void {
 
+    console.log('nel callbackOnSuccess del findAllAuctions > ' + JSON.stringify(data));
     // qui faccio un po un giro ridondante, la il service comportandosi come un singleton
     // mi garantisce la lista di libri sempre disponibile
     this.auctionService.setDb(data);
-    this.dbAuction =  this.auctionService.getDb();
+    this.dbAuction = this.auctionService.getDb();
+    console.log('nel callbackOnSuccess del findAllAuctions dopo il getDB> ' + JSON.stringify(this.dbAuction));
   }
 
   callbackOnFailure(data: any): any {
