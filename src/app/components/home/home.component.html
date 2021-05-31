@@ -1,3 +1,7 @@
 <div class="container">
 	<label>HOME</label>
 </div>
+<div *ngIf="user.name !== undefined">
+			<a>Benvenuto {{user.name}} {{user.surname}}</a>
+		</div>
+{{user.name}}

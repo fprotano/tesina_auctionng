@@ -26,10 +26,14 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
 
+<<<<<<< HEAD
     if (this.user.createdAt !== null || this.user.createdAt !== undefined) {
       this.user = this.userService.getLoggedUser();
     }
 
+=======
+    // this.user = this.userService.getLoggedUser();
+>>>>>>> branch 'master' of https://github.com/fprotano/tesina_auctionng
 
   }
 
