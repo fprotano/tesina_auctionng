@@ -92,10 +92,10 @@
 		<button class="btn btn-info" (click) = "changeLoading()">Registrati</button>
 	</form> -->
 
-<div *ngIf="user.name !== undefined">
+<div *ngIf="user.createdAt !== null">
 			<a>Benvenuto {{user.name}} {{user.surname}}</a>
 		</div>
-{{user.name}}
+<input *ngIf="user.name !== undefined" type="button" class="btn btn-primary" (click)="logOut()" value="Logout" /><br />
 
 <form>
 	<h1>Login</h1>

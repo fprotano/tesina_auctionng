@@ -26,6 +26,8 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
 
+    this.user = this.userService.getLoggedUser();
+
   }
 
   login(): void {
@@ -51,6 +53,7 @@ export class UserComponent implements OnInit {
   callbackLoginOnSuccess(data: any): void {
 
     this.user = data;
+    console.log('nel login success, user > ' + JSON.stringify(this.user));
     this.userService.setLoggedUser(this.user);
   }
 
