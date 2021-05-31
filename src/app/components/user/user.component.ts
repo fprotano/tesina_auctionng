@@ -41,6 +41,7 @@ export class UserComponent implements OnInit {
     // svuoto lo user e lo setto nel localstorage
     this.user = new User();
     this.userService.setLoggedUser(this.user);
+    console.log('nel log out, user > ' + JSON.stringify(this.user))
   }
 
   register(): void {

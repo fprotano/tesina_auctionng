@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './components/user/user.component';
 import { HomeComponent } from './components/home/home.component';
 import { ConfirmEqualValidatorDirective } from './components/user/confirm-equal-validator.directive';
+import { AuctionComponent } from './components/user/item/auction/auction.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ConfirmEqualValidatorDirective } from './components/user/confirm-equal-
     NavComponent,
     HomeComponent,
     UserComponent,
+    AuctionComponent,
     ConfirmEqualValidatorDirective,
 
 

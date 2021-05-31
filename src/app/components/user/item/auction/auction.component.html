@@ -1,1 +1,18 @@
-<p>auction  works!</p>
+<table>
+		<thead>
+			<th>created_at</th>
+			<th>user_item_id</th>
+			<th>start_price</th>
+			<th>closed_auction_at</th>
+		</thead>
+		<tbody>
+			<tr *ngFor="let auction of auctions">
+				<!-- <td><a [routerLink]="['/prenotazione/libro', libro.ISBN]">{{libro.ISBN}}</a></td> -->
+				<td>{{auction.createdAt}}</td>
+				<td>{{auction.userItemId}}</td>
+				<td>{{auction.startPrice}}</td>
+				<td>{{auction.closedAuctionAt}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<hr/>

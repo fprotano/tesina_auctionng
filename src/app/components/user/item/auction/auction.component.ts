@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Auction } from 'src/app/models/auction/auction';
+import { AuctionService } from 'src/app/services/auction/auction.service';
 
 @Component({
   selector: 'app-auction',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuctionComponent implements OnInit {
 
-  constructor() { }
+  auctions: Array<Auction> = new Array<Auction>();
+
+  constructor(private auctionService: AuctionService) { }
 
   ngOnInit() {
   }
