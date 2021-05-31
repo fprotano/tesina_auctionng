@@ -3,17 +3,16 @@
 			<th>created_at</th>
 			<th>user_item_id</th>
 			<th>start_price</th>
-			<th>closed_auction_at</th>
+			<th>end_auction_at</th>
 		</thead>
 		<tbody>
-			<tr *ngFor="let asta of dbAuction">
+			<tr *ngFor="let auction of dbAuction">
 				<td>{{auction.createdAt}}</td>
 				<td>{{auction.userItemId}}</td>
 				<td>{{auction.startPrice}}</td>
-				<td>{{auction.closedAuctionAt}}</td>
+				<td>{{auction.endAuctionAt}}</td>
 			</tr>
 		</tbody>
 	</table>
 	<hr/>
 
-	{{dbAuction}}

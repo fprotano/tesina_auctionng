@@ -40,7 +40,7 @@ export class ApiService {
     // headers.append('Access-Control-Allow-Methods', '*');
     // headers.append('Access-Control-Allow-Origin', '*');
 
-    return this.http.get(restURL, { responseType: 'json', headers: headers }).subscribe((data: any) => {
+    return this.http.get(restURL, { responseType: 'json', headers }).subscribe((data: any) => {
       const response = data;
 
       console.log(response);
