@@ -17,13 +17,15 @@ export class ApiService {
     console.log(restURL);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', accept: 'application/json' });
 
-    return this.http.post(restURL, data, { responseType: 'json', headers }).subscribe((data: any) => {
-      const response = data;
+    return this.http.post(restURL, data, { responseType: 'json', headers }).subscribe((dataBack: any) => {
+      const response = dataBack;
 
-      console.log(response);
+
       if (response.success) {
+        console.log('nel doPost api response success > ' + JSON.stringify(response.data));
         callbackOnSuccess(response.data);
       } else {
+        console.log('nel doPost api response failure > ' + JSON.stringify(response.data));
         callbackOnFailure(response.err, response.err_code);
       }
 
@@ -35,7 +37,7 @@ export class ApiService {
 
   protected doGet(url: string, callbackOnSuccess: any, callbackOnFailure: any) {
 
-    var restURL = environment.baseRestURI + url;
+    const restURL = environment.baseRestURI + url;
 
     console.log(restURL);
 

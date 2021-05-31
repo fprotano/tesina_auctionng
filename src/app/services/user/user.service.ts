@@ -13,21 +13,29 @@ export class UserService extends ApiService {
   constructor(http: HttpClient) {
     super(http);
    }
-   find(onCallbackSuccess: any, onCallbackFailure: any) {
-     this.doGet('user/find', onCallbackFailure, onCallbackSuccess);
+   find(callbackOnSuccess: any, callbackOnFailure: any) {
+     this.doGet('user/find', callbackOnSuccess, callbackOnFailure);
    }
-   login(model: User, onCallbackSuccess: any, onCallbackFailure: any) {
-     this.doPost('user/login', model, onCallbackFailure, onCallbackSuccess);
+   login(model: User, callbackOnSuccess: any, callbackOnFailure: any) {
+     this.doPost('user/login', model, callbackOnSuccess, callbackOnFailure);
    }
 
   register(model: User, callbackOnSuccess: any, callbackOnFailure: any) {
-    this.doPost('user/register', model,
-    (data: any) => {
-      callbackOnSuccess(data);
-    }, callbackOnFailure);
+    this.doPost('user/register', model, callbackOnSuccess, callbackOnFailure);
   }
 
   findAuctionsByUser(id: string, onCallbackSuccess: any, onCallbackFailure: any) {
      this.doPost('auction/findAuctionsByUser', id, onCallbackFailure, onCallbackSuccess);
+  }
+
+  public setLoggedUser(user: User): void {
+    if (user !== undefined) {
+      window.localStorage.setItem('user', JSON.stringify((user)));
+    }
+  }
+
+  public getLoggedUser(): User {
+    const model = JSON.parse(window.localStorage.getItem('user'));
+    return model;
   }
 }

@@ -1,6 +1,3 @@
-<div *ngIf="user.email !== undefined">
-	<a>Benvenuto</a>
-</div>
 
 <input *ngIf="user.email !== undefined" type="button" class="btn btn-primary" (click)="logOut()" value="Logout" /><br />
 
@@ -94,6 +91,11 @@
 		<br>
 		<button class="btn btn-info" (click) = "changeLoading()">Registrati</button>
 	</form> -->
+
+<div *ngIf="user.name !== undefined">
+			<a>Benvenuto {{user.name}} {{user.surname}}</a>
+		</div>
+{{user.name}}
 
 <form>
 	<h1>Login</h1>
