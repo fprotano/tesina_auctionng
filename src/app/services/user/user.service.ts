@@ -10,6 +10,8 @@ import { User } from 'src/app/models/user/user';
 })
 export class UserService extends ApiService {
 
+  user: User = new User();
+
   constructor(http: HttpClient) {
     super(http);
    }
@@ -17,6 +19,7 @@ export class UserService extends ApiService {
      this.doGet('user/find', callbackOnSuccess, callbackOnFailure);
    }
    login(model: User, callbackOnSuccess: any, callbackOnFailure: any) {
+     console.log('nel login del service, user > ' + JSON.stringify(model))
      this.doPost('user/login', model, callbackOnSuccess, callbackOnFailure);
    }
 

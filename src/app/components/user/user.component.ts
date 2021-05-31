@@ -12,21 +12,24 @@ import { UserService } from 'src/app/services/user/user.service';
 export class UserComponent implements OnInit {
 
   user: User = new User();
-  email: '';
-  password: string;
-  name: string;
-  surname: string;
+  // email: '';
+  // password: string;
+  // name: string;
+  // surname: string;
   userId: string;
 
   isLogged = false;
   loading = true;
-  constructor(private userService: UserService, private appService: AppService) { }
+  constructor(private userService: UserService, private appService: AppService) {
+
+   }
 
   ngOnInit() {
 
   }
 
   login(): void {
+    console.log('nel login del component, user > ' + JSON.stringify(this.user))
     this.userService.login(this.user, this.callbackLoginOnSuccess.bind(this), this.callbackLoginOnFailure.bind(this));
   }
 

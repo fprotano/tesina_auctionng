@@ -1,8 +1,5 @@
-import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry, tap } from 'rxjs/operators';
 
 export class ApiService {
 
@@ -14,12 +11,12 @@ export class ApiService {
 
   protected doPost(url: string, data: any, callbackOnSuccess: any, callbackOnFailure: any) {
     const restURL = environment.baseRestURI + url;
-    console.log(restURL);
+    console.log('insirizzo server chiamato > ' + restURL);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', accept: 'application/json' });
 
     return this.http.post(restURL, data, { responseType: 'json', headers }).subscribe((dataBack: any) => {
-      const response = dataBack;
 
+      const response = dataBack;
 
       if (response.success) {
         console.log('nel doPost api response success > ' + JSON.stringify(response.data));
@@ -28,10 +25,6 @@ export class ApiService {
         console.log('nel doPost api response failure > ' + JSON.stringify(response.data));
         callbackOnFailure(response.err, response.err_code);
       }
-
-
-
-
     });
   }
 
