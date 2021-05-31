@@ -38,10 +38,11 @@ export class ApiService {
     headers.append('Access-Control-Allow-Headers', 'Content-Type');
     headers.append('Access-Control-Allow-Methods', '*');
     headers.append('Access-Control-Allow-Origin', '*');
+    headers.set('Access-Control-Allow-Origin', 'true');
 
     console.log(restURL);
     return this.http.get(restURL, { responseType: 'json', headers: headers }).subscribe((data: any) => {
-      var response = data;
+      const response = data;
 
       console.log(response);
       if (response.success) {
