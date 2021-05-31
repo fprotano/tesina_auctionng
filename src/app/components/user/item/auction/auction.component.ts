@@ -12,4 +12,5 @@ export class AuctionComponent implements OnInit {
   ngOnInit() {
   }
 
+
 }

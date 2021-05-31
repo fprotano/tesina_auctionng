@@ -6,6 +6,7 @@ describe('AuctionBidComponent', () => {
   let component: AuctionBidComponent;
   let fixture: ComponentFixture<AuctionBidComponent>;
 
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AuctionBidComponent ]
