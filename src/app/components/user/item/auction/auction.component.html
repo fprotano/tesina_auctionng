@@ -6,7 +6,7 @@
 			<th>closed_auction_at</th>
 		</thead>
 		<tbody>
-			<tr *ngFor="let auction of auctions">
+			<tr *ngFor="let auction of dbAuction">
 				<!-- <td><a [routerLink]="['/prenotazione/libro', libro.ISBN]">{{libro.ISBN}}</a></td> -->
 				<td>{{auction.createdAt}}</td>
 				<td>{{auction.userItemId}}</td>

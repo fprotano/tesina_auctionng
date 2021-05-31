@@ -34,11 +34,11 @@ export class ApiService {
 
     console.log(restURL);
 
-    const headers = new HttpHeaders();
-    headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    headers.append('Access-Control-Allow-Methods', '*');
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.set('Access-Control-Allow-Origin', 'true');
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', accept: 'application/json' });
+    // const headers = new HttpHeaders();
+    // headers.append('Access-Control-Allow-Headers', 'Content-Type');
+    // headers.append('Access-Control-Allow-Methods', '*');
+    // headers.append('Access-Control-Allow-Origin', '*');
 
     console.log(restURL);
     return this.http.get(restURL, { responseType: 'json', headers: headers }).subscribe((data: any) => {

@@ -9,7 +9,7 @@ import { AuctionService } from 'src/app/services/auction/auction.service';
 })
 export class AuctionComponent implements OnInit {
 
-  auctions: Array<Auction> = new Array<Auction>();
+  dbAuction: Array<Auction> = new Array<Auction>();
   auction: Auction = new Auction();
 
   constructor(private auctionService: AuctionService) { }
@@ -24,7 +24,7 @@ export class AuctionComponent implements OnInit {
     // qui faccio un po un giro ridondante, la il service comportandosi come un singleton
     // mi garantisce la lista di libri sempre disponibile
     this.auctionService.setDb(data);
-    this.auctions =  this.auctionService.getDb();
+    this.dbAuction =  this.auctionService.getDb();
   }
 
   callbackOnFailure(data: any): any {
