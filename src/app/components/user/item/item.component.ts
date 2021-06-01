@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ItemService } from 'src/app/services/item/item.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { User } from 'src/app/models/user/user';
 
 @Component({
   selector: 'app-item',
@@ -15,18 +16,23 @@ export class ItemComponent implements OnInit {
   dbItem: Array<UserItem> = new Array<UserItem>();
   userItem: UserItem = new UserItem();
   imageSrc: string;
+  userId: number;
+  loggedUser: User;
 
   constructor(private http: HttpClient, private itemService: ItemService, private router: Router, private userService: UserService) { }
 
   ngOnInit() {
+
+    this.loggedUser = this.userService.getLoggedUser();
     console.log('ngoninit findUserItem ' + this.userService.getLoggedUser().id);
-    this.itemService.findUserItemByUser(this.userService.getLoggedUser().id, this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this));
+    this.itemService.findUserItemByUser(this.userService.getLoggedUser().id,
+      this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this));
   }
 
   insertUserItem(): void {
 
     console.log('nel insertUserItem >' + '[ ' + this.userItem.title + ' ' + this.userItem.description + ' ]');
-
+    this.userItem.userId = this.userService.getLoggedUser().id;
     this.itemService.insertUserItem(this.userItem, this.callbackItemOnSuccess.bind(this), this.callbackOnUserItemFailure.bind(this));
   }
 

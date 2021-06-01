@@ -41,8 +41,8 @@
 			<textarea [(ngModel)]="userItem.description" class="form-control" name="description"
 				placeholder="Descrizione"></textarea>
 		</div>
-		<div class="form-group">
-			<textarea [(ngModel)]="userItem.notes" type="text" class="form-control" name="notes" placeholder="Note"></textarea>
+		<div class="form-group">	
+				<textarea [(ngModel)]="userItem.notes" type="text" class="form-control" name="notes" placeholder="Note"></textarea>
 		</div>
 		<div class="form-group">
 	 <input type="file" class="form-control bg-dark text-white" name="picture1" (change)="readUrl($event)" multiple> 
@@ -53,6 +53,7 @@
 			<button type="reset" (click)="reset()">Reset</button>
 </div>
 </form>
+{{loggedUser.id}}
 <table>
 		<thead>
 			<th>title</th>
