@@ -13,7 +13,7 @@ export class NavComponent implements OnInit {
 
 
      this.appService.onLoginStatusChanged.subscribe((logged: boolean) => {
-       //todo
+      
        this.logged = logged;
 
      });
