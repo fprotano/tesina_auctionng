@@ -9,6 +9,7 @@ import { UserComponent } from './components/user/user.component';
 import { HomeComponent } from './components/home/home.component';
 import { ConfirmEqualValidatorDirective } from './components/user/confirm-equal-validator.directive';
 import { AuctionComponent } from './components/user/item/auction/auction.component';
+import { ItemComponent } from './components/user/item/item.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { AuctionComponent } from './components/user/item/auction/auction.compone
     UserComponent,
     AuctionComponent,
     ConfirmEqualValidatorDirective,
+    ItemComponent
 
 
   ],

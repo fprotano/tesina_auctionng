@@ -1,1 +1,72 @@
-<p>item works! </p>
+<!-- <form #itemForm="ngForm" (ngSubmit)="insertItem(itemForm)">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">Inserisci prodotto</h3>
+		</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label for="title">Titolo</label>
+				<input id="title" name="title" [(ngModel)]="title" type="text" class="form-control">
+				<label for="description">Descrizione</label>
+				<input id="description" type="text" name="description" [(ngModel)]="description" class="form-control">
+			</div>
+		</div>
+		<div class="panel-footer">
+			<button type="submit" class="btn btn-primary">Salva</button>
+		</div>
+	</div>
+</form>
+{{itemForm.value | json}} -->
+<!-- <div class="container">
+	<div class="row">
+		<div class="col-lg-6 col-md-12 mx-0">
+		<ul class="list-group">
+		<li *ngFor="let item of dbItem" class="list-group-item">
+			{{item.title}}
+			{{item.description}}
+			{{item.notes}}
+		</li>
+		</ul>
+	</div>
+	</div>
+</div> -->
+<form #itemForm="ngForm">
+	<div class="container">
+		<div class="form-group">
+
+			<input [(ngModel)]="userItem.title" type="text" class="form-control" name="title" placeholder="Titolo">
+		</div>
+		<div class="form-group">
+
+			<textarea [(ngModel)]="userItem.description" class="form-control" name="description"
+				placeholder="Descrizione"></textarea>
+		</div>
+		<div class="form-group">
+			<textarea [(ngModel)]="userItem.notes" type="text" class="form-control" name="notes" placeholder="Note"></textarea>
+		</div>
+		<div class="form-group">
+	 <input type="file" class="form-control bg-dark text-white" name="picture1" (change)="readUrl($event)" multiple> 
+	
+		</div>
+			<div class="mb-3"><button type="submit" (click)="insertUserItem()">Salva</button>
+			</div>
+			<button type="reset" (click)="reset()">Reset</button>
+</div>
+</form>
+<table>
+		<thead>
+			<th>title</th>
+			<th>created_at</th>
+			<th>user_item_id</th>
+			<th>description</th>
+		</thead>
+		<tbody>
+			<tr *ngFor="let userItem of dbItem">
+				<td>{{userItem.title}}</td>
+				<td>{{userItem.createdAt}}</td>
+				<td>{{userItem.description}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<hr/>
+

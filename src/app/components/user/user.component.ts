@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/services/app.service';
 import { User } from 'src/app/models/user/user';
 import { UserService } from 'src/app/services/user/user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class UserComponent implements OnInit {
 
   isLogged = false;
   loading = true;
-  constructor(private userService: UserService, private appService: AppService) {
+  constructor(private userService: UserService, private appService: AppService, private route: Router) {
 
    }
 

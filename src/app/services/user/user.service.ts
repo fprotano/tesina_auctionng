@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { ApiService } from '../api/api.service';
 import { User } from 'src/app/models/user/user';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -41,4 +42,5 @@ export class UserService extends ApiService {
     const model = JSON.parse(window.localStorage.getItem('loggedUser'));
     return model;
   }
+
 }
