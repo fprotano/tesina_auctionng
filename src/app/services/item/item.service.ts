@@ -26,6 +26,7 @@ export class ItemService extends ApiService {
     this.doPost('userItem/findUserItemByUser', idUser, callbackOnSuccess, callbackOnFailure);
 
   }
+  
   insertUserItem(model: UserItem,  callbackOnSuccess: any, callbackOnFailure: any) {
     this.doPost('userItem/userItemInsert', model, callbackOnSuccess, callbackOnFailure)
   }
