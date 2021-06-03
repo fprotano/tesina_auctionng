@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auction } from 'src/app/models/auction/auction';
 import { AuctionService } from 'src/app/services/auction/auction.service';
+import { AuctionDto } from 'src/app/models/auctioDto/auction-dto';
 
 @Component({
   selector: 'app-auction',
@@ -11,12 +12,24 @@ export class AuctionComponent implements OnInit {
 
   dbAuction: Array<Auction> = new Array<Auction>();
   auction: Auction = new Auction();
+  newAuction: Auction = new Auction();
+  endAuctionAt: number;
+  auctionDto: AuctionDto = new AuctionDto();
 
   constructor(private auctionService: AuctionService) { }
 
   ngOnInit() {
 
     this.auctionService.findAllAuctions(this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this));
+  }
+
+  insertAuction(): void {
+
+    console.log('nel insertAuction >' + '[ ' + this.endAuctionAt + ' ' + this.newAuction + ' ]');
+    this.auctionDto.dayDuration = this.endAuctionAt;
+    this.auctionDto.auction = this.newAuction;
+
+    this.auctionService.insertAuction(this.auctionDto, this.callbackOnInsertSuccess.bind(this), this.callbackOnInsertFailure.bind(this));
   }
 
   callbackOnSuccess(data: any): void {
@@ -30,6 +43,16 @@ export class AuctionComponent implements OnInit {
   }
 
   callbackOnFailure(data: any): any {
+    console.log(data);
+  }
+
+  callbackOnInsertSuccess(data: any): void {
+
+    console.log('nel callbackOnInsertSuccess del insert Auction > ' + JSON.stringify(data));
+
+  }
+
+  callbackOnInsertFailure(data: any): any {
     console.log(data);
   }
 
