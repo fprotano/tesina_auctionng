@@ -13,7 +13,7 @@ export class AuctionComponent implements OnInit {
   dbAuction: Array<Auction> = new Array<Auction>();
   auction: Auction = new Auction();
   newAuction: Auction = new Auction();
-  endAuctionAt: number;
+  auctionDayDuration: number;
   auctionDto: AuctionDto = new AuctionDto();
 
   constructor(private auctionService: AuctionService) { }
@@ -25,8 +25,9 @@ export class AuctionComponent implements OnInit {
 
   insertAuction(): void {
 
-    console.log('nel insertAuction >' + '[ ' + this.endAuctionAt + ' ' + this.newAuction + ' ]');
-    this.auctionDto.dayDuration = this.endAuctionAt;
+    console.log('nel insertAuction >' + '[ ' + this.auctionDayDuration + ' ' + JSON.stringify(this.newAuction) + ' ]');
+    this.auctionDto.auctionDayDuration = this.auctionDayDuration;
+    console.log(this.auctionDto.auctionDayDuration);
     this.auctionDto.auction = this.newAuction;
 
     this.auctionService.insertAuction(this.auctionDto, this.callbackOnInsertSuccess.bind(this), this.callbackOnInsertFailure.bind(this));

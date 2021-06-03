@@ -11,8 +11,15 @@
 			<input class="form-control" type="datetime-local" [(ngModel)]="newAuction.startAuctionAt" name="data" value="" min="current" placeholder="dataIniziale">
 		</div>
 		<div class="form-group">	
-			<input class="form-control" type="number" [(ngModel)]="endAuctionAt" name="endData" min="1" max="5">
+			<input class="form-control" type="number" [(ngModel)]="auctionDayDuration" name="endData" required min="1">
 		</div>
+		<div class="form-group">	
+			<input class="form-group" type="radio" name="fixedBid" value="0" [(ngModel)]="newAuction.freeBidEveryTime" ng-checked="true"/>Offerta Fissa<br />
+			<div class="form-group" *ngIf="newAuction.freeBidEveryTime == 0">
+				<input class="form-group" type="text" name="freedBid" [(ngModel)]="newAuction.fixedBidEveryTime" />
+			</div>
+			<input class="form-group" type="radio" name="fixedBid"  value="1" [(ngModel)]="newAuction.freeBidEveryTime" ng-checked="true"/>Offerta Libera<br />
+ 		</div>
 		<div class="mb-3"><button type="submit" (click)="insertAuction()">Inserisci</button>
 		</div>
 	</div>
