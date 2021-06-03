@@ -1,30 +1,3 @@
-<label class="control-label">inserimento Asta</label>
-<form #itemForm="ngForm">
-	<div class="container">
-		<div class="form-group">
-			<textarea class="form-control" type="text" [(ngModel)]="newAuction.userItemId" name="description" placeholder="userItemId" ></textarea>
-		</div>
-		<div class="form-group">	
-			<textarea class="form-control" type="number" [(ngModel)]="newAuction.startPrice" name="startPrice"  pattern="^\d*(\.\d{0,2})?$" placeholder="startPrice"></textarea>
-		</div>
-		<div class="form-group">	
-			<input class="form-control" type="datetime-local" [(ngModel)]="newAuction.startAuctionAt" name="data" value="" min="current" placeholder="dataIniziale">
-		</div>
-		<div class="form-group">	
-			<input class="form-control" type="number" [(ngModel)]="auctionDayDuration" name="endData" required min="1">
-		</div>
-		<div class="form-group">	
-			<input class="form-group" type="radio" name="fixedBid" value="0" [(ngModel)]="newAuction.freeBidEveryTime" ng-checked="true"/>Offerta Fissa<br />
-			<div class="form-group" *ngIf="newAuction.freeBidEveryTime == 0">
-				<input class="form-group" type="text" name="freedBid" [(ngModel)]="newAuction.fixedBidEveryTime" />
-			</div>
-			<input class="form-group" type="radio" name="fixedBid"  value="1" [(ngModel)]="newAuction.freeBidEveryTime" ng-checked="true"/>Offerta Libera<br />
- 		</div>
-		<div class="mb-3"><button type="submit" (click)="insertAuction()">Inserisci</button>
-		</div>
-	</div>
-</form>
-
 <table>
 		<thead>
 			<th>created_at</th>
@@ -42,4 +15,32 @@
 		</tbody>
 	</table>
 	<hr/>
-
+<button class="form-group" (click)="insertForm()">Inserisci Asta</button>
+<div class="form-group" *ngIf="insertButton">
+	<label class="control-label">inserimento Asta</label>
+	<form #itemForm="ngForm">
+		<div class="container">
+			<div class="form-group">
+				<textarea class="form-control" type="text" [(ngModel)]="newAuction.userItemId" name="description" placeholder="userItemId ID OGGETTO" ></textarea>
+			</div>
+			<div class="form-group">	
+				<textarea class="form-control" type="number" [(ngModel)]="newAuction.startPrice" name="startPrice"  pattern="^\d*(\.\d{0,2})?$" placeholder="startPrice PREZZO INIZIALE"></textarea>
+			</div>
+			<div class="form-group">	
+				<input class="form-control" type="datetime-local" [(ngModel)]="newAuction.startAuctionAt" name="data" value="" min="current" placeholder="dataIniziale DATA INIZIO ASTA">
+			</div>
+			<div class="form-group">	
+				<input class="form-control" type="number" [(ngModel)]="auctionDayDuration" name="endData" required min="1" placeholder="DURATA ASTA">
+			</div>
+			<div class="form-group">	
+				<input class="form-group" type="radio" name="fixedBid" value="0" [(ngModel)]="newAuction.freeBidEveryTime" ng-checked="true"/>Offerta Fissa<br />
+				<div class="form-group" *ngIf="newAuction.freeBidEveryTime == 0">
+					<input class="form-group" type="text" name="freedBid" [(ngModel)]="newAuction.fixedBidEveryTime" />
+				</div>
+				<input class="form-group" type="radio" name="fixedBid"  value="1" [(ngModel)]="newAuction.freeBidEveryTime" placeholder="PREZZO FISSO OFFERTA" ng-checked="true"/>Offerta Libera<br />
+			</div>
+			<div class="mb-3"><button type="submit" (click)="insertAuction()">Inserisci</button>
+			</div>
+		</div>
+	</form>
+</div>

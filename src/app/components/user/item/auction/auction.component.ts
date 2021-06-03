@@ -15,12 +15,21 @@ export class AuctionComponent implements OnInit {
   newAuction: Auction = new Auction();
   auctionDayDuration: number;
   auctionDto: AuctionDto = new AuctionDto();
+  insertButton: boolean = false;
 
   constructor(private auctionService: AuctionService) { }
 
   ngOnInit() {
 
     this.auctionService.findAllAuctions(this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this));
+  }
+
+  insertForm(): void {
+    if (!this.insertButton) {
+      this.insertButton = true;
+    } else {
+        this.insertButton = false;
+      }
   }
 
   insertAuction(): void {
