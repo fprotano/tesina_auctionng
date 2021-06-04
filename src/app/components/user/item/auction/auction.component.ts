@@ -33,10 +33,11 @@ export class AuctionComponent implements OnInit {
         this.insertAuctionButton = false;
       }
   }
-
-  insertBidForm(): void {
-    
+  insertAuctionBidForm(auction: Auction): void {
+    console.log('sono nel insertAuctionBidForm, auction >   ' + JSON.stringify(auction))
+    this.auctionService.setAuction(auction);
   }
+
 
   insertAuction(): void {
 

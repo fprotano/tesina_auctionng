@@ -1,1 +1,21 @@
-<p>auction-bid  works! </p>
+<div>
+	<table>
+		<thead>
+			<th> Utente </th>
+			<th> Data Inizio </th>
+			<th> Oggetto  </th>
+			<th> Prezzo Iniziale </th>
+			<th> Data fine </th>
+		</thead>
+		<tbody>
+			
+				<td>{{auction.userItem.user.name}}</td>
+				<td>{{auction.startAuctionAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+				<td>{{auction.userItem.title}}</td>
+				<td>{{auction.startPrice}}</td>
+				<td>{{auction.endAuctionAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+				
+		
+		</tbody>
+	</table>
+</div>
