@@ -3,6 +3,7 @@ import { Auction } from 'src/app/models/auction/auction';
 import { AuctionService } from 'src/app/services/auction/auction.service';
 import { AuctionBidService } from 'src/app/services/auctionBid/auction-bid.service';
 import { AuctionBid } from 'src/app/models/auctionBid/auction-bid';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-auction-bid',
@@ -15,7 +16,7 @@ export class AuctionBidComponent implements OnInit {
   auctionBid: AuctionBid = new AuctionBid();
 
 
-  constructor(private auctionService: AuctionService, private auctionBidService: AuctionBidService) { }
+  constructor(private auctionService: AuctionService, private auctionBidService: AuctionBidService, private userService: UserService) { }
 
   ngOnInit() {
 
@@ -25,7 +26,8 @@ export class AuctionBidComponent implements OnInit {
   insertAuctionBid(): void {
 
     console.log('nel insertAuctionBid, AuctionBid   >'  + JSON.stringify(this.auctionBid));
-
+    this.auctionBid.auctionId = this.auction.id;
+    this.auctionBid.userId = this.userService.getLoggedUser().id;
     this.auctionBidService.insertAuction(this.auctionBid, this.callbackOnInsertSuccess.bind(this), this.callbackOnInsertFailure.bind(this));
   }
 
