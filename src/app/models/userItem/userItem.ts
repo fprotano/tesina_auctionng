@@ -1,3 +1,5 @@
+import { User } from '../user/user';
+
 export class UserItem{
 id: number;
 createdAt: Date;
@@ -13,4 +15,5 @@ picture4: string;
 picture5: string;
 soldAt: Date;
 soldToUserId: number;
+user: User;
 }

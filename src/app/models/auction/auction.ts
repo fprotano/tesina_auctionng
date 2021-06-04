@@ -1,3 +1,6 @@
+import { UserItem } from '../userItem/userItem';
+import { User } from '../user/user';
+
 export class Auction{
 id: number;
 createdAt: Date;
@@ -13,4 +16,5 @@ fixedBidEveryTime: number;
 startAuctionAt: Date;
 endAuctionAt: Date;
 closedAuctionAt: Date;
+userItem: UserItem;
 }

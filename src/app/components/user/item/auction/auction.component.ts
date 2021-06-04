@@ -15,7 +15,9 @@ export class AuctionComponent implements OnInit {
   newAuction: Auction = new Auction();
   auctionDayDuration: number;
   auctionDto: AuctionDto = new AuctionDto();
-  insertButton: boolean = false;
+  insertAuctionButton: boolean = false;
+  insertBidButton: boolean = false;
+
 
   constructor(private auctionService: AuctionService) { }
 
@@ -24,11 +26,19 @@ export class AuctionComponent implements OnInit {
     this.auctionService.findAllAuctions(this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this));
   }
 
-  insertForm(): void {
-    if (!this.insertButton) {
-      this.insertButton = true;
+  insertAuctionForm(): void {
+    if (!this.insertAuctionButton) {
+      this.insertAuctionButton = true;
     } else {
-        this.insertButton = false;
+        this.insertAuctionButton = false;
+      }
+  }
+
+  insertBidForm(): void {
+    if (!this.insertBidButton) {
+      this.insertBidButton = true;
+    } else {
+        this.insertBidButton = false;
       }
   }
 

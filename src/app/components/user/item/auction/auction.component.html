@@ -1,22 +1,26 @@
-<table>
+<div>
+	<table>
 		<thead>
-			<th>created_at</th>
-			<th>user_item_id</th>
-			<th>start_price</th>
-			<th>end_auction_at</th>
+			<th> Utente </th>
+			<th> Data Inizio </th>
+			<th> Oggetto  </th>
+			<th> Prezzo Iniziale </th>
+			<th> Data fine </th>
 		</thead>
 		<tbody>
 			<tr *ngFor="let auction of dbAuction">
-				<td>{{auction.createdAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
-				<td>{{auction.userItemId}}</td>
+				<td>{{auction.userItem.user.name}}</td>
+				<td>{{auction.startAuctionAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+				<td>{{auction.userItem.title}}</td>
 				<td>{{auction.startPrice}}</td>
-				<td>{{auction.endAuctionAt}}</td>
+				<td>{{auction.endAuctionAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+				<button (click)="insertBidForm()">Fai Un offerta</button>
 			</tr>
 		</tbody>
 	</table>
-	<hr/>
-<button class="form-group" (click)="insertForm()">Inserisci Asta</button>
-<div class="form-group" *ngIf="insertButton">
+</div>
+<button class="form-group" (click)="insertAuctionForm()">Inserisci Asta</button>
+<div class="form-group" *ngIf="insertAuctionButton">
 	<label class="control-label">inserimento Asta</label>
 	<form #itemForm="ngForm">
 		<div class="container">
