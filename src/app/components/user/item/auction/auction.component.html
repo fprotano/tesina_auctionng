@@ -14,7 +14,7 @@
 				<td>{{auction.userItem.title}}</td>
 				<td>{{auction.startPrice}}</td>
 				<td>{{auction.endAuctionAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
-				<button (click)="insertBidForm()">Fai Un offerta</button>
+				<button routerLink="/auctionBid">Fai Un offerta</button>
 			</tr>
 		</tbody>
 	</table>

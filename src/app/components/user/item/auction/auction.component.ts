@@ -16,7 +16,7 @@ export class AuctionComponent implements OnInit {
   auctionDayDuration: number;
   auctionDto: AuctionDto = new AuctionDto();
   insertAuctionButton: boolean = false;
-  insertBidButton: boolean = false;
+
 
 
   constructor(private auctionService: AuctionService) { }
@@ -35,11 +35,7 @@ export class AuctionComponent implements OnInit {
   }
 
   insertBidForm(): void {
-    if (!this.insertBidButton) {
-      this.insertBidButton = true;
-    } else {
-        this.insertBidButton = false;
-      }
+    
   }
 
   insertAuction(): void {

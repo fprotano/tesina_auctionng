@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UserComponent } from './components/user/user.component';
 import { AuctionComponent } from './components/user/item/auction/auction.component';
 import { ItemComponent } from './components/user/item/item.component';
+import { AuctionBidComponent } from './components/user/item/auction/auction-bid/auction-bid.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
    , { path: 'user', component: UserComponent }
    , { path: 'auction', component: AuctionComponent }
    , { path: 'item', component: ItemComponent }
+   , { path: 'auctionBid', component: AuctionBidComponent }
 
 ];
 
