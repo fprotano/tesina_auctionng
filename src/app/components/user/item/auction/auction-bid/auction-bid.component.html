@@ -8,14 +8,23 @@
 			<th> Data fine </th>
 		</thead>
 		<tbody>
-			
-				<td>{{auction.userItem.user.name}}</td>
-				<td>{{auction.startAuctionAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
-				<td>{{auction.userItem.title}}</td>
-				<td>{{auction.startPrice}}</td>
-				<td>{{auction.endAuctionAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
-				
-		
+			<td>{{auction.userItem.user.name}}</td>
+			<td>{{auction.startAuctionAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+			<td>{{auction.userItem.title}}</td>
+			<td>{{auction.startPrice}}</td>
+			<td>{{auction.endAuctionAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
 		</tbody>
 	</table>
 </div>
+	<label class="control-label">Offerta</label>
+	<form #itemForm="ngForm">
+		<div class="container">
+
+			<div class="form-group">	
+				<textarea class="form-control" type="number" [(ngModel)]="auctionBid.bid" name="bid"  pattern="^\d*(\.\d{0,2})?$" placeholder="bid OFFERTA"></textarea>
+			</div>
+
+			<div class="mb-3"><button type="submit" (click)="insertAuctionBid()">Inserisci Offerta</button>
+			</div>
+		</div>
+	</form>

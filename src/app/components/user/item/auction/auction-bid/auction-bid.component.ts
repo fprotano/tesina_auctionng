@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Auction } from 'src/app/models/auction/auction';
 import { AuctionService } from 'src/app/services/auction/auction.service';
 import { AuctionBidService } from 'src/app/services/auctionBid/auction-bid.service';
+import { AuctionBid } from 'src/app/models/auctionBid/auction-bid';
 
 @Component({
   selector: 'app-auction-bid',
@@ -11,6 +12,8 @@ import { AuctionBidService } from 'src/app/services/auctionBid/auction-bid.servi
 export class AuctionBidComponent implements OnInit {
 
   auction: Auction = new Auction();
+  auctionBid: AuctionBid = new AuctionBid();
+
 
   constructor(private auctionService: AuctionService, private auctionBidService: AuctionBidService) { }
 
@@ -19,5 +22,19 @@ export class AuctionBidComponent implements OnInit {
     this.auction = this.auctionService.getAuction();
   }
 
+  insertAuctionBid(): void {
 
+    console.log('nel insertAuctionBid, AuctionBid   >'  + JSON.stringify(this.auctionBid));
+
+    this.auctionBidService.insertAuction(this.auctionBid, this.callbackOnInsertSuccess.bind(this), this.callbackOnInsertFailure.bind(this));
+  }
+
+  callbackOnInsertSuccess(data: any): void {
+
+    console.log('nel callbackOnInsertSuccess del insert Bid > ' + JSON.stringify(data));
+  }
+
+  callbackOnInsertFailure(data: any): any {
+    console.log(data);
+  }
 }
