@@ -36,9 +36,9 @@ export class ApiService {
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', accept: 'application/json' });
     // const headers = new HttpHeaders();
-    headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    headers.append('Access-Control-Allow-Methods', '*');
-    headers.append('Access-Control-Allow-Origin', '*');
+    // headers.append('Access-Control-Allow-Headers', 'Content-Type');
+    // headers.append('Access-Control-Allow-Methods', '*');
+    // headers.append('Access-Control-Allow-Origin', '*');
 
     return this.http.get(restURL, { responseType: 'json', headers }).subscribe((data: any) => {
       const response = data;
