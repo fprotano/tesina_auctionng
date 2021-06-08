@@ -1,4 +1,4 @@
-<div>
+ <div>
 	<table>
 		<thead>
 			<th> Utente </th>
@@ -18,14 +18,14 @@
 			</tr>
 		</tbody>
 	</table>
-</div>
-<button class="form-group" (click)="insertAuctionForm()">Inserisci Asta</button>
-<div class="form-group" *ngIf="insertAuctionButton">
+</div> 
+<!-- <button class="form-group" (click)="insertAuctionForm()">Inserisci Asta</button>
+<div class="form-group" *ngIf="insertAuctionButton"> --> 
 	<label class="control-label">inserimento Asta</label>
 	<form #itemForm="ngForm">
 		<div class="container">
 			<div class="form-group">
-				<textarea class="form-control" type="text" [(ngModel)]="newAuction.userItemId" name="description" placeholder="userItemId ID OGGETTO" ></textarea>
+				<textarea class="form-control" type="text" [(ngModel)]="newAuction.userItemId" name="description" placeholder="Descrizione" ></textarea>
 			</div>
 			<div class="form-group">	
 				<textarea class="form-control" type="number" [(ngModel)]="newAuction.startPrice" name="startPrice"  pattern="^\d*(\.\d{0,2})?$" placeholder="startPrice PREZZO INIZIALE"></textarea>
@@ -47,4 +47,4 @@
 			</div>
 		</div>
 	</form>
-</div>
+<!-- </div> -->

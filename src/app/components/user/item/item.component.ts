@@ -21,7 +21,8 @@ export class ItemComponent implements OnInit {
   loggedUser: User;
   files = [];
   pictureList: Array<string> = new Array<string>();
-  productForm: FormGroup;
+  insertAuctionButton: boolean = false;
+  active: UserItem;
 
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder,
@@ -68,9 +69,19 @@ export class ItemComponent implements OnInit {
     console.log('nel callbackOnSuccess del findAllItems dopo il getDB> ' + JSON.stringify(this.dbItem));
   }
 
-
-  insertAuctionFormIntoItems() {
+  setActive(userItem: UserItem) {
+    this.active = userItem;
   }
+
+
+  // saveForm(itemForm: NgForm) {
+  //   if (this.active) {
+  //     this.updateUserItem(itemForm)
+  //     } else {
+  //       this.insertUserItem(itemForm)
+  //     }
+  //   }
+  // }
 
 
   // readUrl(event: any) {
@@ -105,32 +116,32 @@ export class ItemComponent implements OnInit {
   // }
 
 
-  onFileSelect(event: any) {
-    const formData = new FormData();
+//   onFileSelect(event: any) {
+//     const formData = new FormData();
 
 
-    for (let i = 0; i < this.pictureList.length; i++) {
-      console.log('nel for della selezione file');
-      formData.get(this.userItem.picture1);
-      console.log('formData: ' + formData);
-      console.log('picture: ' + this.userItem.picture1)
-      console.log('pictureList > ' + this.pictureList);
-      formData.set(this.userItem.picture1, this.pictureList[i]);
-      console.log(this.pictureList);
-      // formData.set(this.userItem.picture1, this.pictureList[0]);
-      // console.log('1: ' + this.userItem.picture1);
-      formData.set(this.userItem.picture2, this.pictureList[i]);
-      console.log('2: ' + this.userItem.picture2);
-      formData.set(this.userItem.picture3, this.pictureList[i]);
-      console.log('3: ' + this.userItem.picture3);
-      formData.set(this.userItem.picture4, this.pictureList[i]);
-      console.log('4: ' + this.userItem.picture4);
-      formData.set(this.userItem.picture5, this.pictureList[i]);
-      console.log('5: ' + this.userItem.picture5);
-    }
-    console.log('lista: ' + this.pictureList);
-  }
+//     for (let i = 0; i < this.pictureList.length; i++) {
+//       console.log('nel for della selezione file');
+//       formData.get(this.userItem.picture1);
+//       console.log('formData: ' + formData);
+//       console.log('picture: ' + this.userItem.picture1)
+//       console.log('pictureList > ' + this.pictureList);
+//       formData.set(this.userItem.picture1, this.pictureList[i]);
+//       console.log(this.pictureList);
+//       // formData.set(this.userItem.picture1, this.pictureList[0]);
+//       // console.log('1: ' + this.userItem.picture1);
+//       formData.set(this.userItem.picture2, this.pictureList[i]);
+//       console.log('2: ' + this.userItem.picture2);
+//       formData.set(this.userItem.picture3, this.pictureList[i]);
+//       console.log('3: ' + this.userItem.picture3);
+//       formData.set(this.userItem.picture4, this.pictureList[i]);
+//       console.log('4: ' + this.userItem.picture4);
+//       formData.set(this.userItem.picture5, this.pictureList[i]);
+//       console.log('5: ' + this.userItem.picture5);
+//     }
+//     console.log('lista: ' + this.pictureList);
+//   }
+// }
+
+
 }
-
-
-

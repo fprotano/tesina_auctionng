@@ -94,9 +94,10 @@
 
 		<div class="col-lg-6 col-md-12 mx-0">
 			<ul class="list-group">
+				<!-- [ngClass]="{'active': userItem.id === active?.id}" (click)="setActive(userItem)" -->
 				<li *ngFor="let userItem of dbItem" class="list-group-item">
 					{{userItem.title}} - {{userItem.description}}
-					<button class="form-group" (click)="insertAuctionFormIntoItems()">Inserisci Asta</button>
+					<button class="form-group" routerLink="/auction">Inserisci Asta</button>
 				</li>
 			</ul>
 		</div>
@@ -120,13 +121,12 @@
 
 					<input multiple type="file" class="form-control bg-dark text-white" [(ngModel)]="pictureList"
 						name="pictureList" (change)="onFileSelect($event)" accept="image/*">
-					<button type="submit" >Salva</button>
-					<div class="form-group" *ngIf="insertAuctionButton">
-						<button>vendi</button>
+					<button type="submit" >{{active ? 'Modifica'  : 'Salva'}}</button>
 					</div>
 
-				</div>
+				
 			</form>
 		</div>
 
+	</div>
 	</div>
