@@ -19,10 +19,10 @@ export class ItemComponent implements OnInit {
   userItem: UserItem = new UserItem();
   userId: number;
   loggedUser: User;
-  files = [];
   pictureList: Array<string> = new Array<string>();
-  insertAuctionButton: boolean = false;
-  active: UserItem;
+  itemForm: NgForm;
+  userItemIdSelected: UserItem;
+  selectedTitle: string;
 
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder,
@@ -36,15 +36,20 @@ export class ItemComponent implements OnInit {
       this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this));
   }
 
-  insertUserItem(itemForm: NgForm): void {
+  insertUserItem(itemForm): void {
 
     console.log('nel insertUserItem > ' + this.userItem.title + ' ' + this.userItem.description);
     this.userItem.userId = this.userService.getLoggedUser().id;
     this.itemService.insertUserItem(this.userItem, this.callbackItemOnSuccess.bind(this), this.callbackOnUserItemFailure.bind(this));
     this.itemService.findUserItemByUser(this.userService.getLoggedUser().id,
       this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this));
+    this.itemForm.reset();
   }
 
+  insertAuctionFromItem(userItem) {
+    // qui va ripreso il title/id dell'item selezionato e stamparlo nella form dell'auction
+    this.router.navigate(['/auction']);
+  }
   callbackItemOnSuccess(data: any): void {
 
     if (data !== null) {
@@ -69,19 +74,11 @@ export class ItemComponent implements OnInit {
     console.log('nel callbackOnSuccess del findAllItems dopo il getDB> ' + JSON.stringify(this.dbItem));
   }
 
-  setActive(userItem: UserItem) {
-    this.active = userItem;
+  // seleziona il prodotto, i dati vengono inseriti nel form di inserimento che diventa di modifica
+  getUserItem(userItem: UserItem) {
+    this.userItem = userItem;
   }
 
-
-  // saveForm(itemForm: NgForm) {
-  //   if (this.active) {
-  //     this.updateUserItem(itemForm)
-  //     } else {
-  //       this.insertUserItem(itemForm)
-  //     }
-  //   }
-  // }
 
 
   // readUrl(event: any) {
@@ -106,42 +103,34 @@ export class ItemComponent implements OnInit {
   //   }
 
   //   }
-  //   onPictureSubmit(): any {
 
-  //   const formData = new FormData();
-  //   this.files.forEach(file => {
-  //      formData.append('files[]', file, file.name);
-  //   })
+
+  //   onFileSelect(event: any) {
+  //     const formData = new FormData();
+
+
+  //     for (let i = 0; i < this.pictureList.length; i++) {
+  //       console.log('nel for della selezione file');
+  //       formData.get(this.userItem.picture1);
+  //       console.log('formData: ' + formData);
+  //       console.log('picture: ' + this.userItem.picture1)
+  //       console.log('pictureList > ' + this.pictureList);
+  //       formData.set(this.userItem.picture1, this.pictureList[i]);
+  //       console.log(this.pictureList);
+  //       // formData.set(this.userItem.picture1, this.pictureList[0]);
+  //       // console.log('1: ' + this.userItem.picture1);
+  //       formData.set(this.userItem.picture2, this.pictureList[i]);
+  //       console.log('2: ' + this.userItem.picture2);
+  //       formData.set(this.userItem.picture3, this.pictureList[i]);
+  //       console.log('3: ' + this.userItem.picture3);
+  //       formData.set(this.userItem.picture4, this.pictureList[i]);
+  //       console.log('4: ' + this.userItem.picture4);
+  //       formData.set(this.userItem.picture5, this.pictureList[i]);
+  //       console.log('5: ' + this.userItem.picture5);
+  //     }
+  //     console.log('lista: ' + this.pictureList);
+  //   }
   // }
-  // }
-
-
-//   onFileSelect(event: any) {
-//     const formData = new FormData();
-
-
-//     for (let i = 0; i < this.pictureList.length; i++) {
-//       console.log('nel for della selezione file');
-//       formData.get(this.userItem.picture1);
-//       console.log('formData: ' + formData);
-//       console.log('picture: ' + this.userItem.picture1)
-//       console.log('pictureList > ' + this.pictureList);
-//       formData.set(this.userItem.picture1, this.pictureList[i]);
-//       console.log(this.pictureList);
-//       // formData.set(this.userItem.picture1, this.pictureList[0]);
-//       // console.log('1: ' + this.userItem.picture1);
-//       formData.set(this.userItem.picture2, this.pictureList[i]);
-//       console.log('2: ' + this.userItem.picture2);
-//       formData.set(this.userItem.picture3, this.pictureList[i]);
-//       console.log('3: ' + this.userItem.picture3);
-//       formData.set(this.userItem.picture4, this.pictureList[i]);
-//       console.log('4: ' + this.userItem.picture4);
-//       formData.set(this.userItem.picture5, this.pictureList[i]);
-//       console.log('5: ' + this.userItem.picture5);
-//     }
-//     console.log('lista: ' + this.pictureList);
-//   }
-// }
 
 
 }
