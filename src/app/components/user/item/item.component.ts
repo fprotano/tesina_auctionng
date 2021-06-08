@@ -26,8 +26,7 @@ export class ItemComponent implements OnInit {
 
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder,
-              private itemService: ItemService, private router: Router, private userService: UserService,
-              private auctionComponent: AuctionComponent) { }
+              private itemService: ItemService, private router: Router, private userService: UserService) { }
 
   ngOnInit() {
 
@@ -68,7 +67,7 @@ export class ItemComponent implements OnInit {
     this.itemService.setDb(data);
     this.dbItem = this.itemService.getDb();
     console.log('nel callbackOnSuccess del findAllItems dopo il getDB> ' + JSON.stringify(this.dbItem));
-  } 
+  }
 
 
   // readUrl(event: any) {

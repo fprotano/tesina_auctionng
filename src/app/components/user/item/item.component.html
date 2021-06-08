@@ -101,10 +101,7 @@
 			</ul>
 		</div>
 		<div class="col-lg-6 col-md-12 mx-0">
-			<form #itemForm="ngForm" (submit)="insertUserItem(itemForm)">
-				<input *ngIf="insertIntoItemAuctionButton">
-				<app-auction></app-auction>
-				</form>
+			
 				<div class="form-group">
 		
 					<input [(ngModel)]="userItem.title" type="text" class="form-control" name="title"
@@ -129,7 +126,7 @@
 					</div>
 
 				</div>
-			</form>
+			
 		</div>
 
 	</div>
