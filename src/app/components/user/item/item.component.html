@@ -96,12 +96,12 @@
 			<ul class="list-group">
 				<li *ngFor="let userItem of dbItem" class="list-group-item">
 					{{userItem.title}} - {{userItem.description}}
-					<button class="form-group">Inserisci Asta</button>
+					<button class="form-group" (click)="insertAuctionFormIntoItems()">Inserisci Asta</button>
 				</li>
 			</ul>
 		</div>
 		<div class="col-lg-6 col-md-12 mx-0">
-			
+			<form #itemForm="ngForm" (submit)="insertUserItem(itemForm)">
 				<div class="form-group">
 		
 					<input [(ngModel)]="userItem.title" type="text" class="form-control" name="title"
@@ -126,7 +126,7 @@
 					</div>
 
 				</div>
-			
+			</form>
 		</div>
 
 	</div>

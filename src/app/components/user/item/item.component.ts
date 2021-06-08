@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ItemService } from 'src/app/services/item/item.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/models/user/user';
-import { NgForm, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { NgForm, FormBuilder, FormGroup } from '@angular/forms';
 import { UserItem } from 'src/app/models/userItem/userItem';
 import { AuctionComponent } from './auction/auction.component';
 
@@ -22,7 +22,6 @@ export class ItemComponent implements OnInit {
   files = [];
   pictureList: Array<string> = new Array<string>();
   productForm: FormGroup;
-  insertIntoItemAuctionButton: boolean = false;
 
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder,
@@ -67,6 +66,10 @@ export class ItemComponent implements OnInit {
     this.itemService.setDb(data);
     this.dbItem = this.itemService.getDb();
     console.log('nel callbackOnSuccess del findAllItems dopo il getDB> ' + JSON.stringify(this.dbItem));
+  }
+
+
+  insertAuctionFormIntoItems() {
   }
 
 
