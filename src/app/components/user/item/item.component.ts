@@ -68,9 +68,7 @@ export class ItemComponent implements OnInit {
     this.itemService.setDb(data);
     this.dbItem = this.itemService.getDb();
     console.log('nel callbackOnSuccess del findAllItems dopo il getDB> ' + JSON.stringify(this.dbItem));
-  }
-
- 
+  } 
 
 
   // readUrl(event: any) {
