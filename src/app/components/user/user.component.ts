@@ -22,7 +22,7 @@ export class UserComponent implements OnInit {
 
   isLogged = false;
   loading = true;
-  constructor(private userService: UserService, private appService: AppService, private route: Router) {
+  constructor(private userService: UserService, private appService: AppService, private router: Router) {
 
    }
 
