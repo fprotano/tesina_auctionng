@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { UserItem } from 'src/app/models/userItem/userItem';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ItemService } from 'src/app/services/item/item.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/models/user/user';
+import { NgForm, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { UserItem } from 'src/app/models/userItem/userItem';
+import { AuctionComponent } from './auction/auction.component';
 
 @Component({
   selector: 'app-item',
@@ -15,11 +17,17 @@ export class ItemComponent implements OnInit {
 
   dbItem: Array<UserItem> = new Array<UserItem>();
   userItem: UserItem = new UserItem();
-  imageSrc: string;
   userId: number;
   loggedUser: User;
+  files = [];
+  pictureList: Array<string> = new Array<string>();
+  productForm: FormGroup;
+  insertIntoItemAuctionButton: boolean = false;
 
-  constructor(private http: HttpClient, private itemService: ItemService, private router: Router, private userService: UserService) { }
+
+  constructor(private http: HttpClient, private formBuilder: FormBuilder,
+              private itemService: ItemService, private router: Router, private userService: UserService,
+              private auctionComponent: AuctionComponent) { }
 
   ngOnInit() {
 
@@ -29,11 +37,13 @@ export class ItemComponent implements OnInit {
       this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this));
   }
 
-  insertUserItem(): void {
+  insertUserItem(itemForm: NgForm): void {
 
-    console.log('nel insertUserItem >' + '[ ' + this.userItem.title + ' ' + this.userItem.description + ' ]');
+    console.log('nel insertUserItem > ' + this.userItem.title + ' ' + this.userItem.description);
     this.userItem.userId = this.userService.getLoggedUser().id;
     this.itemService.insertUserItem(this.userItem, this.callbackItemOnSuccess.bind(this), this.callbackOnUserItemFailure.bind(this));
+    this.itemService.findUserItemByUser(this.userService.getLoggedUser().id,
+      this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this));
   }
 
   callbackItemOnSuccess(data: any): void {
@@ -60,57 +70,67 @@ export class ItemComponent implements OnInit {
     console.log('nel callbackOnSuccess del findAllItems dopo il getDB> ' + JSON.stringify(this.dbItem));
   }
 
-  
-  
-  // insertItem(itemForm: NgForm): void {
-  //   console.log(itemForm);
-  // }
-  // reset(itemForm: NgForm){
-  //   // this.active = null;
-  //   this.imageSrc = null;
-  //   itemForm.reset();
+ 
+
+
+  // readUrl(event: any) {
+  //   const reader = new FileReader();
+  //   if (event.target.files && event.target.files.length) {
+  //     const [file] = event.target.files;
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => {
+  //       this.imageSrc = reader.result as string;
+  //     }
+  //   }
   // }
 
-  readUrl(event: any) {
-    const reader = new FileReader();
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.imageSrc = reader.result as string;
-      }
+  // onFileSelect(event: any) {
+  //   if (event.targert.pictureList.length > 0) {
+  //     for (let i = 0; i < event.target.pictureList.length; i++){
+  //       const file = event.target.files[i]
+  //       this.files.push(file)
+  //       this.productForm.get('pictureList').setValue(this.files[i])
+  //       console.log(this.files)
+  //     }
+  //   }
+
+  //   }
+  //   onPictureSubmit(): any {
+
+  //   const formData = new FormData();
+  //   this.files.forEach(file => {
+  //      formData.append('files[]', file, file.name);
+  //   })
+  // }
+  // }
+
+
+  onFileSelect(event: any) {
+    const formData = new FormData();
+
+
+    for (let i = 0; i < this.pictureList.length; i++) {
+      console.log('nel for della selezione file');
+      formData.get(this.userItem.picture1);
+      console.log('formData: ' + formData);
+      console.log('picture: ' + this.userItem.picture1)
+      console.log('pictureList > ' + this.pictureList);
+      formData.set(this.userItem.picture1, this.pictureList[i]);
+      console.log(this.pictureList);
+      // formData.set(this.userItem.picture1, this.pictureList[0]);
+      // console.log('1: ' + this.userItem.picture1);
+      formData.set(this.userItem.picture2, this.pictureList[i]);
+      console.log('2: ' + this.userItem.picture2);
+      formData.set(this.userItem.picture3, this.pictureList[i]);
+      console.log('3: ' + this.userItem.picture3);
+      formData.set(this.userItem.picture4, this.pictureList[i]);
+      console.log('4: ' + this.userItem.picture4);
+      formData.set(this.userItem.picture5, this.pictureList[i]);
+      console.log('5: ' + this.userItem.picture5);
     }
+    console.log('lista: ' + this.pictureList);
   }
-
-  //   onFileSelect(event) {
-  //     for (let i = 0; i < (event.target.files.length); i++) {
-  //       this.file = event.target.files[i];
-  //       this.myFiles.push(event.target.files[i]);
-  //       this.itemForm.get('picture1').setValue(this.myFiles);
-  //     }
-  //     console.log(this.myFiles);
-  //   }
-
-  //   onSubmit() {
-  //     const formData = new FormData();
-
-  //     for (let i = 0; i < this.myFiles.length; i++) {
-  //       formData.append('picture1[]', this.myFiles[i]);
-  //     }
-  //     formData.append('title', this.itemForm.get('title').value);
-  //     formData.append('description', this.itemForm.get('description').value);
-  //     this.options = { content: formData };
-  //     formData.append('notes', this.itemForm.get('notes').value);
-  //     this.options = { content: formData };
-  //     formData.forEach((value, key) => {
-  //       console.log(key + ' ' + value)
-  //     })
-  //   }
-
-  // }
-  // onFileSelect(event){
-  //   const file = event.target.files[0];
-  //   console.log(file);
-  // }
-
 }
+
+
+
