@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -13,6 +13,7 @@ import { ItemComponent } from './components/user/item/item.component';
 import { AuctionBidComponent } from './components/user/item/auction/auction-bid/auction-bid.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,14 +24,14 @@ import { AuctionBidComponent } from './components/user/item/auction/auction-bid/
     ConfirmEqualValidatorDirective,
     ItemComponent,
     AuctionBidComponent
-
-
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
