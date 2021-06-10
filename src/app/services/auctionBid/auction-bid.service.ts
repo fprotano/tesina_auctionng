@@ -15,4 +15,8 @@ export class AuctionBidService extends ApiService {
   insertAuction(model: AuctionBid,  callbackOnSuccess: any, callbackOnFailure: any) {
     this.doPost('auctionBid/insertBid', model, callbackOnSuccess, callbackOnFailure)
   }
+
+  // findBidByAuctionId(callbackOnSuccess: any, callbackOnFailure: any): void {
+  //   this.doGet('auctionBid/auctionBid', callbackOnSuccess, callbackOnFailure);
+  // }
 }

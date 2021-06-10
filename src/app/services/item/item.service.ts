@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class ItemService extends ApiService {
 
   public userItemList: Array<UserItem> = new Array<UserItem>();
+  userItem: UserItem = new UserItem();
 
   constructor(http: HttpClient) {
     super(http);
@@ -32,6 +33,7 @@ export class ItemService extends ApiService {
     this.doPost('userItem/userItemInsert', model, callbackOnSuccess, callbackOnFailure)
   }
 
+  // esempio nel caso si vuole fare l'update dell'item (implementare lato java)
   // updateItem(model: UserItem, callbackOnSuccess: any, callbackOnFailure: any){
   //   this.doPost('userItem/updateItem', model, callbackOnSuccess, callbackOnFailure)
   // }

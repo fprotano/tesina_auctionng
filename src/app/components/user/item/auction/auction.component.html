@@ -5,15 +5,17 @@
 			<th> Data Inizio </th>
 			<th> Oggetto  </th>
 			<th> Prezzo Iniziale </th>
+			<th> Bid</th>
 			<th> Data fine </th>
 		</thead>
-		
+
 		<tbody>
 			<tr *ngFor="let auction of dbAuction">
 				<td>{{auction.userItem.user.name}}</td>
 				<td>{{auction.startAuctionAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
 				<td>{{auction.userItem.title}}</td>
 				<td>{{auction.startPrice}}</td>
+				<td>{{auction.auctionBid}}</td>
 				<td>{{auction.endAuctionAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
 				<button routerLink="/auctionBid" (click)="insertAuctionBidForm(auction)">Fai Un offerta</button>
 			</tr>
@@ -23,13 +25,13 @@
 <!-- <button class="form-group" (click)="insertAuctionForm()">Inserisci Asta</button>
 <div class="form-group" *ngIf="insertAuctionButton"> --> 
 	<label class="control-label">inserimento Asta</label>
-	<form #itemForm="ngForm">
+	<form #auctionForm="ngForm" (submit)="insertAuction(auctionForm)">
 		<div class="container">
 			<div class="form-group">
-				<textarea class="form-control" type="text" [(ngModel)]="newAuction.userItemId" name="description" placeholder="Descrizione" ></textarea>
+				<textarea class="form-control" type="text" [(ngModel)]="newAuction.userItemId" name="userItemId" placeholder="ID OGGETTO" ></textarea>
 			</div>
 			<div class="form-group">	
-				<textarea class="form-control" type="number" [(ngModel)]="newAuction.startPrice" name="startPrice"  pattern="^\d*(\.\d{0,2})?$" placeholder="startPrice PREZZO INIZIALE"></textarea>
+				<input class="form-control" type="number" [(ngModel)]="newAuction.startPrice" name="startPrice"  pattern="^\d*(\.\d{0,2})?$" placeholder="startPrice PREZZO INIZIALE"/>
 			</div>
 			<div class="form-group">	
 				<input class="form-control" type="datetime-local" [(ngModel)]="newAuction.startAuctionAt" name="data" value="" min="current" placeholder="dataIniziale DATA INIZIO ASTA">
@@ -44,7 +46,7 @@
 				</div>
 				<input class="form-group" type="radio" name="fixedBid"  value="1" [(ngModel)]="newAuction.freeBidEveryTime" placeholder="PREZZO FISSO OFFERTA" ng-checked="true"/>Offerta Libera<br />
 			</div>
-			<div class="mb-3"><button type="submit" (click)="insertAuction()">Inserisci</button>
+			<div class="mb-3"><button type="submit" >Inserisci</button>
 			</div>
 		</div>
 	</form>

@@ -1,12 +1,12 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ItemService } from 'src/app/services/item/item.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/models/user/user';
-import { NgForm, FormBuilder, FormGroup } from '@angular/forms';
+import { NgForm, FormBuilder } from '@angular/forms';
 import { UserItem } from 'src/app/models/userItem/userItem';
-import { AuctionComponent } from './auction/auction.component';
+
 
 @Component({
   selector: 'app-item',
@@ -25,7 +25,7 @@ export class ItemComponent implements OnInit {
   selectedTitle: string;
 
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder,
+  constructor(private http: HttpClient,
               private itemService: ItemService, private router: Router, private userService: UserService) { }
 
   ngOnInit() {

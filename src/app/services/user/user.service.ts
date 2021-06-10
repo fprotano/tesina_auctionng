@@ -39,6 +39,7 @@ export class UserService extends ApiService {
   }
 
   public getLoggedUser(): User {
+    console.log('dentro il get logged user > ' + this.user);
     const model = JSON.parse(window.localStorage.getItem('loggedUser'));
     return model;
   }

@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, Injectable } from '@angular/core';
 import { Auction } from 'src/app/models/auction/auction';
 import { AuctionService } from 'src/app/services/auction/auction.service';
 import { AuctionDto } from 'src/app/models/auctioDto/auction-dto';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -40,7 +41,7 @@ export class AuctionComponent implements OnInit {
   }
 
 
-  insertAuction(): void {
+  insertAuction(auctionForm: NgForm): void {
 
     console.log('nel insertAuction >' + '[ ' + this.auctionDayDuration + ' ' + JSON.stringify(this.newAuction) + ' ]');
     this.auctionDto.auctionDayDuration = this.auctionDayDuration;
