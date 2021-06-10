@@ -1,4 +1,3 @@
-import {User} from './../../models/user/user';
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/services/app.service';
 import { User } from 'src/app/models/user/user';
@@ -24,6 +23,7 @@ export class UserComponent implements OnInit {
   isLogged = false;
   loading = true;
   constructor(private userService: UserService, private appService: AppService, private router: Router) {
+	  
 
    }
 
