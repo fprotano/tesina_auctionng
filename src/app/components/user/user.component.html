@@ -96,7 +96,7 @@
 	<a>Benvenuto {{loggedUser.name}} {{loggedUser.surname}} {{loggedUser.createdAt}}</a>
 </div>
 <input *ngIf="loggedUser !== null" type="button" class="btn btn-primary" (click)="logOut()" value="Logout" /><br />
-<input *ngIf="loggedUser !== null" type="button" class="btn btn-primary" a routerLink="/item" value="Area Personale" /><br />
+<input *ngIf="loggedUser !== null" type="button" class="btn btn-primary" a routerLink="/item" value="Item" /><br />
 
 <form>
 	<h1>Login</h1>
