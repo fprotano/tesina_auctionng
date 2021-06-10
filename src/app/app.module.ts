@@ -11,6 +11,7 @@ import { ConfirmEqualValidatorDirective } from './components/user/confirm-equal-
 import { AuctionComponent } from './components/user/item/auction/auction.component';
 import { ItemComponent } from './components/user/item/item.component';
 import { AuctionBidComponent } from './components/user/item/auction/auction-bid/auction-bid.component';
+import { InvoiceComponent } from './components/user/item/invoice/invoice.component';
 
 
 
@@ -23,7 +24,8 @@ import { AuctionBidComponent } from './components/user/item/auction/auction-bid/
     AuctionComponent,
     ConfirmEqualValidatorDirective,
     ItemComponent,
-    AuctionBidComponent
+    AuctionBidComponent,
+    InvoiceComponent
   ],
 
   imports: [
