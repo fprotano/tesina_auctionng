@@ -98,17 +98,17 @@ export class ItemComponent implements OnInit {
   //   }
   // }
 
-  // onFileSelect(event: any) {
-  //   if (event.targert.pictureList.length > 0) {
-  //     for (let i = 0; i < event.target.pictureList.length; i++){
-  //       const file = event.target.files[i]
-  //       this.files.push(file)
-  //       this.productForm.get('pictureList').setValue(this.files[i])
-  //       console.log(this.files)
-  //     }
-  //   }
+  onFileSelect(event: any) {
+    // if (event.targert.pictureList.length > 0) {
+    //   for (let i = 0; i < event.target.pictureList.length; i++){
+    //     const file = event.target.files[i]
+    //     this.files.push(file)
+    //     this.productForm.get('pictureList').setValue(this.files[i])
+    //     console.log(this.files)
+    //   }
+    // }
 
-  //   }
+    }
 
 
   //   onFileSelect(event: any) {
