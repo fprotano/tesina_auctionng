@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ItemService } from 'src/app/services/item/item.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/models/user/user';
-import { NgForm, FormBuilder } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { UserItem } from 'src/app/models/userItem/userItem';
 
 
