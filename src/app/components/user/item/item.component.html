@@ -95,8 +95,9 @@
 
 		<div class="col-lg-6 col-md-12 mx-0">
 			<ul class="list-group">
-				<!-- [ngClass]="{'active': userItem.id === active?.id}" (click)="setActive(userItem)" routerLink="/auction/{{userItem.title}}"-->
-				<li *ngFor="let userItem of dbItem" class="list-group-item" (click)="getUserItem(userItem)">
+
+				<li *ngFor="let userItem of dbItem" class="list-group-item" ng-class="{active : isSelected(userItem)}"
+					(click)="setActive(userItem)">
 					{{userItem.title}} - {{userItem.description}}
 					<button class="form-group" (click)="insertAuctionFromItem(userItem)">Inserisci Asta</button>
 				</li>
