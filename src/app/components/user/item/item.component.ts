@@ -23,6 +23,7 @@ export class ItemComponent implements OnInit {
   itemForm: NgForm;
   userItemIdSelected: UserItem;
   selectedTitle: string;
+  selected: UserItem;
 
 
   constructor(private http: HttpClient,
@@ -75,9 +76,13 @@ export class ItemComponent implements OnInit {
   }
 
   // seleziona il prodotto, i dati vengono inseriti nel form di inserimento che diventa di modifica
-  getUserItem(userItem: UserItem) {
+  setActive(userItem: UserItem) {
     this.userItem = userItem;
   }
+
+  isSelected(userItem) {
+        return this.selected === userItem;
+    }
 
 
 
