@@ -15,6 +15,7 @@ import { UserItem } from 'src/app/models/userItem/userItem';
 })
 export class ItemComponent implements OnInit {
 
+
   dbItem: Array<UserItem> = new Array<UserItem>();
   userItem: UserItem = new UserItem();
   userId: number;
