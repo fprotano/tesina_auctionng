@@ -22,8 +22,10 @@ export class UserComponent implements OnInit {
 
   isLogged = false;
   loading = true;
-  constructor(private userService: UserService, private appService: AppService, private router: Router) {
-	  
+  invoiceView = false;
+
+  constructor(private userService: UserService) {
+
 
    }
 
@@ -81,6 +83,14 @@ export class UserComponent implements OnInit {
   findAuctionsByUser(): any {
     console.log('nel findAuctionsByUser id user > ' + this.userId)
     this.userService.findAuctionsByUser(this.userId, this.callbackLoginOnSuccess.bind(this), this.callbackOnRegisterFailure.bind(this));
+  }
+
+  changeInvoiceView(): void {
+    if (!this.invoiceView) {
+      this.invoiceView = true;
+    } else {
+        this.invoiceView = false;
+      }
   }
 
 }

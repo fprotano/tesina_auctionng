@@ -1,4 +1,9 @@
 
+<button class="btn btn-info" (click)="changeInvoiceView()">Invoice</button>
+	<div *ngIf="invoiceView">
+		<app-invoice></app-invoice>
+	</div>
+
 <input *ngIf="user.name !== undefined" type="button" class="btn btn-primary" (click)="logOut()" value="Logout" /><br />
 
 <!-- <form class="nav navbar-nav" *ngIf="!user && user.email === undefined"> -->

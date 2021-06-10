@@ -1,1 +1,27 @@
-<p>invoice works!</p>
+ <div>
+	<table>
+		<thead>
+			<th> Data </th>
+			<th> Numero </th>
+			<th> User  </th>
+			<th> Ordine </th>
+			<th> prezzo </th>
+			<th> Iva </th>
+			<th> Totale </th>
+		</thead>
+
+		<tbody>
+			<tr *ngFor="let invoice of invoiceList">
+				<td>{{invoice.createAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+				<td>{{invoice.invoiceNo}}</td>
+				<td>{{loggedUser.name}}</td>
+				<td>{{invoice.auctionOrderId}}</td>
+				<td>{{invoice.iva}}</td>
+				<td>{{invoice.total}}</td>
+				
+				
+				
+			</tr>
+		</tbody>
+	</table>
+</div> 
