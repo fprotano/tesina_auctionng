@@ -10,4 +10,5 @@ paymentVerifyExpiresAt: Date;
 paidAt: Date;
 amount: number;
 transactionId: string;
+
 }
