@@ -23,9 +23,8 @@ export class ItemComponent implements OnInit {
   pictureList: Array<string> = new Array<string>();
   itemForm: NgForm;
   userItemIdSelected: UserItem;
-  selectedTitle: string;
-  selected: UserItem;
-
+  active: UserItem = new UserItem();
+  item: UserItem = new UserItem();
 
   constructor(private http: HttpClient,
               private itemService: ItemService, private router: Router, private userService: UserService) { }
@@ -39,16 +38,16 @@ export class ItemComponent implements OnInit {
   }
 
   insertUserItem(itemForm): void {
-
     console.log('nel insertUserItem > ' + this.userItem.title + ' ' + this.userItem.description);
     this.userItem.userId = this.userService.getLoggedUser().id;
     this.itemService.insertUserItem(this.userItem, this.callbackItemOnSuccess.bind(this), this.callbackOnUserItemFailure.bind(this));
-    this.itemService.findUserItemByUser(this.userService.getLoggedUser().id,
-      this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this));
-    this.itemForm.reset();
+    // this.itemService.findUserItemByUser(this.userService.getLoggedUser().id,
+    //   this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this));
+    // this.active = null;
+    // this.itemForm.reset();
   }
 
-  insertAuctionFromItem(userItem) {
+  insertAuctionFromItem() {
     // qui va ripreso il title/id dell'item selezionato e stamparlo nella form dell'auction
     this.router.navigate(['/auction']);
   }
@@ -78,12 +77,11 @@ export class ItemComponent implements OnInit {
 
   // seleziona il prodotto, i dati vengono inseriti nel form di inserimento che diventa di modifica
   setActive(userItem: UserItem) {
-    this.userItem = userItem;
+    this.active = userItem;
+
   }
 
-  isSelected(userItem) {
-        return this.selected === userItem;
-    }
+
 
 
 
@@ -108,7 +106,7 @@ export class ItemComponent implements OnInit {
     //   }
     // }
 
-    }
+  }
 
 
   //   onFileSelect(event: any) {

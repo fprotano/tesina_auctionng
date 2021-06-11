@@ -1,8 +1,7 @@
-
 <button class="btn btn-info" (click)="changeInvoiceView()">Invoice</button>
-	<div *ngIf="invoiceView">
-		<app-invoice></app-invoice>
-	</div>
+<div *ngIf="invoiceView">
+	<app-invoice></app-invoice>
+</div>
 
 <input *ngIf="user.name !== undefined" type="button" class="btn btn-primary" (click)="logOut()" value="Logout" /><br />
 
@@ -12,8 +11,8 @@
 	<form #userForm="ngForm">
 		<div class="form-group">
 			<label class="control-label"> Nome</label>
-			<input type="text" class="form-control" required maxlength="30" minlength="2" [(ngModel)]="user.name" name="name"
-				#name="ngModel">
+			<input type="text" class="form-control" required maxlength="30" minlength="2" [(ngModel)]="user.name"
+				name="name" #name="ngModel">
 			<small>
 				<div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
 					<div *ngIf="name.errors.required">
@@ -28,8 +27,8 @@
 
 		<div class="form-group">
 			<label class="control-label">Cognome</label>
-			<input type="text" class="form-control" required maxlength="30" minlength="2" [(ngModel)]="user.surname" name="surname"
-				#surname="ngModel">
+			<input type="text" class="form-control" required maxlength="30" minlength="2" [(ngModel)]="user.surname"
+				name="surname" #surname="ngModel">
 			<small>
 				<div *ngIf="surname.invalid && (surname.dirty || surname.touched)" class="text-danger">
 					<div *ngIf="surname.errors.required">
@@ -52,8 +51,8 @@
 		</div>
 		<div class="form-group">
 			<label class="control-label">Password</label>
-			<input type="password" class="form-control" required minlength="8" [(ngModel)]="user.password" name="password"
-				#password="ngModel"><input type="button" value="Mostra password"
+			<input type="password" class="form-control" required minlength="8" [(ngModel)]="user.password"
+				name="password" #password="ngModel"><input type="button" value="Mostra password"
 				onclick="this.form.password.type='text'" />
 			<small>
 				<div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
@@ -77,6 +76,28 @@
 			<p><small class="text-danger"><span class="help.block"
 						*ngIf="confirmPassword.touched && confirmPassword.errors?.notEqual && !confirmPassword.errors?.required">Le
 						password non corrispondono</span></small></p>
+		</div>
+			<div class="form-group">
+			<label class="control-label">Domanda di sicurezza</label>
+			<input type="text" class="form-control" required [(ngModel)]="user.question" name="question" #question="ngModel">
+			<small>
+				<div *ngIf="question.invalid && (question.dirty || question.touched)" class="text-danger">
+					<div *ngIf="question.errors.required">
+						Domanda obbligatoria
+					</div>
+				</div>
+			</small>
+		</div>
+		<div class="form-group">
+			<label class="control-label">Risposta</label>
+			<input type="text" class="form-control" required [(ngModel)]="user.answer" name="answer" #answer="ngModel">
+			<small>
+				<div *ngIf="answer.invalid && (answer.dirty || answer.touched)" class="text-danger">
+					<div *ngIf="answer.errors.required">
+						Risposta obbligatoria
+					</div>
+				</div>
+			</small>
 		</div>
 		<input type="button" class="btn btn-primary" [disabled]="userForm.invalid" (click)="register()"
 			value="Registrati" /><br />
