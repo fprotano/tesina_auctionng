@@ -96,32 +96,36 @@
 		<div class="col-lg-6 col-md-12 mx-0">
 			<ul class="list-group">
 
-				<li *ngFor="let userItem of dbItem" class="list-group-item" ng-class="{active : isSelected(userItem)}"
-					(click)="setActive(userItem)">
+				<li *ngFor="let userItem of dbItem" class="list-group-item"
+				[ngClass]="{'active' : active?.id === userItem.id}"
+				(click)="setActive(userItem)">
+
 					{{userItem.title}} - {{userItem.description}}
-					<button class="form-group" (click)="insertAuctionFromItem(userItem)">Inserisci Asta</button>
+					<button class="form-group" (click)="insertAuctionFromItem()">Inserisci Asta</button>
 				</li>
 			</ul>
 		</div>
+		
 		<div class="col-lg-6 col-md-12 mx-0">
 			<form #itemForm="ngForm" (submit)="insertUserItem(itemForm)">
 				<div class="form-group">
-					<input [(ngModel)]="userItem.title" type="text" class="form-control" name="title"
+					<input [(ngModel)]="active.title" type="text" class="form-control" name="title" 
 						placeholder="Titolo">
 				</div>
 				<div class="form-group">
-					<textarea [(ngModel)]="userItem.description" class="form-control" name="description"
+					<textarea [(ngModel)]="active.description" class="form-control" name="description"
 						placeholder="Descrizione"></textarea>
 				</div>
 				<div class="form-group">
-					<textarea [(ngModel)]="userItem.notes" type="text" class="form-control" name="notes"
+					<textarea [(ngModel)]="active.notes" type="text" class="form-control" name="notes"
 						placeholder="Note"></textarea>
 				</div>
 				<div class="form-group">
 
 					<input multiple type="file" class="form-control bg-dark text-white" [(ngModel)]="pictureList"
 						name="pictureList" (change)="onFileSelect($event)" accept="image/*">
-					<button type="submit">{{userItem.id ? 'Modifica'  : 'Salva'}}</button>
+					<button type="submit">{{active.id ? 'Modifica'  : 'Salva'}}</button>
+			
 				</div>
 			</form>
 		</div>
