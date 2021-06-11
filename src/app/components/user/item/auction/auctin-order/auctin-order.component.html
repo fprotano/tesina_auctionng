@@ -1,1 +1,19 @@
-<p>auctin-order works!</p>
+ <div>
+	<table>
+		<thead>
+			<th> Data </th>
+			<th> Numero </th>
+			<th> User  </th>
+			<th> prezzo </th>
+		</thead>
+		<tbody>
+			<tr *ngFor="let auctionOrder of auctionOrderList">
+				<td>{{auctionOrder.createAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+				<td>{{auctionOrder.orderNo}}</td>
+				<td>{{loggedUser.name}}</td>
+				<td>{{auctionOrder.amount}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+

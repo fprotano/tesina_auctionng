@@ -13,7 +13,7 @@ export class AuctionOrderService extends ApiService{
 
   }
 
-  findInvoiceByUserId(model: User,  callbackOnSuccess: any, callbackOnFailure: any) {
-    this.doPost('invoice/AuctionOrderFindByUserId', model, callbackOnSuccess, callbackOnFailure)
+  findAuctionOrderByUserId(model: User,  callbackOnSuccess: any, callbackOnFailure: any) {
+    this.doPost('auctionOrder/AuctionOrderFindByUserId', model, callbackOnSuccess, callbackOnFailure)
   }
 }
