@@ -23,6 +23,7 @@ export class UserComponent implements OnInit {
   isLogged = false;
   loading = true;
   invoiceView = false;
+  autionOrderView = false;
 
   constructor(private userService: UserService) {
 
@@ -90,6 +91,14 @@ export class UserComponent implements OnInit {
       this.invoiceView = true;
     } else {
         this.invoiceView = false;
+      }
+  }
+
+  changeAutionOrderView(): void {
+    if (!this.autionOrderView) {
+      this.autionOrderView = true;
+    } else {
+        this.autionOrderView = false;
       }
   }
 
