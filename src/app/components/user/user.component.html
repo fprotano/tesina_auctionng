@@ -81,17 +81,22 @@
 						*ngIf="confirmPassword.touched && confirmPassword.errors?.notEqual && !confirmPassword.errors?.required">Le
 						password non corrispondono</span></small></p>
 		</div>
-			<div class="form-group">
+		<div class="form-group">
 			<label class="control-label">Domanda di sicurezza</label>
-			<input type="text" class="form-control" required [(ngModel)]="user.question" name="question" #question="ngModel">
-			<small>
-				<div *ngIf="question.invalid && (question.dirty || question.touched)" class="text-danger">
-					<div *ngIf="question.errors.required">
-						Domanda obbligatoria
-					</div>
-				</div>
-			</small>
+			<div class="select-wrapper">
+				<select name = "question" [(ngModel)]="user.question" required>
+					  <option disabled value="" selected>- Scegli una opzione -</option>
+					<option *ngFor="let q of question" [ngValue]="q.name">
+						{{q.name}}
+					</option>
+					<div *ngIf="question.invalid"> 
+	  domanda required. 
+</div> 
+				</select>
+				
+			</div>
 		</div>
+		
 		<div class="form-group">
 			<label class="control-label">Risposta</label>
 			<input type="text" class="form-control" required [(ngModel)]="user.answer" name="answer" #answer="ngModel">

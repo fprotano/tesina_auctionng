@@ -24,6 +24,11 @@ export class UserComponent implements OnInit {
   loading = true;
   invoiceView = false;
   autionOrderView = false;
+  question = [
+       {name: 'Il nome del tuo primo animale domestico'},
+       {name: 'Il nome del tuo dolce preferito'},
+       {name: 'La marca della tua prima macchina'}
+     ];
 
   constructor(private userService: UserService) {
 

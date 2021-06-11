@@ -1,7 +1,16 @@
-.container{
-	text-align: center;
-	margin-top: 100px;
+.container {
+  text-align: center;
+  margin-top: 100px;
 }
-form-control{
-	float: center;
+
+form-control {
+  float: center;
 }
+
+select{
+  height: 30px;
+  width: auto;
+  border-radius: 5px;
+   float: center;
+}
+
