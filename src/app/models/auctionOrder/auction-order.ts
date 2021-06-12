@@ -3,7 +3,7 @@ import { Auction } from '../auction/auction';
 export class AuctionOrder {
 
 id: number;
-orderNo: number;
+orderNo: string;
 auctionId: number;
 auctionOrderStatusId: number;
 createAt: Date;

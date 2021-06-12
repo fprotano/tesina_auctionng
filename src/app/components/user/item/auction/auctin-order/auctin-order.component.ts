@@ -3,7 +3,7 @@ import { AuctionOrderService } from 'src/app/services/auctionOrder/auction-order
 import { UserService } from 'src/app/services/user/user.service';
 import { AuctionOrder } from 'src/app/models/auctionOrder/auction-order';
 import { User } from 'src/app/models/user/user';
-import { Auction } from 'src/app/models/auction/auction';
+import { Payment } from 'src/app/models/payment/payment';
 
 @Component({
   selector: 'app-auctin-order',
@@ -14,8 +14,9 @@ export class AuctinOrderComponent implements OnInit {
 
   auctionOrder: AuctionOrder = new AuctionOrder();
   auctionOrderList: Array<AuctionOrder> = new Array<AuctionOrder>();
-  auction: Auction = new Auction();
   loggedUser: User = new User();
+  payment: Payment = new Payment();
+
 
   constructor(private userService: UserService, private auctionOrderService: AuctionOrderService) { }
 
@@ -26,8 +27,14 @@ export class AuctinOrderComponent implements OnInit {
 
   }
 
-  payment() {
-    
+  makePayment(auctionOrder: AuctionOrder) {
+
+    this.payment.amount = auctionOrder.amount;
+    this.payment.customCode = auctionOrder.orderNo;
+    this.payment.email = auctionOrder.auction.userItem.user.email;
+    console.log('nel make payment, payment > ' + JSON.stringify(this.payment))
+    this.auctionOrderService.makePayment(this.payment, this.callbackPaymnetOnSuccess.bind(this), this.callbackPaymnetOnFailure.bind(this))
+
   }
 
   callbackOnSuccess(data: any): void {
@@ -37,6 +44,15 @@ export class AuctinOrderComponent implements OnInit {
   }
 
   callbackOnFailure(data: any): any {
+    console.log(data);
+  }
+
+  callbackPaymnetOnSuccess(data: any): void {
+
+    console.log('nel callbackPaymnetOnSuccess del findInvoiceByUser > ' + JSON.stringify(data));
+  }
+
+  callbackPaymnetOnFailure(data: any): any {
     console.log(data);
   }
 
