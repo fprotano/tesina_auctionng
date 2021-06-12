@@ -3,6 +3,7 @@ import { AuctionOrderService } from 'src/app/services/auctionOrder/auction-order
 import { UserService } from 'src/app/services/user/user.service';
 import { AuctionOrder } from 'src/app/models/auctionOrder/auction-order';
 import { User } from 'src/app/models/user/user';
+import { Auction } from 'src/app/models/auction/auction';
 
 @Component({
   selector: 'app-auctin-order',
@@ -13,6 +14,7 @@ export class AuctinOrderComponent implements OnInit {
 
   auctionOrder: AuctionOrder = new AuctionOrder();
   auctionOrderList: Array<AuctionOrder> = new Array<AuctionOrder>();
+  auction: Auction = new Auction();
   loggedUser: User = new User();
 
   constructor(private userService: UserService, private auctionOrderService: AuctionOrderService) { }
@@ -22,6 +24,10 @@ export class AuctinOrderComponent implements OnInit {
     this.loggedUser = this.userService.getLoggedUser();
     this.auctionOrderService.findAuctionOrderByUserId(this.loggedUser, this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this))
 
+  }
+
+  payment() {
+    
   }
 
   callbackOnSuccess(data: any): void {

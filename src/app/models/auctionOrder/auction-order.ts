@@ -1,3 +1,5 @@
+import { Auction } from '../auction/auction';
+
 export class AuctionOrder {
 
 id: number;
@@ -10,5 +12,6 @@ paymentVerifyExpiresAt: Date;
 paidAt: Date;
 amount: number;
 transactionId: string;
+auction: Auction;
 
 }
