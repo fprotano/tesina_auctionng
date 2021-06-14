@@ -3,6 +3,7 @@ import { AppService } from 'src/app/services/app.service';
 import { User } from 'src/app/models/user/user';
 import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -25,15 +26,16 @@ export class UserComponent implements OnInit {
   invoiceView = false;
   autionOrderView = false;
   question = [
-       {name: 'Il nome del tuo primo animale domestico'},
-       {name: 'Il nome del tuo dolce preferito'},
-       {name: 'La marca della tua prima macchina'}
-     ];
+    { name: 'Il nome del tuo primo animale domestico' },
+    { name: 'Il nome del tuo dolce preferito' },
+    { name: 'La marca della tua prima macchina' }
+  ];
+  flag = true
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
 
 
-   }
+  }
 
   ngOnInit() {
 
@@ -44,9 +46,12 @@ export class UserComponent implements OnInit {
     }
   }
 
+
+
   login(): void {
     console.log('nel login del component, user > ' + JSON.stringify(this.user))
     this.userService.login(this.user, this.callbackLoginOnSuccess.bind(this), this.callbackLoginOnFailure.bind(this));
+
   }
 
   logOut(): void {
@@ -63,11 +68,13 @@ export class UserComponent implements OnInit {
 
     // notare in caso di successo chiamo il callback del login, cosi da loggare l'utente una volta registrato
     this.userService.register(this.user, this.callbackLoginOnSuccess.bind(this), this.callbackOnRegisterFailure.bind(this));
+
+
   }
 
   callbackLoginOnSuccess(data: any): void {
 
-    if  (data !== null) {
+    if (data !== null) {
       this.loggedUser = data;
       console.log('nel login success, user > ' + JSON.stringify(this.loggedUser));
       this.userService.setLoggedUser(this.loggedUser);
@@ -95,16 +102,16 @@ export class UserComponent implements OnInit {
     if (!this.invoiceView) {
       this.invoiceView = true;
     } else {
-        this.invoiceView = false;
-      }
+      this.invoiceView = false;
+    }
   }
 
   changeAutionOrderView(): void {
     if (!this.autionOrderView) {
       this.autionOrderView = true;
     } else {
-        this.autionOrderView = false;
-      }
+      this.autionOrderView = false;
+    }
   }
 
 }

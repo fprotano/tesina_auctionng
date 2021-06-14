@@ -1,4 +1,4 @@
-<button class="btn btn-info" (click)="changeInvoiceView()">Invoice</button>
+<!-- <button class="btn btn-info" (click)="changeInvoiceView()">Invoice</button>
 <div *ngIf="invoiceView">
 	<app-invoice></app-invoice>
 </div>
@@ -7,10 +7,141 @@
 	<app-auctin-order></app-auctin-order>
 </div>
 
-<input *ngIf="user.name !== undefined" type="button" class="btn btn-primary" (click)="logOut()" value="Logout" /><br />
+<input *ngIf="user.name !== undefined" type="button" class="btn btn-primary" (click)="logOut()" value="Logout" /><br /> -->
 
+<!-- -->
+<div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">LOGIN</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">REGISTRATI</label>
+		<div class="login-form">
+			<form class="sign-in-htm">
+				<div class="group">
+					
+					<input id="user" type="email" class="input" name="email" [(ngModel)]="user.email" placeholder="Email">
+				</div>
+				<div class="group">
+					
+					<input id="pass" type="password" class="input" data-type="password" name="password" [(ngModel)]="user.password" placeholder="Password">
+				</div>
+				<div class="group">
+					<input id="check" type="checkbox" class="check" checked>
+					<label for="check"><span class="icon"></span> Ricordami </label>
+				</div>
+				<div class="group">
+					<a routerLink="/home"><input type="submit" class="button" (click)="login()" value="Login"></a>
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="#forgot">Password dimenticata?</a>
+				</div>
+			</form>
+			
+			<!--REGISTRAZIONE-->
+			
+			<form class="sign-up-htm">
+				<div class="group">
+					
+					<input id="user" type="text" class="input" required maxlength="30" minlength="2" [(ngModel)]="user.name"
+				name="name" #name="ngModel" placeholder="Nome">
+				<small>
+				<div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+					<div *ngIf="name.errors.required">
+						Nome obbligatorio
+					</div>
+					<div *ngIf="name.errors.minlength">
+						Il nome deve essere compreso tra 2 e 30 caratteri
+					</div>
+				</div>
+			</small>
+				</div>
+<div class="group">
+					
+					<input id="user" type="text" class="input" required maxlength="30" minlength="2" [(ngModel)]="user.surname"
+				name="surname" #surname="ngModel" placeholder="Cognome">
+				<small>
+				<div *ngIf="surname.invalid && (surname.dirty || surname.touched)" class="text-danger">
+					<div *ngIf="surname.errors.required">
+						Cognome obbligatorio
+					</div>
+					<div *ngIf="surname.errors.minlength">
+						Il cognome deve essere compreso tra 2 e 30 caratteri
+					</div>
+				</div>
+			</small>
+				</div>
+				<div class="group">
+					
+					<input id="user" type="email" class="input" required [email]="user.email!==''" name="email" #email="ngModel"
+				[(ngModel)]="user.email" placeholder="Email">
+				<small class="text-danger"><span class="help.block" *ngIf="email.errors?.required && email.touched">Email
+					obbligatoria</span></small>
+			<small class="text-danger"><span class="help.block" *ngIf="email.errors?.email && email.touched">Email
+					non valida</span></small>
+				</div>
+
+				<div class="group">
+					
+					<input id="pass" type="password" class="input" data-type="password" required minlength="8" [(ngModel)]="user.password"
+				name="password" #password="ngModel" placeholder="Password">
+				<small>
+				<div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+					<div *ngIf="password.errors.required">
+						Password obbligatoria
+					</div>
+					<div *ngIf="password.errors.minlength">
+						La password deve contenere almeno 8 caratteri
+					</div>
+				</div>
+			</small>
+				</div>
+				<div class="group">
+					
+					<input id="pass" type="password" class="input" data-type="password" appConfirmEqualValidator="password" name="confirmPassword"
+				required [(ngModel)]="user.confirmPassword" #confirmPassword="ngModel" placeholder="Conferma password">
+			<small class="text-danger"><span class="help.block"
+					*ngIf="confirmPassword.touched && confirmPassword.errors?.required">Conferma la password
+				</span></small>
+			<p><small class="text-danger"><span class="help.block"
+						*ngIf="confirmPassword.touched && confirmPassword.errors?.notEqual && !confirmPassword.errors?.required">Le
+						password non corrispondono</span></small></p>	
+			</div>
+				<div class="group">
+					<label for="pass" class="label">Domanda di sicurezza</label>
+					<select placeholder="Domanda di sicurezza" name= "question" [(ngModel)]="user.question" required>
+					  <option disabled value="" selected>- Scegli una opzione -</option>
+					<option *ngFor="let q of question" [ngValue]="q.name">
+						{{q.name}}
+					</option>
+					<div *ngIf="question.invalid"> 
+	  Domanda obbligatoria 
+</div> 
+				</select>
+				</div>
+				<div class="group">
+					
+					<input id="pass" type="text" class="input" required name="answer" [(ngModel)]="user.answer" #answer="ngModel" placeholder="Risposta di sicurezza">
+					 <small>
+				<div *ngIf="answer.invalid && (answer.dirty || answer.touched)" class="text-danger">
+					<div *ngIf="answer.errors.required">
+						Risposta obbligatoria
+					</div>
+				</div>
+			</small>
+				</div>
+				<div class="group">
+					<a routerLink="/home"><input type="submit" class="button" (click)="register()" value="Registrati"></a>
+				</div>
+				<div class="hr"></div>
+				
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- -->
 <!-- <form class="nav navbar-nav" *ngIf="!user && user.email === undefined"> -->
-<div class="container">
+<!-- <div class="container">
 	<h1>Registrazione</h1>
 	<form #userForm="ngForm">
 		<div class="form-group">
@@ -113,7 +244,8 @@
 
 		<button class="btn btn-info" (click)="changeLoading()">Login</button>
 	</form>
-</div>
+</div> -->
+<!--       -->
 <!-- <form *ngIf="user && user.name === undefined">
 		<h1>Login</h1>
 		<label>Email</label><br/>
@@ -133,7 +265,7 @@
 <input *ngIf="loggedUser !== null" type="button" class="btn btn-primary" (click)="logOut()" value="Logout" /><br />
 <input *ngIf="loggedUser !== null" type="button" class="btn btn-primary" a routerLink="/item" value="Item" /><br />
 
-<form>
+<!-- <form>
 	<h1>Login</h1>
 	<label>Email</label><br />
 	<input type="email" class="form-control" name="email" [(ngModel)]="user.email" /><br />
@@ -151,4 +283,4 @@
 	<input type="text" class="form-control" name="userId" [(ngModel)]="userId" /><br />
 	<hr />
 	<input type="button" class="btn btn-primary" (click)="findAuctionsByUser()" value="Cerca" /><br />
-</form>
+</form> -->
