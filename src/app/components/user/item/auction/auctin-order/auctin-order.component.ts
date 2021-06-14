@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { AuctionOrder } from 'src/app/models/auctionOrder/auction-order';
 import { User } from 'src/app/models/user/user';
 import { Payment } from 'src/app/models/payment/payment';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-auctin-order',
@@ -51,7 +52,19 @@ export class AuctinOrderComponent implements OnInit {
 
     console.log('nel callbackPaymnetOnSuccess del makePayment > ' + JSON.stringify(data));
     this.payment = data;
-    document.getElementById('payment').submit();
+    console.log(document.getElementById('payment'));
+    var myform =document.getElementById('payment');
+    myform.action = this.payment.urlBank;
+    myform.email.value = this.payment.email;
+    myform.amount.value = this.payment.amount;
+    myform.customCode.value = this.payment.customCode;
+    myform.urlSuccess.value = this.payment.urlSuccess;
+    myform.urlUnDo.value = this.payment.urlUnDo;
+    myform.urlNotify.value = this.payment.urlNotify;
+
+    console.log(myform)
+
+    // myform.submit();
   }
 
   callbackPaymnetOnFailure(data: any): any {
