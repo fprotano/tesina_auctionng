@@ -18,15 +18,14 @@
 		</tbody>
 	</table>
 </div>
-<!-- <div *ngIf="payment.urlSuccess !== undefined"> -->
+
 
 	<form id="payment" method="post" action="{{payment.urlBank}}">
-		<input type="text" name="email" value="{{payment.email}}">
-		<input type="text" name="amount" value="{{payment.amount}}">
-		<input type="text" name="customCode" value="{{payment.customCode}}">
-		<input type="text" name="urlSuccess" value="{{payment.urlSuccess}}">
-		<input type="text" name="urlUnDo" value="{{payment.urlUnDo}}">
-		<input type="text" name="urlNotify" value="{{payment.urlNotify}}">
+		<input type="hidden" name="email">
+		<input type="hidden" name="amount">
+		<input type="hidden" name="customCode">
+		<input type="hidden" name="urlSuccess">
+		<input type="hidden" name="urlUnDo">
+		<input type="hidden" name="urlNotify">
 	</form>
-<!-- </div> -->
 

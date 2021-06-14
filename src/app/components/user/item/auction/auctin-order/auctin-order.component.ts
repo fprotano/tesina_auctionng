@@ -52,8 +52,9 @@ export class AuctinOrderComponent implements OnInit {
 
     console.log('nel callbackPaymnetOnSuccess del makePayment > ' + JSON.stringify(data));
     this.payment = data;
-    console.log(document.getElementById('payment'));
-    var myform =document.getElementById('payment');
+
+    var myform = document.getElementById('payment');
+
     myform.action = this.payment.urlBank;
     myform.email.value = this.payment.email;
     myform.amount.value = this.payment.amount;
@@ -62,9 +63,7 @@ export class AuctinOrderComponent implements OnInit {
     myform.urlUnDo.value = this.payment.urlUnDo;
     myform.urlNotify.value = this.payment.urlNotify;
 
-    console.log(myform)
-
-    // myform.submit();
+   myform.submit();
   }
 
   callbackPaymnetOnFailure(data: any): any {
