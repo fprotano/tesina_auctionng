@@ -50,6 +50,8 @@ export class AuctinOrderComponent implements OnInit {
   callbackPaymnetOnSuccess(data: any): void {
 
     console.log('nel callbackPaymnetOnSuccess del makePayment > ' + JSON.stringify(data));
+    this.payment = data;
+    document.getElementById('payment').submit();
   }
 
   callbackPaymnetOnFailure(data: any): any {
