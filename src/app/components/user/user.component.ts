@@ -1,9 +1,8 @@
 import { Component, OnInit, Inject, Injectable } from '@angular/core';
-import { AppService } from 'src/app/services/app.service';
 import { User } from 'src/app/models/user/user';
 import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+
 
 @Injectable()
 @Component({
@@ -31,7 +30,7 @@ export class UserComponent implements OnInit {
   ];
 
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
 
 
   }
@@ -50,7 +49,7 @@ export class UserComponent implements OnInit {
   login(): void {
     console.log('nel login del component, user > ' + JSON.stringify(this.user))
     this.userService.login(this.user, this.callbackLoginOnSuccess.bind(this), this.callbackLoginOnFailure.bind(this));
-
+    this.router.navigate(['/home']);
   }
 
   logOut(): void {
@@ -77,6 +76,7 @@ export class UserComponent implements OnInit {
       this.loggedUser = data;
       console.log('nel login success, user > ' + JSON.stringify(this.loggedUser));
       this.userService.setLoggedUser(this.loggedUser);
+      window.location.reload();
     }
   }
 
@@ -88,9 +88,7 @@ export class UserComponent implements OnInit {
     console.log('nel cal back Register failure > ' + JSON.stringify(data));
   }
 
-  changeLoading(): any {
 
-  }
 
   findAuctionsByUser(): any {
     console.log('nel findAuctionsByUser id user > ' + this.userId)
