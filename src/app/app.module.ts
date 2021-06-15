@@ -39,7 +39,7 @@ import { AuctionOrderComponent } from './components/user/item/auction/auction-or
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [UserComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

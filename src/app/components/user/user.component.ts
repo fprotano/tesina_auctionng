@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, Injectable } from '@angular/core';
 import { AppService } from 'src/app/services/app.service';
 import { User } from 'src/app/models/user/user';
 import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
-
+@Injectable()
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -21,7 +21,6 @@ export class UserComponent implements OnInit {
   // surname: string;
   userId: string;
 
-  isLogged = false;
   loading = true;
   invoiceView = false;
   autionOrderView = false;
@@ -30,9 +29,9 @@ export class UserComponent implements OnInit {
     { name: 'Il nome del tuo dolce preferito' },
     { name: 'La marca della tua prima macchina' }
   ];
-  flag = true
 
-  constructor(private userService: UserService, private router: Router) {
+
+  constructor(private userService: UserService) {
 
 
   }

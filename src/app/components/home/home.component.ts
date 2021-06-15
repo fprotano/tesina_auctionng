@@ -9,10 +9,12 @@ import { User } from 'src/app/models/user/user';
 })
 export class HomeComponent implements OnInit {
 
-
-  constructor() { }
+  loggedUser: User;
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+      this.loggedUser = this.userService.getLoggedUser();
+
   }
 
 }
