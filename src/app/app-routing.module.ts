@@ -10,13 +10,13 @@ import { AuctionOrderComponent } from './components/user/item/auction/auction-or
 
 const routes: Routes = [
 
-
-   { path: 'home', component: HomeComponent }
-   , { path: 'user', component: UserComponent }
-   , { path: 'auction', component: AuctionComponent }
-   , { path: 'item', component: ItemComponent }
-   , { path: 'auctionBid', component: AuctionBidComponent }
-   , { path: 'auctionOrder', component: AuctionOrderComponent }
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent }
+  , { path: 'user', component: UserComponent }
+  , { path: 'auction', component: AuctionComponent }
+  , { path: 'item', component: ItemComponent }
+  , { path: 'auctionBid', component: AuctionBidComponent }
+  , { path: 'auctionOrder', component: AuctionOrderComponent }
 
 ];
 
