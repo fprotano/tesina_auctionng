@@ -1,6 +1,7 @@
  <div>
 	<table>
 		<thead>
+			<th> Status ID </th>
 			<th> Data </th>
 			<th> Numero </th>
 			<th> Auction User </th>
@@ -9,22 +10,30 @@
 		<tbody>
 			
 			<tr *ngFor="let auctionOrder of auctionOrderList">
+				<td>{{auctionOrder.auctionOrderStatusId}}</td>
 				<td>{{auctionOrder.createAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
 				<td>{{auctionOrder.orderNo}}</td>
 				<td>{{auctionOrder.auction.userItem.user.email}}</td>
 				<td>{{auctionOrder.amount}}</td>
-				<button type="submit" (click)="makePayment(auctionOrder)">Paga Ordine</button>
+				<button  *ngIf="auctionOrder.auctionOrderStatusId === 1" type="submit" (click)="makePayment(auctionOrder)">Paga Ordine</button>
+				<button  *ngIf="auctionOrder.auctionOrderStatusId !== 3" type="submit" (click)="makePayment(auctionOrder)">Annulla</button>
+				<a  *ngIf="auctionOrder.auctionOrderStatusId === 2" >Verifica pagamento</a>
+				<a  *ngIf="auctionOrder.auctionOrderStatusId === 3" >Pagato</a>
+				<a  *ngIf="payment.urlSuccess !== null && payment.urlUnDo === null" >  ---  In attesa di dati dalla banca</a>
+				<a  *ngIf="payment.urlUnDo !== null && payment.urlSuccess === null" >  ---  pagamento Annullato</a>
+				
 			</tr>
 		</tbody>
 	</table>
 </div>
+<form #paymentForm id="paymentForm" method="post" action="{{payment.urlBank}}">
+	<input type="hidden" name="email">
+	<input type="hidden" name="amount">
+	<input type="hidden" name="customCode">
+	<input type="hidden" name="urlSuccess">
+	<input type="hidden" name="urlUnDo">
+	<input type="hidden" name="urlNotify">
+</form>
 
 
-	<form #payment id="payment" method="post" action="{{payment.urlBank}}">
-		<input type="hidden" name="email">
-		<input type="hidden" name="amount">
-		<input type="hidden" name="customCode">
-		<input type="hidden" name="urlSuccess">
-		<input type="hidden" name="urlUnDo">
-		<input type="hidden" name="urlNotify">
-	</form>
+

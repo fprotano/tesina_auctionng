@@ -18,7 +18,7 @@ export class AuctionOrderComponent implements OnInit {
   loggedUser: User = new User();
   payment: Payment = new Payment();
 
-  @ViewChild('payment', {static: false}) myform: ElementRef<HTMLFormElement>;
+  @ViewChild('paymentForm', {static: false}) myform: ElementRef<HTMLFormElement>;
   constructor(private userService: UserService, private auctionOrderService: AuctionOrderService) { }
 
   ngOnInit() {
@@ -63,7 +63,7 @@ export class AuctionOrderComponent implements OnInit {
     this.myform.nativeElement.urlUnDo.value = this.payment.urlUnDo;
     this.myform.nativeElement.urlNotify.value = this.payment.urlNotify;
 
-    this.myform.submit();
+    this.myform.nativeElement.submit();
   }
 
   callbackPaymnetOnFailure(data: any): any {
