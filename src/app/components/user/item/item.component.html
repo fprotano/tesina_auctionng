@@ -92,42 +92,82 @@
 <div class="container">
 
 	<div class="row">
+		<p class="title"><b>I tuoi prodotti</b></p>
+		<p class="subTitle">Seleziona un prodotto per modificarlo</p>
+		<div class="left">
+			<div class="col-lg-6 col-md-12 mx-0">
 
-		<div class="col-lg-6 col-md-12 mx-0">
-			<ul class="list-group">
+				<ul class="list-group">
 
-				<li *ngFor="let userItem of dbItem" class="list-group-item"
-				[ngClass]="{'active' : active?.id === userItem.id}"
-				(click)="setActive(userItem)">
+					<li *ngFor="let userItem of dbItem" class="list-group-item"
+						[ngClass]="{'active' : active?.id === userItem.id}" (click)="setActive(userItem)">
 
-					{{userItem.title}} - {{userItem.description}}
-					<button class="form-group" (click)="insertAuctionFromItem()">Inserisci Asta</button>
-				</li>
-			</ul>
-		</div>
-		
-		<div class="col-lg-6 col-md-12 mx-0">
-			<form #itemForm="ngForm" (submit)="insertUserItem(itemForm)">
-				<div class="form-group">
-					<input [(ngModel)]="active.title" type="text" class="form-control" name="title" 
-						placeholder="Titolo">
-				</div>
-				<div class="form-group">
-					<textarea [(ngModel)]="active.description" class="form-control" name="description"
-						placeholder="Descrizione"></textarea>
-				</div>
-				<div class="form-group">
-					<textarea [(ngModel)]="active.notes" type="text" class="form-control" name="notes"
-						placeholder="Note"></textarea>
-				</div>
-				<div class="form-group">
-
-					<input multiple type="file" class="form-control bg-dark text-white" [(ngModel)]="pictureList"
-						name="pictureList" (change)="onFileSelect($event)" accept="image/*">
-					<button type="submit">{{active.id ? 'Modifica'  : 'Salva'}}</button>
-			
-				</div>
-			</form>
+					<b>{{userItem.title}}</b>
+						<div class="itemDescription">Descrizione: {{userItem.description}} </div>
+						<p>Note: <i>{{userItem.notes}}</i></p>
+						<button class="btn-class" (click)="insertAuctionFromItem()">Vendi</button>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
-</div>
+			<!-- <div class="item-html">
+				<div class="insert-form">
+					<form #itemForm="ngForm" class="insertItem" (submit)="insertUserItem(itemForm)">
+						<div class="group">
+							<input [(ngModel)]="userItem.title" type="text" class="form-control" name="title"
+								placeholder="Titolo">
+						</div>
+						<div class="group">
+							<textarea [(ngModel)]="userItem.description" class="form-control" name="description"
+								placeholder="Descrizione"></textarea>
+						</div>
+						<div class="group">
+							<textarea [(ngModel)]="userItem.notes" type="text" class="form-control" name="notes"
+								placeholder="Note"></textarea>
+						</div>
+						<div class="group">
+
+							<input multiple type="file" class="form-control bg-dark text-white"
+								[(ngModel)]="pictureList" name="pictureList" (change)="onFileSelect($event)"
+								accept="image/*">
+							<div id="btn">
+								<button type="submit">{{active.id ? 'Modifica'  : 'Salva'}}</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div> -->
+<!---->
+<div class="item-wrap">
+	<div class="item-html">
+		<input id="tab-1" type="radio" name="tab" class="item-insert" checked><label for="tab-1" class="tab">Nuovo porodotto</label>
+		<!-- <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">REGISTRATI</label> -->
+		<div class="insert-item-form">
+			<form class="insert-in-html" #itemForm="ngForm" (submit)="insertUserItem(itemForm)">
+				<div class="group">
+					
+					<input type="text" class="input" name="titolo" [(ngModel)]="userItem.titolo" placeholder="Titolo">
+				</div>
+				<div class="group">
+					
+					<textarea type="text" class="input" name="description" [(ngModel)]="userItem.description" placeholder="Descrizione">
+				</textarea>
+					</div>
+				<div class="group">
+					<textarea type="text" class="input" name="notes" [(ngModel)]="userItem.notes" placeholder="Note"></textarea>
+				</div>
+				<div class="group">
+					<input multiple type="file" class="form-control bg-dark text-white"
+								[(ngModel)]="pictureList" name="pictureList" (change)="onFileSelect($event)"
+								accept="image/*">
+				</div>
+				<div class="group">
+					<button class="button" type="submit">{{active.id ? 'Modifica'  : 'Salva'}}</button>
+				</div>
+				
+			</form>
+			</div>
+			</div>
+			</div>

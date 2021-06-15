@@ -1,9 +1,287 @@
 .container {
   margin-top: 100px;
 }
-li{
+
+li {
   cursor: pointer;
 }
+
 .active {
-    background-color: orange;
+  background-color: orange;
+}
+
+.list-group {
+  overflow: auto;
+  height: 500px;
+}
+
+.title {
+  text-align: left;
+  text-transform: uppercase;
+  margin-left: 200px;
+  font-size: medium;
+  color: red;
+
+}
+
+.subTitle {
+  text-align: left;
+  margin-left: 150px;
+  font-family: sans-serif;
+}
+
+input {
+  margin-bottom: 20px;
+}
+
+#btn {
+  text-align: center;
+}
+
+/* #insert-wrap{
+  width:100%;
+	margin:auto;
+	max-width:525px;
+	min-height:670px;
+	position:relative;
+	background:url(https://png.pngtree.com/png-vector/20190623/ourlarge/pngtree-hammer-judge-icon-png-image_1511242.jpg) ;
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+
+
+
+.item-html{
+	width:100%;
+	height:100%;
+	position:absolute;
+	padding:90px 70px 50px 70px;
+	background:rgba(40,57,101,.9);
+}
+.insertItem{
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	position:absolute;
+	transform:rotateY(180deg);
+	backface-visibility:hidden;
+	transition:all .4s linear;
+}
+
+
+.insert-form .group .button{
+	text-transform:uppercase;
+}
+
+
+.insert-form{
+	min-height:345px;
+	position:relative;
+	perspective:1000px;
+	transform-style:preserve-3d;
+}
+.insert-form .group{
+	margin-bottom:15px;
+}
+.insert-form .group .textarea,
+.insert-form .group .input,
+.insert-form .group .button{
+	width:100%;
+	color:#fff;
+	display:block;
+}
+.insert-form .group .textarea,
+.insert-form .group .input,
+.insert-form .group .button{
+	border:none;
+	padding:15px 20px;
+	border-radius:25px;
+	background:rgba(255,255,255,.1);
+}
+
+
+.insert-form .group .button{
+	background:#1161ee;
+}
+
+::placeholder{
+	color: #fff;
+	
+}
+ */
+
+/*
+ */
+
+h1 {
+  text-align: center;
+  color: red;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.item-wrap {
+  width: 100%;
+  margin: auto;
+  max-width: 525px;
+  min-height: 570px;
+  float: right;
+  bottom: 520px;
+  position: relative;
+  background: url(https://png.pngtree.com/png-vector/20190623/ourlarge/pngtree-hammer-judge-icon-png-image_1511242.jpg);
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+
+}
+
+.item-html {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 90px 70px 50px 70px;
+  background: rgba(40, 57, 101, .9);
+}
+
+.item-html .insert-in-html {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+
+}
+
+.item-html .item-insert,
+.insert-item-form .group .check {
+  display: none;
+}
+
+.item-html .tab,
+.insert-item-form .group .label,
+.insert-item-form .group .button {
+  text-transform: uppercase;
+}
+
+.item-html .tab {
+  font-size: 22px;
+  margin-right: 15px;
+  padding-bottom: 5px;
+  margin: 0 15px 10px 0;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+}
+
+.item-html .item-insert:checked+.tab,
+.item-html .sign-up:checked+.tab {
+  color: #fff;
+  border-color: #1161ee;
+}
+
+.insert-item-form {
+  min-height: 345px;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.insert-item-form .group {
+  margin-bottom: 15px;
+}
+
+.insert-item-form .group .label,
+.insert-item-form .group .input,
+.insert-item-form .group .button {
+  width: 100%;
+  color: #fff;
+  display: block;
+}
+
+.insert-item-form .group .input,
+.insert-item-form .group .button {
+  border: none;
+  padding: 15px 20px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, .1);
+}
+
+.insert-item-form .group input[data-type="password"] {
+  text-security: circle;
+  -webkit-text-security: circle;
+}
+
+.insert-item-form .group .label {
+  color: #aaa;
+  font-size: 12px;
+}
+
+.insert-item-form .group .button {
+  background: #1161ee;
+}
+
+.insert-item-form .group label .icon {
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  position: relative;
+  display: inline-block;
+  background: rgba(255, 255, 255, .1);
+}
+
+.insert-item-form .group label .icon:before,
+.insert-item-form .group label .icon:after {
+  content: '';
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  transition: all .2s ease-in-out 0s;
+}
+
+.insert-item-form .group label .icon:before {
+  left: 3px;
+  width: 5px;
+  bottom: 6px;
+  transform: scale(0) rotate(0);
+}
+
+.insert-item-form .group label .icon:after {
+  top: 6px;
+  right: 0;
+  transform: scale(0) rotate(0);
+}
+
+.insert-item-form .group .check:checked+label {
+  color: #fff;
+}
+
+.insert-item-form .group .check:checked+label .icon {
+  background: #1161ee;
+}
+
+.insert-item-form .group .check:checked+label .icon:before {
+  transform: scale(1) rotate(45deg);
+}
+
+.insert-item-form .group .check:checked+label .icon:after {
+  transform: scale(1) rotate(-45deg);
+}
+
+.item-html .item-insert:checked+.tab+.sign-up+.tab+.insert-item-form .insert-in-html {
+  transform: rotate(0);
+}
+
+.item-html .sign-up:checked+.tab+.insert-item-form .sign-up-htm {
+  transform: rotate(0);
+}
+
+
+::placeholder {
+  color: #fff;
+
+}
+
+.btn-class {
+	text-transform: uppercase;
+  border-radius: .7em;
 }

@@ -25,6 +25,7 @@ export class ItemComponent implements OnInit {
   userItemIdSelected: UserItem;
   active: UserItem = new UserItem();
   item: UserItem = new UserItem();
+  
 
   constructor(private http: HttpClient,
               private itemService: ItemService, private router: Router, private userService: UserService) { }
@@ -43,19 +44,21 @@ export class ItemComponent implements OnInit {
     this.itemService.insertUserItem(this.userItem, this.callbackItemOnSuccess.bind(this), this.callbackOnUserItemFailure.bind(this));
     // this.itemService.findUserItemByUser(this.userService.getLoggedUser().id,
     //   this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this));
-    // this.active = null;
-    // this.itemForm.reset();
+    this.active = null;
+    this.itemForm.reset();
+
   }
 
   insertAuctionFromItem() {
     // qui va ripreso il title/id dell'item selezionato e stamparlo nella form dell'auction
     this.router.navigate(['/auction']);
   }
-  callbackItemOnSuccess(data: any): void {
+  callbackItemOnSuccess(data: any, errMessage: string): void {
 
     if (data !== null) {
       this.userItem = data;
       console.log('nel callbackItemOnSuccess , item > ' + JSON.stringify(this.userItem));
+     
     }
   }
 
