@@ -7,11 +7,11 @@ import { Payment } from 'src/app/models/payment/payment';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
-  selector: 'app-auctin-order',
-  templateUrl: './auctin-order.component.html',
-  styleUrls: ['./auctin-order.component.css']
+  selector: 'app-auction-order',
+  templateUrl: './auction-order.component.html',
+  styleUrls: ['./auction-order.component.css']
 })
-export class AuctinOrderComponent implements OnInit {
+export class AuctionOrderComponent implements OnInit {
 
   auctionOrder: AuctionOrder = new AuctionOrder();
   auctionOrderList: Array<AuctionOrder> = new Array<AuctionOrder>();

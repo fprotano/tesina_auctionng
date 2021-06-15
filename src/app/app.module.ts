@@ -12,7 +12,8 @@ import { AuctionComponent } from './components/user/item/auction/auction.compone
 import { ItemComponent } from './components/user/item/item.component';
 import { AuctionBidComponent } from './components/user/item/auction/auction-bid/auction-bid.component';
 import { InvoiceComponent } from './components/user/item/auction/invoice/invoice.component';
-import { AuctinOrderComponent } from './components/user/item/auction/auctin-order/auctin-order.component';
+import { AuctionOrderComponent } from './components/user/item/auction/auction-order/auction-order.component';
+
 
 
 
@@ -28,7 +29,7 @@ import { AuctinOrderComponent } from './components/user/item/auction/auctin-orde
     ItemComponent,
     AuctionBidComponent,
     InvoiceComponent,
-    AuctinOrderComponent
+    AuctionOrderComponent
   ],
 
   imports: [
@@ -36,7 +37,7 @@ import { AuctinOrderComponent } from './components/user/item/auction/auctin-orde
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

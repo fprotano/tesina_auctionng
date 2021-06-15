@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuctinOrderComponent } from './auctin-order.component';
+import { AuctionOrderComponent } from './auction-order.component';
 
-describe('AuctinOrderComponent', () => {
-  let component: AuctinOrderComponent;
-  let fixture: ComponentFixture<AuctinOrderComponent>;
+describe('AuctionOrderComponent', () => {
+  let component: AuctionOrderComponent;
+  let fixture: ComponentFixture<AuctionOrderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuctinOrderComponent ]
+      declarations: [ AuctionOrderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AuctinOrderComponent);
+    fixture = TestBed.createComponent(AuctionOrderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
