@@ -139,7 +139,7 @@
 		</div>
 	</div>
 </div>
- <input *ngIf="loggedUser !== null" type="button" (click)="logOut()" value="Logout"/>
+ <!-- <input *ngIf="loggedUser !== null" type="button" (click)="logOut()" value="Logout"/> -->
 <!-- -->
 <!-- <form class="nav navbar-nav" *ngIf="!user && user.email === undefined"> -->
 <!-- <div class="container">
@@ -260,11 +260,11 @@
 		<button class="btn btn-info" (click) = "changeLoading()">Registrati</button>
 	</form> -->
 
-<div *ngIf="loggedUser !== null">
+<!-- <div *ngIf="loggedUser !== null">
 	<a>Benvenuto {{loggedUser.name}} {{loggedUser.surname}} {{loggedUser.createdAt}}</a>
 </div>
 <input *ngIf="loggedUser !== null" type="button" class="btn btn-primary" (click)="logOut()" value="Logout" /><br />
-<input *ngIf="loggedUser !== null" type="button" class="btn btn-primary" a routerLink="/item" value="Item" /><br />
+<input *ngIf="loggedUser !== null" type="button" class="btn btn-primary" a routerLink="/item" value="Item" /><br /> -->
 
 <!-- <form>
 	<h1>Login</h1>
