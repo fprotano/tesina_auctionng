@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuctionOrderService } from 'src/app/services/auctionOrder/auction-order.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { AuctionOrder } from 'src/app/models/auctionOrder/auction-order';
@@ -18,7 +18,7 @@ export class AuctionOrderComponent implements OnInit {
   loggedUser: User = new User();
   payment: Payment = new Payment();
 
-
+  @ViewChild('payment', {static: false}) myform: ElementRef<HTMLFormElement>;
   constructor(private userService: UserService, private auctionOrderService: AuctionOrderService) { }
 
   ngOnInit() {
@@ -53,17 +53,17 @@ export class AuctionOrderComponent implements OnInit {
     console.log('nel callbackPaymnetOnSuccess del makePayment > ' + JSON.stringify(data));
     this.payment = data;
 
-    var myform = document.getElementById('payment');
+    // var myform = document.getElementById('payment');
 
-    myform.action = this.payment.urlBank;
-    myform.email.value = this.payment.email;
-    myform.amount.value = this.payment.amount;
-    myform.customCode.value = this.payment.customCode;
-    myform.urlSuccess.value = this.payment.urlSuccess;
-    myform.urlUnDo.value = this.payment.urlUnDo;
-    myform.urlNotify.value = this.payment.urlNotify;
+    this.myform.nativeElement.action = this.payment.urlBank;
+    this.myform.nativeElement.email.value = this.payment.email;
+    this.myform.nativeElement.amount.value = this.payment.amount;
+    this.myform.nativeElement.customCode.value = this.payment.customCode;
+    this.myform.nativeElement.urlSuccess.value = this.payment.urlSuccess;
+    this.myform.nativeElement.urlUnDo.value = this.payment.urlUnDo;
+    this.myform.nativeElement.urlNotify.value = this.payment.urlNotify;
 
-   myform.submit();
+    this.myform.submit();
   }
 
   callbackPaymnetOnFailure(data: any): any {
