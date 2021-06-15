@@ -42,4 +42,5 @@ import { AuctionOrderComponent } from './components/user/item/auction/auction-or
   providers: [UserComponent],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

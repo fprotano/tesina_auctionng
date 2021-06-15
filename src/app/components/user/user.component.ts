@@ -14,10 +14,6 @@ export class UserComponent implements OnInit {
 
   user: User = new User();
   loggedUser: User;
-  // email: '';
-  // password: string;
-  // name: string;
-  // surname: string;
   userId: string;
 
   loading = true;

@@ -10,6 +10,7 @@
 <input *ngIf="user.name !== undefined" type="button" class="btn btn-primary" (click)="logOut()" value="Logout" /><br /> -->
 
 <!-- -->
+<h1>accedi o registrati per partecipare ad un'asta</h1>
 <div class="login-wrap">
 	<div class="login-html">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">LOGIN</label>
@@ -29,7 +30,7 @@
 					<label for="check"><span class="icon"></span> Ricordami </label>
 				</div>
 				<div class="group">
-					<a routerLink="/home"><input type="submit" class="button" (click)="login()" value="Login"></a>
+					<input type="submit" class="button" (click)="login()" value="Login">
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
@@ -138,7 +139,7 @@
 		</div>
 	</div>
 </div>
-
+ <input *ngIf="loggedUser !== null" type="button" (click)="logOut()" value="Logout"/>
 <!-- -->
 <!-- <form class="nav navbar-nav" *ngIf="!user && user.email === undefined"> -->
 <!-- <div class="container">

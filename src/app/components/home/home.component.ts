@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/models/user/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,11 @@ import { User } from 'src/app/models/user/user';
 export class HomeComponent implements OnInit {
 
   loggedUser: User;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-      this.loggedUser = this.userService.getLoggedUser();
+    this.loggedUser = this.userService.getLoggedUser();
+
 
   }
 
