@@ -5,6 +5,9 @@
 					src="https://www.kindpng.com/picc/m/347-3477302_updating-icon-clipart-png-download-auction-white-icon.png"
 					alt="" border="0" width="300" height="260" /></a> </div>
 		<div class="offerte_content">
+			<div *ngIf="loggedUser === null" class="welcome">
+				<b>Benvenuto </b>
+			</div>
 			<div *ngIf="loggedUser !== null" class="welcome">
 				<b>Benvenuto <p>{{loggedUser.name}} {{loggedUser.surname}} {{loggedUser.createdAt}}</p></b>
 			</div>
@@ -18,23 +21,11 @@
 
 </div>
 
-<!-- <div id="main_content">
-
-
-	<div class="center_content">
-		<div class="center_title_bar">Tutte le aste</div>
-		<div class="prod_box">
-			<div class="top_prod_box"></div>
-			<div class="center_prod_box">
-				<app-auction></app-auction>
-			</div>
-		</div>
-	</div> -->
-	<div id="main_content">
+	
 		<div class="title">
 			Tutte le aste
 		</div>
-		<div class="auction_box">
+		
 			<app-auction></app-auction>
-		</div>
-	</div>
+		
+	

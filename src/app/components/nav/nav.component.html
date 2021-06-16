@@ -36,11 +36,12 @@
 <nav class="nav-area">
   <ul>
     <li><a href="/home">Home</a></li>
+    <li class="logout" style="float: right;" *ngIf="loggedUser !== null"><a href="/home" (click)="logout()">Logout</a></li>
     <li class="account" *ngIf="loggedUser !== null"><a href="">Il mio account</a>
       <ul>
         <li><a href="/item">item</a></li>
         <li><a href="/auction">auction</a></li>
-        <li><a href="/home" (click)="logout()">Logout</a></li>
+        
       </ul>
     </li>
     <li><a href="/user">Accedi</a></li>
