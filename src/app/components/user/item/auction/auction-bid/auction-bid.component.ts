@@ -14,6 +14,8 @@ export class AuctionBidComponent implements OnInit {
 
   auction: Auction = new Auction();
   auctionBid: AuctionBid = new AuctionBid();
+  bidView: Boolean = true;
+  bidSuccessView: Boolean = false;
 
 
   constructor(private auctionService: AuctionService, private auctionBidService: AuctionBidService, private userService: UserService) { }
@@ -34,6 +36,8 @@ export class AuctionBidComponent implements OnInit {
   callbackOnInsertSuccess(data: any): void {
 
     console.log('nel callbackOnInsertSuccess del insert Bid > ' + JSON.stringify(data));
+    this.bidView = false;
+    this.bidSuccessView = true;
   }
 
   callbackOnInsertFailure(data: any): any {

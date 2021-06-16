@@ -17,6 +17,7 @@
 	</table>
 </div>
 	<label class="control-label">Offerta</label>
+<div *ngIf="bidView">
 	<form #itemForm="ngForm">
 		<div class="container">
 			<div class="form-group">	
@@ -25,3 +26,7 @@
 				<div class="mb-3"></div><button type="submit" (click)="insertAuctionBid()">Inserisci Offerta</button>
 			</div>
 	</form>
+</div>
+<div *ngIf="bidSuccessView">
+	<a>Offerta inserita con successo</a>
+</div>
