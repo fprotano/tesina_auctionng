@@ -41,7 +41,7 @@ export class AuctionComponent implements OnInit {
   }
 
 
-  insertAuction(auctionForm: NgForm): void {
+  insertAuction(): void {
 
     console.log('nel insertAuction >' + '[ ' + this.auctionDayDuration + ' ' + JSON.stringify(this.newAuction) + ' ]');
     this.auctionDto.auctionDayDuration = this.auctionDayDuration;

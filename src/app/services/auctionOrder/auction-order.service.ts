@@ -21,4 +21,8 @@ export class AuctionOrderService extends ApiService {
   makePayment(model: Payment,  callbackOnSuccess: any, callbackOnFailure: any) {
     this.doPost('auctionOrder/AuctionOrderPayment', model, callbackOnSuccess, callbackOnFailure);
   }
+
+  makeDeletePayment(model: Payment,  callbackOnSuccess: any, callbackOnFailure: any) {
+    this.doPost('auctionOrder/AuctionOrderDeletePayment', model, callbackOnSuccess, callbackOnFailure);
+  }
 }

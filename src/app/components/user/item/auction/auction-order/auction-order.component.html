@@ -16,7 +16,7 @@
 				<td>{{auctionOrder.auction.userItem.user.email}}</td>
 				<td>{{auctionOrder.amount}}</td>
 				<button  *ngIf="auctionOrder.auctionOrderStatusId === 1" type="submit" (click)="makePayment(auctionOrder)">Paga Ordine</button>
-				<button  *ngIf="auctionOrder.auctionOrderStatusId !== 3" type="submit" (click)="makePayment(auctionOrder)">Annulla</button>
+				<button  *ngIf="auctionOrder.auctionOrderStatusId !== 3" type="submit" (click)="makeDeletePayment(auctionOrder)">Annulla</button>
 				<a  *ngIf="auctionOrder.auctionOrderStatusId === 2" >Verifica pagamento</a>
 				<a  *ngIf="auctionOrder.auctionOrderStatusId === 3" >Pagato</a>
 				<a  *ngIf="payment.urlSuccess !== null && payment.urlUnDo === null" >  ---  In attesa di dati dalla banca</a>

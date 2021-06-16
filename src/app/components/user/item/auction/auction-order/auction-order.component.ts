@@ -38,6 +38,16 @@ export class AuctionOrderComponent implements OnInit {
 
   }
 
+  makeDeletePayment(auctionOrder: AuctionOrder) {
+
+    this.payment.amount = auctionOrder.amount;
+    this.payment.customCode = auctionOrder.orderNo;
+    this.payment.email = auctionOrder.auction.userItem.user.email;
+    console.log('nel make DeletePayment, payment > ' + JSON.stringify(this.payment))
+    this.auctionOrderService.makeDeletePayment(this.payment, this.callbackDeletePaymentOnSuccess.bind(this), 
+                                                            this.callbackDeletePaymentOnFailure.bind(this))
+  }
+
   callbackOnSuccess(data: any): void {
 
     console.log('nel callbackOnSuccess del findInvoiceByUser > ' + JSON.stringify(data));
@@ -67,6 +77,15 @@ export class AuctionOrderComponent implements OnInit {
   }
 
   callbackPaymnetOnFailure(data: any): any {
+    console.log(data);
+  }
+
+  callbackDeletePaymentOnSuccess(data: any): void {
+
+    console.log('nel callbackOnSuccess del findInvoiceByUser > ' + JSON.stringify(data));
+  }
+
+  callbackDeletePaymentOnFailure(data: any): any {
     console.log(data);
   }
 
