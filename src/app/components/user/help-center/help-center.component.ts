@@ -22,7 +22,17 @@ export class HelpCenterComponent implements OnInit {
   }
 
   insertQuestion() {
-
+  	console.log('dentro insert question, helpCenter >'+JSON.stringify(helpCenter));
+	this.helpCenterService.insertQuestion(this.helpCenter, this.callbackOnSuccess.bind(this), 
+														this.callbackOnFailure.bind(this));
   }
-
+	
+	callbackOnSuccess(data: any){
+		console.log('nel callbackOnSuccess');
+	}
+	
+	callbackOnFailure(data: any){
+		console.log('nel callbackOnFailure');
+	}
+	
 }

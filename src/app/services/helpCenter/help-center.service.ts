@@ -11,5 +11,7 @@ export class HelpCenterService extends ApiService {
     super(http);
   }
 
-
+ insertQuestion(model: HelpCenter, callbackOnSuccess: any, callbackOnFailure: any) {
+ 	this.doPost('helpCenter/insert', model, callbackOnSuccess, callbackOnFailure);
+	}
 }
