@@ -31,7 +31,8 @@ import { HelpCenterComponent } from './components/user/help-center/help-center.c
     AuctionBidComponent,
     InvoiceComponent,
     AuctionOrderComponent,
-    HelpCenterComponent
+    HelpCenterComponent,
+    HelpCenterComponent,
   ],
 
   imports: [

@@ -6,6 +6,7 @@ import { AuctionComponent } from './components/user/item/auction/auction.compone
 import { ItemComponent } from './components/user/item/item.component';
 import { AuctionBidComponent } from './components/user/item/auction/auction-bid/auction-bid.component';
 import { AuctionOrderComponent } from './components/user/item/auction/auction-order/auction-order.component';
+import { HelpCenterComponent } from './components/user/help-center/help-center.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   , { path: 'item', component: ItemComponent }
   , { path: 'auctionBid', component: AuctionBidComponent }
   , { path: 'auctionOrder', component: AuctionOrderComponent }
+  , { path: 'helpCenter', component: HelpCenterComponent }
 
 ];
 

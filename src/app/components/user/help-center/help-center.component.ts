@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HelpCenterService } from 'src/app/services/helpCenter/help-center.service';
+import { UserService } from 'src/app/services/user/user.service';
+import { User } from 'src/app/models/user/user';
+import { HelpCenter } from 'src/app/models/helpCenter/help-center';
 
 @Component({
   selector: 'app-help-center',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelpCenterComponent implements OnInit {
 
-  constructor() { }
+  loggedUser: User = new User();
+  helpCenter: HelpCenter = new HelpCenter();
+
+  constructor(private userService: UserService, private helpCenterService: HelpCenterService) { }
 
   ngOnInit() {
+
+    this.loggedUser = this.userService.getLoggedUser();
+  }
+
+  insertQuestion() {
+
   }
 
 }
