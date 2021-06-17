@@ -13,6 +13,7 @@ import { ItemComponent } from './components/user/item/item.component';
 import { AuctionBidComponent } from './components/user/item/auction/auction-bid/auction-bid.component';
 import { InvoiceComponent } from './components/user/item/auction/invoice/invoice.component';
 import { AuctionOrderComponent } from './components/user/item/auction/auction-order/auction-order.component';
+import { HelpCenterComponent } from './components/user/help-center/help-center.component';
 
 
 
@@ -29,7 +30,8 @@ import { AuctionOrderComponent } from './components/user/item/auction/auction-or
     ItemComponent,
     AuctionBidComponent,
     InvoiceComponent,
-    AuctionOrderComponent
+    AuctionOrderComponent,
+    HelpCenterComponent
   ],
 
   imports: [
