@@ -83,6 +83,7 @@ export class AuctionOrderComponent implements OnInit {
   callbackDeletePaymentOnSuccess(data: any): void {
 
     console.log('nel callbackOnSuccess del findInvoiceByUser > ' + JSON.stringify(data));
+    this.auctionOrderService.findAuctionOrderByUserId(this.loggedUser, this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this))
   }
 
   callbackDeletePaymentOnFailure(data: any): any {
