@@ -18,6 +18,7 @@ const routes: Routes = [
   , { path: 'item', component: ItemComponent }
   , { path: 'auctionBid', component: AuctionBidComponent }
   , { path: 'auctionOrder', component: AuctionOrderComponent }
+  , { path: 'auctionOrder/:result', component: AuctionOrderComponent }
   , { path: 'helpCenter', component: HelpCenterComponent }
 
 ];

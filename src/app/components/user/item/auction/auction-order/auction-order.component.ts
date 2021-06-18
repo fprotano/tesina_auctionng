@@ -4,7 +4,8 @@ import { UserService } from 'src/app/services/user/user.service';
 import { AuctionOrder } from 'src/app/models/auctionOrder/auction-order';
 import { User } from 'src/app/models/user/user';
 import { Payment } from 'src/app/models/payment/payment';
-import { CompileShallowModuleMetadata } from '@angular/compiler';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-auction-order',
@@ -17,15 +18,16 @@ export class AuctionOrderComponent implements OnInit {
   auctionOrderList: Array<AuctionOrder> = new Array<AuctionOrder>();
   loggedUser: User = new User();
   payment: Payment = new Payment();
+  result: string;
 
   @ViewChild('paymentForm', {static: false}) myform: ElementRef<HTMLFormElement>;
-  constructor(private userService: UserService, private auctionOrderService: AuctionOrderService) { }
+  constructor(private userService: UserService, private auctionOrderService: AuctionOrderService, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
     this.loggedUser = this.userService.getLoggedUser();
-    this.auctionOrderService.findAuctionOrderByUserId(this.loggedUser, this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this))
-
+    this.auctionOrderService.findAuctionOrderByUserId(this.loggedUser, this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this));
+    this.result = this.route.snapshot.paramMap.get('result');
   }
 
   makePayment(auctionOrder: AuctionOrder) {
