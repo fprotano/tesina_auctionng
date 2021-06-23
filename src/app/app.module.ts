@@ -14,6 +14,7 @@ import { AuctionBidComponent } from './components/user/item/auction/auction-bid/
 import { InvoiceComponent } from './components/user/item/auction/invoice/invoice.component';
 import { AuctionOrderComponent } from './components/user/item/auction/auction-order/auction-order.component';
 import { HelpCenterComponent } from './components/user/help-center/help-center.component';
+import { HelpCenterThreadComponent } from './components/user/help-center/help-center-thread/help-center-thread.component';
 
 
 
@@ -33,6 +34,7 @@ import { HelpCenterComponent } from './components/user/help-center/help-center.c
     AuctionOrderComponent,
     HelpCenterComponent,
     HelpCenterComponent,
+    HelpCenterThreadComponent,
   ],
 
   imports: [
