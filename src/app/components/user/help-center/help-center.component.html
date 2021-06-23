@@ -1,10 +1,18 @@
-<a>Inserisci una domanda</a>
+<a>Crea nuova richiesta di assistenza</a>
 
-<form class="insert-in-html" #helpCenterForm="ngForm" (submit)="insertQuestion()">
+<div>
+	<!-- <p *ngIf="helpCenterMessage != null">{{helpCenterMessage}}</p> -->
+	<p>{{helpCenterMessage}}</p>
+</div>
+
+<form class="insert-in-html" #helpCenterForm="ngForm" (submit)="insertHelpCenter()">
 	
+	<!-- <form:hidden path = "userId" value = "{{loggedUser.id}}" /> -->
+<!-- <input type="hidden" name="userId" value="{{loggedUser.id}}" [ngModel]="helpCenter.userId" > -->
+<!-- <input type="email"  name="email" [(ngModel)]="user.email"> -->
 	<div class="group">
 		
-		<textarea type="text" class="input" name="description" [(ngModel)]="helpCenter.question" placeholder="Descrizione">
+		<textarea type="text" class="input" name="question" [(ngModel)]="helpCenter.question" placeholder="Descrizione">
 	</textarea>
 		</div>
 	
