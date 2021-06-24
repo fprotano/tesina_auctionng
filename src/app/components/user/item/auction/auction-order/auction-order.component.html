@@ -19,11 +19,13 @@
 				<button  *ngIf="auctionOrder.auctionOrderStatusId !== 3" type="submit" (click)="makeDeletePayment(auctionOrder)">Annulla</button>
 				<a  *ngIf="auctionOrder.auctionOrderStatusId === 2" >Verifica pagamento</a>
 				<a  *ngIf="auctionOrder.auctionOrderStatusId === 3" >Pagato</a>
+				<a  *ngIf="auctionOrder.auctionOrderStatusId === 4" >Rifiutato</a>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<a >{{result === 'success' ?  '---  In attesa di dati dalla banca' : result === 'failure' ? '--- pagamento annullato' : "" }}</a>
+
+<!-- <a >{{result === 'success' ?  '---  In attesa di dati dalla banca' : result === 'failure' ? '--- pagamento annullato' : "" }}</a> -->
 <form #paymentForm id="paymentForm" method="post" action="{{payment.urlBank}}">
 	<input type="hidden" name="email">
 	<input type="hidden" name="amount">
@@ -32,6 +34,7 @@
 	<input type="hidden" name="urlUnDo">
 	<input type="hidden" name="urlNotify">
 </form>
+
 
 
 
