@@ -33,7 +33,6 @@ import { HelpCenterThreadComponent } from './components/user/help-center/help-ce
     InvoiceComponent,
     AuctionOrderComponent,
     HelpCenterComponent,
-    HelpCenterComponent,
     HelpCenterThreadComponent,
   ],
 
