@@ -28,8 +28,8 @@ export class HelpCenterComponent implements OnInit {
   ngOnInit() {
 
     this.loggedUser = this.userService.getLoggedUser();
-    this.helpCenterService.findAllUserHelpCenter(this.loggedUser.id, this.callbackOnSuccessList(this),
-                                                  this.callbackOnFailureList(this));
+    this.helpCenterService.findAllUserHelpCenter(this.loggedUser.id, this.callbackOnSuccessList.bind(this),
+                                                  this.callbackOnFailureList.bind(this));
   }
 
     insertHelpCenter() {
