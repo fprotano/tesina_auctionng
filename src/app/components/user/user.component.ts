@@ -42,7 +42,7 @@ export class UserComponent implements OnInit {
   }
 
   checkOtp(): void {
-    console.log('nel login del component, checkOtp > ' + JSON.stringify(this.user))
+    console.log('nel login del component, checkOtp > ' + JSON.stringify(this.checkOtpUser))
     this.userService.login(this.user, this.callbackCheckOtpOnSuccess.bind(this), this.callbaCkcheckOtpOnFailure.bind(this));
     this.router.navigate(['/home']);
   }
