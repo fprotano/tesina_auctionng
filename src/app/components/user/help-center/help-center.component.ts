@@ -30,6 +30,7 @@ export class HelpCenterComponent implements OnInit {
     this.loggedUser = this.userService.getLoggedUser();
     this.helpCenterService.findAllUserHelpCenter(this.loggedUser.id, this.callbackOnSuccessList.bind(this),
                                                   this.callbackOnFailureList.bind(this));
+                                                  
   }
 
     insertHelpCenter() {
