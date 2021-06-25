@@ -7,6 +7,7 @@ import { User } from 'src/app/models/user/user';
 import { HelpCenter } from 'src/app/models/helpCenter/help-center';
 // import { HelpCenterThread } from 'src/app/models/helpCenterThread/help-center-thread';
 import { HttpClient } from '@angular/common/http';
+import { Staff } from 'src/app/models/staff/staff';
 
 @Component({
   selector: 'app-help-center',
@@ -18,32 +19,47 @@ export class HelpCenterComponent implements OnInit {
   loggedUser: User = new User();
   helpCenter: HelpCenter = new HelpCenter();
   helpCenterMessage: string;
+  listHelpCenter: Array <HelpCenter> = new Array <HelpCenter>();
 
-  constructor(private userService: UserService, 
+  constructor(private userService: UserService,
               private helpCenterService: HelpCenterService
               ) { }
 
   ngOnInit() {
 
     this.loggedUser = this.userService.getLoggedUser();
+    this.helpCenterService.findAllUserHelpCenter(this.loggedUser.id, this.callbackOnSuccessList(this),
+                                                  this.callbackOnFailureList(this));
   }
 
     insertHelpCenter() {
-      this.helpCenter.userId=this.loggedUser.id;
-   console.log('dentro insert question, helpCenter >' + JSON.stringify(this.helpCenter));
-   console.log('logged user: '+this.loggedUser.id); 
-   this.helpCenterService.insertQuestion(this.helpCenter, this.callbackOnSuccess.bind(this),
-                                          this.callbackOnFailure.bind(this));
+      this.helpCenter.userId = this.loggedUser.id;
+      console.log('dentro insert question, helpCenter >' + JSON.stringify(this.helpCenter));
+      console.log('logged user: ' + this.loggedUser.id);
+      this.helpCenterService.insertQuestion(this.helpCenter, this.callbackOnSuccessInsert.bind(this),
+                                          this.callbackOnFailureInsert.bind(this));
   }
 
-  callbackOnSuccess(data: any) {
+  callbackOnSuccessInsert(data: any) {
     this.helpCenter = data;
     this.helpCenterMessage = 'richiesta creata con successo';
-    console.log('nel callbackOnSuccess');
+    console.log('nel callbackOnSuccessInsert');
   }
 
-  callbackOnFailure(data: any) {
-    console.log('nel callbackOnFailure');
+  callbackOnFailureInsert(data: any) {
+    console.log('nel callbackOnFailureInsert');
   }
+
+  callbackOnSuccessList(data: any) {
+    this.helpCenterService.setListHelpCenter(data);
+    this.listHelpCenter = data;
+    // console.log('listHelpCenter ' + JSON.stringify(data));
+  }
+
+  callbackOnFailureList(data: any) {
+    console.log('nel callbackOnFailureList');
+  }
+
+
 
 }

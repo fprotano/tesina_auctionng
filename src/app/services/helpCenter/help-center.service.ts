@@ -15,7 +15,7 @@ export class HelpCenterService extends ApiService {
   }
 
   public setListHelpCenter(data: any): void {
-    this.helpCenter = data;
+    this.listHelpCenter = data;
   }
 
   public getListHelpCenter(): Array<HelpCenter> {
@@ -30,8 +30,8 @@ export class HelpCenterService extends ApiService {
     return this.helpCenter;
   }
 
-  findAllUserHelpCenter(callbackOnSuccess: any, callbackOnFailure: any): void{
-    this.doGet('helpCenter/findAllOfUser', callbackOnSuccess, callbackOnFailure);
+  findAllUserHelpCenter(userId: Number, callbackOnSuccess: any, callbackOnFailure: any){
+    this.doGet('helpCenter/fAOfUs/'+userId, callbackOnSuccess, callbackOnFailure);
   }
 
   insertQuestion(model: HelpCenter, callbackOnSuccess: any, callbackOnFailure: any) {

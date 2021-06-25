@@ -1,23 +1,44 @@
-<a>Crea nuova richiesta di assistenza</a>
-
 <div>
 	<!-- <p *ngIf="helpCenterMessage != null">{{helpCenterMessage}}</p> -->
 	<p>{{helpCenterMessage}}</p>
 </div>
 
-<form class="insert-in-html" #helpCenterForm="ngForm" (submit)="insertHelpCenter()">
-	
-	<!-- <form:hidden path = "userId" value = "{{loggedUser.id}}" /> -->
-<!-- <input type="hidden" name="userId" value="{{loggedUser.id}}" [ngModel]="helpCenter.userId" > -->
-<!-- <input type="email"  name="email" [(ngModel)]="user.email"> -->
-	<div class="group">
+<div>
+	<p>Crea nuova richiesta di assistenza</p>
+	<form class="insert-in-html" #helpCenterForm="ngForm" (submit)="insertHelpCenter()">
 		
-		<textarea type="text" class="input" name="question" [(ngModel)]="helpCenter.question" placeholder="Descrizione">
-	</textarea>
+		<div class="group">
+			<textarea type="text" class="input" name="question" [(ngModel)]="helpCenter.question" placeholder="Descrizione">
+		</textarea>
+			</div>
+		
+		<div class="group">
+			<button class="button" type="submit">Invia Domanda</button>
 		</div>
-	
-	<div class="group">
-		<button class="button" type="submit">Invia Domanda</button>
-	</div>
-</form>
+
+	</form>
+</div>
+
+<div>
+	<table>
+		<thead>
+			<th> Assegnato a </th>
+			<th> Domanda topic </th>
+			<th> Creazione topic  </th>
+			<th> Ultimo aggiornamento </th>
+			<th> Chiusura topic </th>
+		</thead>
+
+		<tbody>
+			<tr *ngFor="let topic of listHelpCenter">
+				<td>{{topic.staffAssigned.surname}} {{topic.staffAssigned.name}}</td>
+				<td>{{topic.question}}</td>
+				<td>{{topic.createdAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+				<td>{{topic.updatedAt | date: 'dd-MM-yyyy hh:mm:ss'}}</td>
+				<td>{{topic.closedAt | date: 'dd-MM-yyyy hh:mm:ss'}}</td>
+			</tr>
+		</tbody>
+		
+	</table>
+</div>
 
