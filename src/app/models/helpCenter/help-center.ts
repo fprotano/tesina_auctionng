@@ -13,6 +13,6 @@ export class HelpCenter {
 	question: String;
 	assignedToId: Number;
 	staffAssigned: Staff;
-	helpThreads: Array<HelpCenterThread>;
+	// helpThreads: Array<HelpCenterThread>;
 
 }
