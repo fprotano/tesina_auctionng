@@ -19,6 +19,7 @@ export class UserService extends ApiService {
    find(callbackOnSuccess: any, callbackOnFailure: any) {
      this.doGet('user/find', callbackOnSuccess, callbackOnFailure);
    }
+   
    login(model: User, callbackOnSuccess: any, callbackOnFailure: any) {
      console.log('nel login del service, user > ' + JSON.stringify(model))
      this.doPost('user/login', model, callbackOnSuccess, callbackOnFailure);

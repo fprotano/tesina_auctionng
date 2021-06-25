@@ -42,14 +42,13 @@ export class UserComponent implements OnInit {
   }
 
   checkOtp(): void {
-    console.log('nel login del component, checkOtp > ' + JSON.stringify(this.checkOtpUser))
-    this.userService.login(this.user, this.callbackCheckOtpOnSuccess.bind(this), this.callbaCkcheckOtpOnFailure.bind(this));
-    this.router.navigate(['/home']);
+    console.log('nel login del component, checkOtp > ' + JSON.stringify(this.user))
+    this.userService.checkOtp(this.user, this.callbackCheckOtpOnSuccess.bind(this), this.callbaCkcheckOtpOnFailure.bind(this));
   }
 
   login(): void {
-    console.log('nel login del component, user > ' + JSON.stringify(this.user))
-    this.userService.login(this.user, this.callbackLoginOnSuccess.bind(this), this.callbackLoginOnFailure.bind(this));
+    console.log('nel login del component, checkOtpUser > ' + JSON.stringify(this.user))
+    this.userService.login(this.checkOtpUser, this.callbackLoginOnSuccess.bind(this), this.callbackLoginOnFailure.bind(this));
     this.router.navigate(['/home']);
   }
 
@@ -84,7 +83,6 @@ export class UserComponent implements OnInit {
     if (data !== null) {
       this.checkOtpUser = data;
       console.log('nel login success, checkOtpUser > ' + JSON.stringify(this.checkOtpUser));
-      window.location.reload();
     }
   }
 
