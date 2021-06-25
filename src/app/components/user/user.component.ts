@@ -14,6 +14,7 @@ export class UserComponent implements OnInit {
 
   user: User = new User();
   loggedUser: User;
+  checkOtpUser: User;
   userId: string;
 
   loading = true;
@@ -40,7 +41,11 @@ export class UserComponent implements OnInit {
     }
   }
 
-
+  checkOtp(): void {
+    console.log('nel login del component, checkOtp > ' + JSON.stringify(this.user))
+    this.userService.login(this.user, this.callbackCheckOtpOnSuccess.bind(this), this.callbaCkcheckOtpOnFailure.bind(this));
+    this.router.navigate(['/home']);
+  }
 
   login(): void {
     console.log('nel login del component, user > ' + JSON.stringify(this.user))
@@ -62,18 +67,29 @@ export class UserComponent implements OnInit {
 
     // notare in caso di successo chiamo il callback del login, cosi da loggare l'utente una volta registrato
     this.userService.register(this.user, this.callbackLoginOnSuccess.bind(this), this.callbackOnRegisterFailure.bind(this));
-
-
   }
 
   callbackLoginOnSuccess(data: any): void {
 
     if (data !== null) {
       this.loggedUser = data;
-      console.log('nel login success, user > ' + JSON.stringify(this.loggedUser));
+      console.log('nel login success, loggedUser > ' + JSON.stringify(this.loggedUser));
       this.userService.setLoggedUser(this.loggedUser);
       window.location.reload();
     }
+  }
+
+  callbackCheckOtpOnSuccess(data: any): void {
+
+    if (data !== null) {
+      this.checkOtpUser = data;
+      console.log('nel login success, checkOtpUser > ' + JSON.stringify(this.checkOtpUser));
+      window.location.reload();
+    }
+  }
+
+  callbaCkcheckOtpOnFailure(data: any): any {
+    console.log('nel cal back checkOtpUser failure > ' + JSON.stringify(data));
   }
 
   callbackLoginOnFailure(data: any): any {
@@ -83,8 +99,6 @@ export class UserComponent implements OnInit {
   callbackOnRegisterFailure(data: any): any {
     console.log('nel cal back Register failure > ' + JSON.stringify(data));
   }
-
-
 
   findAuctionsByUser(): any {
     console.log('nel findAuctionsByUser id user > ' + this.userId)
