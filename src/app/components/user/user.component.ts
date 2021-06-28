@@ -82,15 +82,16 @@ export class UserComponent implements OnInit {
     console.log('nel checkOtp success data ---- > ' + JSON.stringify(data));
     if (data !== null) {
       this.checkOtpUser = data;
-      console.log(JSON.stringify(this.checkOtpUser));
+      // se non c'e' otp vuol dire che e' richiesto, quindi lascia la variabile settata e ritorna
       if (this.checkOtpUser.otpCode === null) {
         console.log('nel checkOtp success checkOtpUser ---- > ' + JSON.stringify(this.checkOtpUser));
         return;
       }
+      // se l'otp c'e' vuol dire che non e' richiesto, quindi setta undefined la variabile
+      // e chiama il callback del login, eseguendo una normale login
       console.log('il checkotp se non serve lopt ----> ' + JSON.stringify(this.checkOtpUser));
       this.checkOtpUser = undefined;
       this.callbackLoginOnSuccess(data)
-      this.router.navigate(['/home']);
     }
   }
 
