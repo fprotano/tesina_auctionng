@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+// import { NgForm } from '@angular/forms';
 import { HelpCenterService } from 'src/app/services/helpCenter/help-center.service';
 // import { HelpCenterThreadService} from 'src/app/services/helpCenterThread/help-center-thread.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/models/user/user';
 import { HelpCenter } from 'src/app/models/helpCenter/help-center';
 // import { HelpCenterThread } from 'src/app/models/helpCenterThread/help-center-thread';
-import { HttpClient } from '@angular/common/http';
-import { Staff } from 'src/app/models/staff/staff';
+// import { HttpClient } from '@angular/common/http';
+// import { Staff } from 'src/app/models/staff/staff';
 
 @Component({
   selector: 'app-help-center',
@@ -30,7 +30,7 @@ export class HelpCenterComponent implements OnInit {
     this.loggedUser = this.userService.getLoggedUser();
     this.helpCenterService.findAllUserHelpCenter(this.loggedUser.id, this.callbackOnSuccessList.bind(this),
                                                   this.callbackOnFailureList.bind(this));
-                                                  
+
   }
 
     insertHelpCenter() {
