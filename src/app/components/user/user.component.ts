@@ -42,14 +42,13 @@ export class UserComponent implements OnInit {
   }
 
   checkOtp(): void {
-    console.log('nel login del component, checkOtp > ' + JSON.stringify(this.user))
+    console.log('nel checkOtp del component, checkOtp > ' + JSON.stringify(this.user))
     this.userService.checkOtp(this.user, this.callbackCheckOtpOnSuccess.bind(this), this.callbaCkcheckOtpOnFailure.bind(this));
   }
 
   login(): void {
     console.log('nel login del component, checkOtpUser > ' + JSON.stringify(this.user))
     this.userService.login(this.checkOtpUser, this.callbackLoginOnSuccess.bind(this), this.callbackLoginOnFailure.bind(this));
-    this.router.navigate(['/home']);
   }
 
   logOut(): void {
@@ -74,15 +73,24 @@ export class UserComponent implements OnInit {
       this.loggedUser = data;
       console.log('nel login success, loggedUser > ' + JSON.stringify(this.loggedUser));
       this.userService.setLoggedUser(this.loggedUser);
-      window.location.reload();
+      window.location.replace('/home');
     }
   }
 
   callbackCheckOtpOnSuccess(data: any): void {
 
+    console.log('nel checkOtp success data ---- > ' + JSON.stringify(data));
     if (data !== null) {
       this.checkOtpUser = data;
-      console.log('nel login success, checkOtpUser > ' + JSON.stringify(this.checkOtpUser));
+      console.log(JSON.stringify(this.checkOtpUser));
+      if (this.checkOtpUser.otpCode === null) {
+        console.log('nel checkOtp success checkOtpUser ---- > ' + JSON.stringify(this.checkOtpUser));
+        return;
+      }
+      console.log('il checkotp se non serve lopt ----> ' + JSON.stringify(this.checkOtpUser));
+      this.checkOtpUser = undefined;
+      this.callbackLoginOnSuccess(data)
+      this.router.navigate(['/home']);
     }
   }
 

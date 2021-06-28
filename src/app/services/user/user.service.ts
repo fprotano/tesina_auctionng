@@ -26,7 +26,7 @@ export class UserService extends ApiService {
    }
 
    checkOtp(model: User, callbackCheckOtpOnSuccess: any, callbaCkcheckOtpOnFailure: any) {
-     console.log('nel login del service, user > ' + JSON.stringify(model))
+     console.log('nel checkOtp del service, user > ' + JSON.stringify(model))
      this.doPost('user/checkOtp', model, callbackCheckOtpOnSuccess, callbaCkcheckOtpOnFailure);
    }
 
