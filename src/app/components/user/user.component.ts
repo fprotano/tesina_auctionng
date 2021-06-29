@@ -84,7 +84,7 @@ export class UserComponent implements OnInit {
       this.checkOtpUser = data;
       // se non c'e' otp vuol dire che e' richiesto, quindi lascia la variabile settata e ritorna
       if (this.checkOtpUser.otpCode === null) {
-        console.log('nel checkOtp success checkOtpUser ---- > ' + JSON.stringify(this.checkOtpUser));
+        console.log('nel checkOtp success se serve otp checkOtpUser ---- > ' + JSON.stringify(this.checkOtpUser));
         return;
       }
       // se l'otp c'e' vuol dire che non e' richiesto, quindi setta undefined la variabile

@@ -3,6 +3,7 @@ import { ApiService } from '../api/api.service';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/models/user/user';
 import { Payment } from 'src/app/models/payment/payment';
+import { AuctionOrder } from 'src/app/models/auctionOrder/auction-order';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,9 @@ export class AuctionOrderService extends ApiService {
 
   makeDeletePayment(model: Payment,  callbackOnSuccess: any, callbackOnFailure: any) {
     this.doPost('auctionOrder/AuctionOrderDeletePayment', model, callbackOnSuccess, callbackOnFailure);
+  }
+
+  downloadInvoice(model: AuctionOrder,  callbackOnSuccess: any, callbackOnFailure: any) {
+    this.doPost('auctionOrder/AuctionOrderPayment', model, callbackOnSuccess, callbackOnFailure);
   }
 }

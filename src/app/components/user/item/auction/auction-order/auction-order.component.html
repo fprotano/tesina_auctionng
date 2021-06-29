@@ -18,7 +18,7 @@
 				<button  *ngIf="auctionOrder.auctionOrderStatusId === 1" type="submit" (click)="makePayment(auctionOrder)">Paga Ordine</button>
 				<button  *ngIf="auctionOrder.auctionOrderStatusId !== 3" type="submit" (click)="makeDeletePayment(auctionOrder)">Annulla</button>
 				<a  *ngIf="auctionOrder.auctionOrderStatusId === 2" >Verifica pagamento</a>
-				<a  *ngIf="auctionOrder.auctionOrderStatusId === 3" >Pagato</a>
+				<a  *ngIf="auctionOrder.auctionOrderStatusId === 3" >Pagato </a><button  *ngIf="auctionOrder.auctionOrderStatusId === 3" type="submit" (click)="downloadInvoice(auctionOrder)" >Download Fattura</button>
 				<a  *ngIf="auctionOrder.auctionOrderStatusId === 4" >Rifiutato</a>
 			</tr>
 		</tbody>

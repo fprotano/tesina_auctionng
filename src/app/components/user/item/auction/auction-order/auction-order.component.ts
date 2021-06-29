@@ -5,6 +5,7 @@ import { AuctionOrder } from 'src/app/models/auctionOrder/auction-order';
 import { User } from 'src/app/models/user/user';
 import { Payment } from 'src/app/models/payment/payment';
 import { ActivatedRoute } from '@angular/router';
+import { InvoiceService } from 'src/app/services/invoice/invoice.service';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class AuctionOrderComponent implements OnInit {
   result: string;
 
   @ViewChild('paymentForm', {static: false}) myform: ElementRef<HTMLFormElement>;
-  constructor(private userService: UserService, private auctionOrderService: AuctionOrderService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private auctionOrderService: AuctionOrderService, private route: ActivatedRoute,
+              private invoiceService: InvoiceService) { }
 
   ngOnInit() {
 
@@ -30,7 +32,7 @@ export class AuctionOrderComponent implements OnInit {
     this.result = this.route.snapshot.paramMap.get('result');
   }
 
-  makePayment(auctionOrder: AuctionOrder) {
+  makePayment(auctionOrder: AuctionOrder): void {
 
     this.payment.amount = auctionOrder.amount;
     this.payment.customCode = auctionOrder.orderNo;
@@ -40,7 +42,7 @@ export class AuctionOrderComponent implements OnInit {
 
   }
 
-  makeDeletePayment(auctionOrder: AuctionOrder) {
+  makeDeletePayment(auctionOrder: AuctionOrder): void {
 
     this.payment.amount = auctionOrder.amount;
     this.payment.customCode = auctionOrder.orderNo;
@@ -48,6 +50,10 @@ export class AuctionOrderComponent implements OnInit {
     console.log('nel make DeletePayment, payment > ' + JSON.stringify(this.payment))
     this.auctionOrderService.makeDeletePayment(this.payment, this.callbackDeletePaymentOnSuccess.bind(this), 
                                                             this.callbackDeletePaymentOnFailure.bind(this))
+  }
+
+  downloadInvoice(auctionOrder: AuctionOrder): void {
+    this.invoiceService.downloadInvoice(this.auctionOrder, this.callbackInvoiceOnSuccess.bind(this), this.callbackInvoiceOnFailure.bind(this));
   }
 
   callbackOnSuccess(data: any): void {
@@ -89,6 +95,15 @@ export class AuctionOrderComponent implements OnInit {
   }
 
   callbackDeletePaymentOnFailure(data: any): any {
+    console.log(data);
+  }
+
+  callbackInvoiceOnSuccess(data: any): void {
+
+    console.log('nel callbackOnSuccess del download Invoice > ' + JSON.stringify(data));
+  }
+
+  callbackInvoiceOnFailure(data: any): any {
     console.log(data);
   }
 
