@@ -53,7 +53,7 @@ export class AuctionOrderComponent implements OnInit {
   }
 
   downloadInvoice(auctionOrder: AuctionOrder): void {
-    this.invoiceService.downloadInvoice(this.auctionOrder, this.callbackInvoiceOnSuccess.bind(this), this.callbackInvoiceOnFailure.bind(this));
+    this.invoiceService.downloadInvoice(auctionOrder, this.callbackInvoiceOnSuccess.bind(this), this.callbackInvoiceOnFailure.bind(this));
   }
 
   callbackOnSuccess(data: any): void {
