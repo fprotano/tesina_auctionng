@@ -21,7 +21,6 @@ export class InvoiceComponent implements OnInit {
 
     this.loggedUser = this.userService.getLoggedUser();
     this.invoiceService.findInvoiceByUserId(this.loggedUser, this.callbackOnSuccess.bind(this), this.callbackOnFailure.bind(this))
-
   }
 
   callbackOnSuccess(data: any): void {
