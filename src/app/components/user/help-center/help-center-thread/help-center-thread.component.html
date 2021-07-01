@@ -3,7 +3,7 @@
 	<p>{{helpCenterThraedMessage}}</p>
 </div>
 
-<div>
+<div *ngIf="helpCenterSelected.closedAt == null">
     <p>Manda un nuovo messaggio</p>
 	<form class="insert-in-html" #helpCenterThreadForm="ngForm" (submit)="insertHelpCenterThread()">
 		
@@ -18,8 +18,11 @@
 
 	</form>
 </div>
+<div *ngIf="helpCenterSelected.closedAt != null">
+	<p>il topic &egrave; stato chiuso</p>
+</div>
 <a href="/helpCenter">torna alla lista di topic</a>
-<div *ngIf="listHelpThreads.length>0">
+<div *ngIf="helpCenterSelected.helpThreads.length>0">
     <table id="customers">
         <tr>
 			<th>messaggio utente</th>

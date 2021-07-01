@@ -5,8 +5,6 @@ import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/models/user/user';
 import { HelpCenter } from 'src/app/models/helpCenter/help-center';
 import { HelpCenterDTO } from 'src/app/models/helpCenterDTO/help-center-DTO';
-// import { HttpClient } from '@angular/common/http';
-// import { Staff } from 'src/app/models/staff/staff';
 
 @Component({
   selector: 'app-help-center',
@@ -17,7 +15,7 @@ export class HelpCenterComponent implements OnInit {
 
   loggedUser: User = new User();
   helpCenter: HelpCenter = new HelpCenter();
-  topic:  HelpCenter = new HelpCenter();
+  topic: HelpCenter = new HelpCenter();
   helpCenterMessage: string;
   listHelpCenter: Array <HelpCenter> = new Array <HelpCenter>();
   listHelpCenterDTO: Array <HelpCenterDTO> = new Array <HelpCenterDTO>();
@@ -44,7 +42,6 @@ export class HelpCenterComponent implements OnInit {
   callbackOnSuccessInsert(data: any) {
     this.helpCenter = data;
     this.helpCenterMessage = 'richiesta creata con successo';
-    console.log('nel callbackOnSuccessInsert');
   }
 
   callbackOnFailureInsert(data: any) {
@@ -61,9 +58,7 @@ export class HelpCenterComponent implements OnInit {
   }
 
   setTopic( topic: HelpCenterDTO): void {
-    console.log('nel setTopic, helpCenterDTO: '+JSON.stringify(topic.helpThreads));
     this.helpCenterService.setHelpCenter(topic);
-    console.log('nel setTopic, helpCenterDTO: '+JSON.stringify(this.helpCenterService.getHelpCenter()));
     this.router.navigate(['/helpCenterThreads']);
   }
 

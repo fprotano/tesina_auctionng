@@ -19,28 +19,24 @@ export class HelpCenterThreadComponent implements OnInit {
   loggedUser: User = new User();
   helpCenterSelected: HelpCenterDTO = new HelpCenterDTO();
   helpCenterThread: HelpCenterThread = new HelpCenterThread();
-  listHelpThreads: Array<HelpCenterThreadDTO> = new Array<HelpCenterThreadDTO>();
+  // listHelpThreads: Array<HelpCenterThreadDTO> = new Array<HelpCenterThreadDTO>();
   helpCenterThraedMessage: String;
 
   constructor(private userService: UserService,
-              private helpCenterService: HelpCenterService, 
+              private helpCenterService: HelpCenterService,
               private helpCenterThreadService: HelpCenterThreadService ) { }
 
   ngOnInit() {
     this.loggedUser = this.userService.getLoggedUser();
     this.helpCenterSelected = this.helpCenterService.getHelpCenter();
-    this.listHelpThreads = this.helpCenterSelected.helpThreads;
-    console.log('helpCenterThraedMessage: ')+JSON.stringify(this.listHelpThreads);
+    // this.listHelpThreads = this.helpCenterSelected.helpThreads;
   }
 
-  insertHelpCenterThread(){
-    this.helpCenterThread.helpCenterId=this.helpCenterSelected.id;
-      console.log('dentro insertHelpCenterThread, helpCenterSelected >' + JSON.stringify(this.helpCenterSelected));
-      console.log('dentro insertHelpCenterThread, HelpCenterThread >' + JSON.stringify(this.helpCenterThread));
-      console.log('logged user: ' + this.loggedUser.id);
-    this.helpCenterThreadService.insertThread(this.helpCenterThread, 
+  insertHelpCenterThread() {
+    this.helpCenterThread.helpCenterId = this.helpCenterSelected.id;
+    this.helpCenterThreadService.insertThread(this.helpCenterThread,
                                               this.callbackOnSuccessInsert.bind(this),
-                                              this.callbackOnFailureInsert.bind(this))
+                                              this.callbackOnFailureInsert.bind(this));
 
   }
 
