@@ -28,14 +28,14 @@
 			<th> Chiusura topic </th>
 
 		<tbody>
-				<tr *ngFor="let topic of listHelpCenterDTO" (click)="setTopic(topic)">
-					
+				<!-- <tr *ngFor="let topic of listHelpCenterDTO" (click)="setTopic(topic)"> -->
+				<tr *ngFor="let topic of listHelpCenterDTO">
 					<td>{{topic.staffAssigned.surname}} {{topic.staffAssigned.name}}</td>
 					<td>{{topic.question}}</td>
 					<td>{{topic.createdAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
 					<td>{{topic.updatedAt | date: 'dd-MM-yyyy hh:mm:ss'}}</td>
 					<td>{{topic.closedAt | date: 'dd-MM-yyyy hh:mm:ss'}}</td>
-					
+					<button (click)="setTopic(topic)">vai al topic</button>
 				</tr>
 		</tbody>
 		
