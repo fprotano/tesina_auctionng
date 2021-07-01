@@ -7,7 +7,7 @@ import { ItemComponent } from './components/user/item/item.component';
 import { AuctionBidComponent } from './components/user/item/auction/auction-bid/auction-bid.component';
 import { AuctionOrderComponent } from './components/user/item/auction/auction-order/auction-order.component';
 import { HelpCenterComponent } from './components/user/help-center/help-center.component';
-
+import { HelpCenterThreadComponent } from './components/user/help-center/help-center-thread/help-center-thread.component';
 
 const routes: Routes = [
 
@@ -20,6 +20,7 @@ const routes: Routes = [
   , { path: 'auctionOrder', component: AuctionOrderComponent }
   , { path: 'auctionOrder/:result', component: AuctionOrderComponent }
   , { path: 'helpCenter', component: HelpCenterComponent }
+  , { path: 'helpCenterThreads', component: HelpCenterThreadComponent }
 
 ];
 

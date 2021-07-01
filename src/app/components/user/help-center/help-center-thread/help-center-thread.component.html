@@ -1,1 +1,39 @@
-<p>help-center-thread works!</p>
+<div>
+	<!-- <p *ngIf="helpCenterMessage != null">{{helpCenterMessage}}</p> -->
+	<p>{{helpCenterThraedMessage}}</p>
+</div>
+
+<div>
+    <p>Manda un nuovo messaggio</p>
+	<form class="insert-in-html" #helpCenterThreadForm="ngForm" (submit)="insertHelpCenterThread()">
+		
+		<div class="group">
+			<textarea type="text" class="input" name="question" [(ngModel)]="helpCenterThread.question" placeholder="Messaggio">
+		    </textarea>
+        </div>
+		
+		<div class="group">
+			<button class="button" type="submit">Invia messaggio</button>
+		</div>
+
+	</form>
+</div>
+<a href="/helpCenter">torna alla lista di topic</a>
+<div *ngIf="listHelpThreads.length>0">
+    <table id="customers">
+        <tr>
+			<th>messaggio utente</th>
+			<th>messaggio help center</th>
+			<th>data messaggio utete</th>
+        </tr>
+		<tr *ngFor="let thread of helpCenterSelected.helpThreads">
+		<td>{{thread.question}}</td>
+		<td>{{thread.answer}}</td>
+		<td>{{thread.createdAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+		</tr>
+    </table>
+</div>
+
+<div *ngIf="helpCenterSelected.helpThreads.length==0">
+	<p>nessun messaggio trovato</p>
+</div>

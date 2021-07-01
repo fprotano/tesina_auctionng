@@ -4,8 +4,8 @@ export class HelpCenterThread {
 
     id: number;
     createdAt: Date;
-	helpCenterId: number;
-	// helpCenterForThread: HelpCenter;
+	helpCenterId: Number;
+    helpCenterForThread ? : HelpCenter;
 	question: String;
-	answer: String;
+	answer ? : String;
 }

@@ -7,8 +7,7 @@ import { HelpCenterThread } from 'src/app/models/helpCenterThread/help-center-th
   providedIn: 'root'
 })
 export class HelpCenterThreadService extends ApiService {
-  private listHelpCenterThreads: Array<HelpCenterThread> = new Array<HelpCenterThread>();
-  private userThread: HelpCenterThread = new HelpCenterThread();
+  listHelpCenterThreads: Array<HelpCenterThread> = new Array<HelpCenterThread>();
 
   constructor(http: HttpClient) {
     super(http);
@@ -20,10 +19,6 @@ export class HelpCenterThreadService extends ApiService {
 
   public GetThreadsOfUser(): Array<HelpCenterThread> {
     return this.listHelpCenterThreads;
-  }
-
-  public setUserThread(data: HelpCenterThread): void {
-    this.userThread = data;
   }
 
   findAllUserThreads(callbackOnSuccess: any, callbackOnFailure: any): void {

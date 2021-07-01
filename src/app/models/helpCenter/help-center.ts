@@ -6,13 +6,13 @@ export class HelpCenter {
 
 	id: Number;
 	createdAt: Date;
-	updatedAt: Date;
-	closedAt: Date;
+	updatedAt ? : Date;
+	closedAt ? : Date;
 	userId: Number;
 	userDidQuestion: User;
 	question: String;
 	assignedToId: Number;
 	staffAssigned: Staff;
-	// helpThreads: Array<HelpCenterThread>;
+    helpThreads: Array<HelpCenterThread>;
 
 }

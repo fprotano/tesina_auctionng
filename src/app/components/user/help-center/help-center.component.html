@@ -20,25 +20,25 @@
 </div>
 
 <div>
-	<table>
-		<thead>
+	<table id="customers">
 			<th> Assegnato a </th>
 			<th> Domanda topic </th>
 			<th> Creazione topic  </th>
 			<th> Ultimo aggiornamento </th>
 			<th> Chiusura topic </th>
-		</thead>
 
 		<tbody>
-			<tr *ngFor="let topic of listHelpCenter">
-				<td>{{topic.staffAssigned.surname}} {{topic.staffAssigned.name}}</td>
-				<td>{{topic.question}}</td>
-				<td>{{topic.createdAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
-				<td>{{topic.updatedAt | date: 'dd-MM-yyyy hh:mm:ss'}}</td>
-				<td>{{topic.closedAt | date: 'dd-MM-yyyy hh:mm:ss'}}</td>
-			</tr>
+				<tr *ngFor="let topic of listHelpCenterDTO" (click)="setTopic(topic)">
+					
+					<td>{{topic.staffAssigned.surname}} {{topic.staffAssigned.name}}</td>
+					<td>{{topic.question}}</td>
+					<td>{{topic.createdAt | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+					<td>{{topic.updatedAt | date: 'dd-MM-yyyy hh:mm:ss'}}</td>
+					<td>{{topic.closedAt | date: 'dd-MM-yyyy hh:mm:ss'}}</td>
+					
+				</tr>
 		</tbody>
 		
 	</table>
+	<p>clicca sulla riga per accedere al topic</p>
 </div>
-

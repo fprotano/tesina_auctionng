@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-// import { NgForm } from '@angular/forms';
 import { HelpCenterService } from 'src/app/services/helpCenter/help-center.service';
-// import { HelpCenterThreadService} from 'src/app/services/helpCenterThread/help-center-thread.service';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/models/user/user';
 import { HelpCenter } from 'src/app/models/helpCenter/help-center';
-// import { HelpCenterThread } from 'src/app/models/helpCenterThread/help-center-thread';
+import { HelpCenterDTO } from 'src/app/models/helpCenterDTO/help-center-DTO';
 // import { HttpClient } from '@angular/common/http';
 // import { Staff } from 'src/app/models/staff/staff';
 
@@ -18,11 +17,14 @@ export class HelpCenterComponent implements OnInit {
 
   loggedUser: User = new User();
   helpCenter: HelpCenter = new HelpCenter();
+  topic:  HelpCenter = new HelpCenter();
   helpCenterMessage: string;
   listHelpCenter: Array <HelpCenter> = new Array <HelpCenter>();
+  listHelpCenterDTO: Array <HelpCenterDTO> = new Array <HelpCenterDTO>();
 
   constructor(private userService: UserService,
-              private helpCenterService: HelpCenterService
+              private helpCenterService: HelpCenterService,
+              private router: Router
               ) { }
 
   ngOnInit() {
@@ -35,8 +37,6 @@ export class HelpCenterComponent implements OnInit {
 
     insertHelpCenter() {
       this.helpCenter.userId = this.loggedUser.id;
-      console.log('dentro insert question, helpCenter >' + JSON.stringify(this.helpCenter));
-      console.log('logged user: ' + this.loggedUser.id);
       this.helpCenterService.insertQuestion(this.helpCenter, this.callbackOnSuccessInsert.bind(this),
                                           this.callbackOnFailureInsert.bind(this));
   }
@@ -53,14 +53,19 @@ export class HelpCenterComponent implements OnInit {
 
   callbackOnSuccessList(data: any) {
     this.helpCenterService.setListHelpCenter(data);
-    this.listHelpCenter = data;
-    // console.log('listHelpCenter ' + JSON.stringify(data));
+    this.listHelpCenterDTO = data;
   }
 
   callbackOnFailureList(data: any) {
     console.log('nel callbackOnFailureList');
   }
 
+  setTopic( topic: HelpCenterDTO): void {
+    console.log('nel setTopic, helpCenterDTO: '+JSON.stringify(topic.helpThreads));
+    this.helpCenterService.setHelpCenter(topic);
+    console.log('nel setTopic, helpCenterDTO: '+JSON.stringify(this.helpCenterService.getHelpCenter()));
+    this.router.navigate(['/helpCenterThreads']);
+  }
 
 
 }
